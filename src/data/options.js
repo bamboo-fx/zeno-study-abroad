@@ -44,11 +44,11 @@ export const MAJORS = [
 ];
 
 export const SCHOOLS = [
-  { id: "cmc", name: "Claremont McKenna College", note: "Snapshot — CMC's public list is gated; data here is a curated reference, not live" },
-  { id: "pomona", name: "Pomona College", note: "Live data from Pomona IDPO's Terra Dotta portal" },
-  { id: "pitzer", name: "Pitzer College", note: "Live data from Pitzer SAIP's Terra Dotta portal" },
-  { id: "scripps", name: "Scripps College", note: "Live data from Scripps SAGE's Terra Dotta portal" },
-  { id: "harvey-mudd", name: "Harvey Mudd College", note: "Live data from HMC's Study Abroad portal" },
+  { id: "cmc", name: "Claremont McKenna College", note: "Snapshot — CMC's public list is gated; data here is a curated reference, not live", live: false },
+  { id: "pomona", name: "Pomona College", note: "Live data from Pomona IDPO's Terra Dotta portal", live: true },
+  { id: "pitzer", name: "Pitzer College", note: "Live data from Pitzer SAIP's Terra Dotta portal", live: true },
+  { id: "scripps", name: "Scripps College", note: "Live data from Scripps SAGE's Terra Dotta portal", live: true },
+  { id: "harvey-mudd", name: "Harvey Mudd College", note: "Live data from HMC's Study Abroad portal", live: true },
 ];
 
 export const SEMS = [

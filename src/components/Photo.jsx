@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { fetchCityPhoto } from "../data/cityPhoto.js";
 
 export function Photo({ city, country, grad, photo, h = 200, round = 22, hideLabel = false }) {
+  const [src, setSrc] = useState(photo || null);
   const [ok, setOk] = useState(false);
+
+  useEffect(() => {
+    if (photo) { setSrc(photo); return; }
+    let alive = true;
+    fetchCityPhoto(city, country).then((url) => { if (alive && url) setSrc(url); });
+    return () => { alive = false; };
+  }, [photo, city, country]);
+
   return (
     <div style={{ position: "relative", height: h, borderRadius: round, overflow: "hidden", background: grad }}>
-      {photo && (
-        <img src={photo} alt={`${city}, ${country}`} onLoad={() => setOk(true)} onError={() => setOk(false)}
+      {src && (
+        <img src={src} alt={`${city}, ${country}`} onLoad={() => setOk(true)} onError={() => setOk(false)}
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover",
             opacity: ok ? 1 : 0, transition: "opacity .6s" }} />
       )}

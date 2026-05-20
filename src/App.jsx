@@ -87,6 +87,19 @@ export default function App() {
     return () => { alive = false; };
   }, [school]);
 
+  // Live seasonal climate for the picked city. Falls back to the static CLIM
+  // bucket if Open-Meteo is unreachable.
+  const [liveClim, setLiveClim] = useState(null);
+  useEffect(() => {
+    if (!picked) { setLiveClim(null); return; }
+    let alive = true;
+    setLiveClim(null);
+    import("./data/liveClim.js").then(({ fetchCityClim }) => fetchCityClim(picked.city, picked.country))
+      .then((c) => { if (alive) setLiveClim(c); })
+      .catch(() => { if (alive) setLiveClim(null); });
+    return () => { alive = false; };
+  }, [picked]);
+
   useEffect(() => {
     const close = (e) => { if (boxRef.current && !boxRef.current.contains(e.target)) setOpen(false); };
     document.addEventListener("mousedown", close);
@@ -334,8 +347,8 @@ export default function App() {
                       <span style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 5, fontSize: 10.5, fontWeight: 700,
                         padding: "4px 10px", borderRadius: 999,
                         background: "transparent",
-                        color: s.pooled ? "#4ea8ff" : "#9d7bff" }}>
-                        <BadgeCheck style={{ width: 12, height: 12 }} /> {s.pooled ? "5C pool" : "Real data"}
+                        color: s.live ? "#16a34a" : "#9d7bff" }}>
+                        <BadgeCheck style={{ width: 12, height: 12 }} /> {s.live ? "Live data" : "Snapshot"}
                       </span>
                     </button>
                   ))}
@@ -731,9 +744,7 @@ export default function App() {
             fontSize: 12.5, color: "#9a90b8", background: "transparent", border: "none",
             borderRadius: 14, padding: "13px 16px" }}>
             <AlertCircle style={{ width: 15, height: 15, color: "#9d6bff", flexShrink: 0, marginTop: 1 }} />
-            <span>{schoolObj?.pooled
-              ? "Harvey Mudd draws from the shared Claremont Consortium provider pool; availability varies. Confirm with the HMC Office of Study Abroad."
-              : `Sourced from a recent snapshot of ${schoolObj?.name}'s approved program list. Confirm availability, eligibility & credit with the study abroad office — listings change yearly.`}</span>
+            <span>{schoolObj?.note}. Always confirm availability, eligibility & credit with the study-abroad office before applying.</span>
           </div>
         </Wrap>
       )}
@@ -766,7 +777,7 @@ export default function App() {
           </div>
 
           {(() => {
-            const clim0 = CLIM[picked.clim] || CLIM.cont;
+            const clim0 = liveClim || CLIM[picked.clim] || CLIM.cont;
             const w0 = clim0[semTab] || clim0.fall; const WI0 = w0.icon;
             const t0 = testiFor(picked.city, picked.clim, semTab);
             return (
@@ -882,7 +893,7 @@ export default function App() {
                   Enrolled through {picked.highlight} · {schoolObj?.name} credit
                 </p>
                 {(() => {
-                  const clim = CLIM[picked.clim] || CLIM.cont;
+                  const clim = liveClim || CLIM[picked.clim] || CLIM.cont;
                   const w = clim[semTab] || clim.fall;
                   const semLabel = ((SEMS.find((x) => x.id === semTab) || {}).label || "this term").toLowerCase();
                   const tier = costInfo(picked.city, picked.country).tier.toLowerCase();
@@ -1249,7 +1260,7 @@ Best,
           <div style={{ display: "flex", gap: 9, alignItems: "flex-start", fontSize: 12.5, color: "#9a90b8",
             background: "transparent", border: "none", borderRadius: 14, padding: "13px 16px", marginTop: 4 }}>
             <AlertCircle style={{ width: 15, height: 15, color: "#9d6bff", flexShrink: 0, marginTop: 1 }} />
-            <span>Cultural & language notes are general orientation, and weather in the tile above is the <strong>typical seasonal climate</strong> (not a live forecast). Confirm program specifics with {schoolObj?.name}'s study-abroad office. Real photos of {picked.city} appear automatically once this app is published online.</span>
+            <span>Cultural & language notes are general orientation. Weather is <strong>seasonal climate normals</strong> from Open-Meteo (2020–2024) — not a live forecast. Program photos come from the host portal where available, with Wikipedia city thumbnails as a fallback. Confirm program specifics with {schoolObj?.name}'s study-abroad office.</span>
           </div>
 
           <button onClick={restart} className="pressable" style={{ ...cta, width: "100%", marginTop: 20 }}>Plan another trip</button>
@@ -1307,7 +1318,7 @@ Best,
       {!(step === "school" && open) && (
         <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "10px 0 50px",
           color: "#6b82a4", fontSize: 12 }}>
-          Peel · honest by design — real program data, real climate, photos when published
+          Peel · honest by design — live programs from each school's official portal · climate from Open-Meteo · photos from program portals & Wikipedia
         </div>
       )}
     </Canvas>

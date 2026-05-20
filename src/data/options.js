@@ -44,11 +44,11 @@ export const MAJORS = [
 ];
 
 export const SCHOOLS = [
-  { id: "cmc", name: "Claremont McKenna College", note: "Real program list (snapshot — CMC Center for Global Education)" },
-  { id: "pomona", name: "Pomona College", note: "Real program list (snapshot — Pomona IDPO)" },
-  { id: "pitzer", name: "Pitzer College", note: "Real program list (snapshot — Pitzer SAIP)" },
-  { id: "scripps", name: "Scripps College", note: "Real program list (snapshot — Scripps SAGE)" },
-  { id: "harvey-mudd", name: "Harvey Mudd College", note: "Draws from the shared Claremont Consortium provider pool — confirm with HMC Study Abroad", pooled: true },
+  { id: "cmc", name: "Claremont McKenna College", note: "Snapshot — CMC's public list is gated; data here is a curated reference, not live" },
+  { id: "pomona", name: "Pomona College", note: "Snapshot — Pomona IDPO (live integration coming next)" },
+  { id: "pitzer", name: "Pitzer College", note: "Snapshot — Pitzer SAIP (live integration coming next)" },
+  { id: "scripps", name: "Scripps College", note: "Snapshot — Scripps SAGE (live integration coming next)" },
+  { id: "harvey-mudd", name: "Harvey Mudd College", note: "Live data from HMC's Study Abroad portal" },
 ];
 
 export const SEMS = [

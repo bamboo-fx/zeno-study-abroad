@@ -5,7 +5,6 @@ import {
   Search, BadgeCheck, Globe, HelpCircle, Quote, ArrowRight,
 } from "lucide-react";
 
-import { UNSPLASH_KEY } from "./config.js";
 import { G } from "./theme/gradients.js";
 import { INK, CTA, GHOST, CARD } from "./theme/colors.js";
 import { FONTS } from "./theme/fonts.jsx";
@@ -16,7 +15,7 @@ import { costInfo } from "./data/cost.js";
 import { countryProfile, visaGuide } from "./data/country.js";
 import { courseCredit } from "./data/courseCredit.js";
 import { TESTI, GEN_TESTI } from "./data/testimonials.js";
-import { CMC, DATA } from "./data/programs.js";
+import { CMC, DATA, loadPrograms } from "./data/programs.js";
 
 import { Canvas } from "./components/Canvas.jsx";
 import { Nav } from "./components/Nav.jsx";
@@ -74,6 +73,20 @@ export default function App() {
   const destDirRef = useRef(1);
   const boxRef = useRef(null);
 
+  // Live program list per school. Falls back to mock DATA[school] when no
+  // live source is configured. See src/data/programs.js#loadPrograms.
+  const [srcPrograms, setSrcPrograms] = useState(null);
+  const [srcLoading, setSrcLoading] = useState(false);
+  useEffect(() => {
+    if (!school) { setSrcPrograms(null); return; }
+    let alive = true;
+    setSrcLoading(true);
+    loadPrograms(school).then((p) => {
+      if (alive) { setSrcPrograms(p); setSrcLoading(false); }
+    }).catch(() => { if (alive) { setSrcPrograms(DATA[school] || CMC); setSrcLoading(false); } });
+    return () => { alive = false; };
+  }, [school]);
+
   useEffect(() => {
     const close = (e) => { if (boxRef.current && !boxRef.current.contains(e.target)) setOpen(false); };
     document.addEventListener("mousedown", close);
@@ -122,7 +135,7 @@ export default function App() {
     setTimeout(() => goToDest(bestId), 850);
   };
 
-  const SRC = school ? DATA[school] : CMC;
+  const SRC = srcPrograms || (school ? (DATA[school] || CMC) : CMC);
   const activeCont = continent && continent !== "any" ? continent : null;
   const VIBE_KEYS = ["neon","cobble","beach","nordic","cafe","alpine","market","campus"];
   const aggList = () => {
@@ -508,7 +521,12 @@ export default function App() {
             title="Pick your destination"
             back={() => setStep("images")} />
 
-          {chosen.length === 0 ? (
+          {srcLoading ? (
+            <div className="fad" style={{ ...card, maxWidth: 460, margin: "0 auto", textAlign: "center", padding: 36, borderRadius: 22 }}>
+              <div className="ser" style={{ fontSize: 18, fontWeight: 600, color: "#1c1830" }}>Loading approved programs…</div>
+              <div style={{ fontSize: 13, color: "#9a90b8", marginTop: 6 }}>Pulling the live list from {schoolObj?.name}'s portal.</div>
+            </div>
+          ) : chosen.length === 0 ? (
             <div className="fl" style={{ ...card, maxWidth: 560, margin: "0 auto", textAlign: "center", padding: 44, borderRadius: 24 }}>
               <AlertCircle style={{ width: 34, height: 34, color: "#4ea8ff", margin: "0 auto 14px" }} />
               <div className="ser" style={{ fontSize: 21, fontWeight: 600, marginBottom: 6 }}>Nothing here for that combination</div>
@@ -576,6 +594,7 @@ export default function App() {
                               : "0 40px 74px -34px rgba(60,40,110,.45)" }}>
                           <div style={{ position: "relative", padding: isCenter ? 14 : 10 }}>
                             <Photo city={item.dd.city} country={item.dd.country} grad={item.dd.grad}
+                              photo={item.dd.photo}
                               h={isCenter ? 300 : 180} round={isCenter ? 22 : 16} />
                             {isCenter && (
                               <div style={{ position: "absolute", top: 26, right: 26, display: "flex", alignItems: "center", gap: 9,
@@ -757,7 +776,7 @@ export default function App() {
                 boxShadow: "0 50px 90px -34px rgba(60,40,110,.5), 0 8px 20px -12px rgba(60,40,110,.25)" }}>
                 {/* full-bleed city photo as the tile background */}
                 <div style={{ position: "absolute", inset: 0 }}>
-                  <Photo city={picked.city} country={picked.country} grad={picked.grad} h={340} round={0} hideLabel />
+                  <Photo city={picked.city} country={picked.country} grad={picked.grad} photo={picked.photo} h={340} round={0} hideLabel />
                 </div>
                 {/* darkening scrim so overlaid content stays readable */}
                 <div style={{ position: "absolute", inset: 0,

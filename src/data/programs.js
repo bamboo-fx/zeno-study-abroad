@@ -55,3 +55,25 @@ export const MUDD = {
 };
 
 export const DATA = { cmc: CMC, pomona: POMONA, pitzer: PITZER, scripps: SCRIPPS, "harvey-mudd": MUDD };
+
+// Live loaders. Returns SRC[vibe][continent] = [...programs]. Default returns
+// the mock DATA — overridden per-school for live sources.
+import { fetchVIAPrograms, VIA_ORG_IDS } from "./viaTrm.js";
+
+export async function loadPrograms(schoolId) {
+  const liveOrg = VIA_ORG_IDS[schoolId];
+  if (liveOrg) {
+    try {
+      const live = await fetchVIAPrograms(liveOrg);
+      // If a vibe bucket is empty in the live data, fall back to the mock for that vibe
+      // (so the UI doesn't show "Nothing here" everywhere while the dataset is still small).
+      const mock = DATA[schoolId] || {};
+      const merged = { ...mock };
+      for (const v of Object.keys(live)) merged[v] = live[v];
+      return merged;
+    } catch (e) {
+      console.warn("Live program fetch failed, falling back to snapshot:", e);
+    }
+  }
+  return DATA[schoolId] || CMC;
+}

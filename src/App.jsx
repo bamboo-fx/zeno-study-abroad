@@ -340,7 +340,7 @@ export default function App() {
       {!(step === "school" && schoolDropdownOpen) && (
         <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "10px 0 50px",
           color: "#6b82a4", fontSize: 12 }}>
-          Peel · honest by design — live programs from each school's official portal · climate from Open-Meteo · photos from program portals & Wikipedia
+          Peel · honest by design — live programs from each school's official portal · match % derived from subject, language, term, vibe, and credit-history signals · climate from Open-Meteo · photos from program portals & Wikipedia
         </div>
       )}
     </Canvas>

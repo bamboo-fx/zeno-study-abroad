@@ -156,10 +156,9 @@ export function DestinationsStep({
             <div style={{ textAlign: "center", fontSize: 13, color: "#9a90b8", marginBottom: 4 }}>
               Ranked by match · {safeIdx + 1} of {ranked.length}
             </div>
-            <div style={{ textAlign: "center", fontSize: 11.5, color: "#b0a6c8", marginBottom: 18 }}>
-              {major && major !== "open"
-                ? "Sorted to surface programs that tend to suit your major first — every approved option is still shown."
-                : "Every approved program is shown, ranked by overall fit."}
+            <div style={{ textAlign: "center", fontSize: 11.5, color: "#b0a6c8", marginBottom: 18,
+              maxWidth: 620, marginLeft: "auto", marginRight: "auto" }}>
+              Match % combines subject fit · language · term · vibe · credit history. Tap any pill for the breakdown. Programs you can't take with your GPA are shown muted, not hidden.
             </div>
 
             <div style={{ position: "relative", height: 660, maxWidth: 1180, margin: "0 auto",
@@ -217,6 +216,22 @@ export function DestinationsStep({
                             <span style={{ fontSize: 15, color: "#9a90b8" }}>{item.dd.country}</span>
                           </div>
                           <p style={{ fontSize: 15, color: "#564d75", lineHeight: 1.5, marginBottom: 14 }}>{item.dd.desc}</p>
+                          {(() => {
+                            const subs = item.dd.subjects || [];
+                            const langs = item.dd.language || [];
+                            const terms = item.dd.terms || [];
+                            const hydrationMissing = subs.length === 0 && langs.length === 0 && terms.length === 0;
+                            if (!hydrationMissing) return null;
+                            return (
+                              <div style={{ display: "flex", gap: 8, alignItems: "flex-start",
+                                background: "#fbfaff", border: "1px solid #ece7f7",
+                                borderRadius: 12, padding: "10px 13px", marginBottom: 14,
+                                fontSize: 12.5, color: "#564d75", lineHeight: 1.5 }}>
+                                <Info style={{ width: 14, height: 14, color: "#9d6bff", flexShrink: 0, marginTop: 1 }} />
+                                <span>We couldn't read this program's details from the portal — subject, language and term signals contribute nothing to the score. Check the host program's page directly to confirm fit.</span>
+                              </div>
+                            );
+                          })()}
                           {!item.fit.eligible && item.fit.gates.gpa && !item.fit.gates.gpa.pass && (
                             <div style={{ display: "flex", gap: 8, alignItems: "flex-start",
                               background: "#fef2f2", border: "1px solid #fecaca",

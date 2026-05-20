@@ -1,5 +1,5 @@
-import React from "react";
-import { AlertCircle, ChevronLeft, ArrowRight, Check, GraduationCap } from "lucide-react";
+import React, { useState } from "react";
+import { AlertCircle, ChevronLeft, ArrowRight, Check, GraduationCap, X, Info } from "lucide-react";
 
 import { MAJORS } from "../data/options.js";
 import { costInfo } from "../data/cost.js";
@@ -7,6 +7,115 @@ import { CTA, CARD } from "../theme/colors.js";
 import { Wrap } from "../components/Wrap.jsx";
 import { StepHead } from "../components/StepHead.jsx";
 import { Photo } from "../components/Photo.jsx";
+
+// Compact icons row + click-to-expand breakdown. Each component returns
+// {score, reason, ok, known}; we render a small tick/dash/x icon per signal
+// and the full reasons appear on click.
+const SIGNAL_LABELS = {
+  subject: "Subject",
+  language: "Language",
+  term: "Term",
+  vibe: "Vibe",
+  credit: "Credit history",
+};
+function signalIcon(c) {
+  if (!c) return "—";
+  if (!c.known) return "—";
+  if (c.score >= 0.75) return "✓";
+  if (c.score > 0) return "·";
+  return "—";
+}
+function signalColor(c) {
+  if (!c || !c.known) return "#c9bdec";
+  if (c.score >= 0.75) return "#16a34a";
+  if (c.score > 0) return "#d97706";
+  return "#c9bdec";
+}
+
+function FitBreakdown({ fit, percent, color, eligible, gates, compact }) {
+  const [open, setOpen] = useState(false);
+  const order = ["subject", "language", "term", "vibe", "credit"];
+  return (
+    <div style={{ position: "relative" }}>
+      <button onClick={() => setOpen((o) => !o)} className="pressable"
+        aria-label="Show match breakdown"
+        style={{
+          display: "flex", alignItems: "center", gap: compact ? 6 : 9,
+          background: "rgba(255,255,255,.94)", backdropFilter: "blur(6px)",
+          borderRadius: 999, padding: compact ? "6px 11px 6px 8px" : "10px 16px 10px 12px",
+          boxShadow: compact ? "none" : "0 14px 30px -14px rgba(0,0,0,.4)",
+          border: compact ? "1px solid #ece7f7" : "none",
+          cursor: "pointer",
+        }}>
+        {eligible ? (
+          <span style={{ width: compact ? 20 : 28, height: compact ? 20 : 28, borderRadius: 999,
+            background: color, display: "grid", placeItems: "center" }}>
+            <Check style={{ width: compact ? 12 : 16, height: compact ? 12 : 16, color: "#fff" }} strokeWidth={3} />
+          </span>
+        ) : (
+          <span style={{ width: compact ? 20 : 28, height: compact ? 20 : 28, borderRadius: 999,
+            background: "#dc2626", display: "grid", placeItems: "center" }}>
+            <X style={{ width: compact ? 12 : 16, height: compact ? 12 : 16, color: "#fff" }} strokeWidth={3} />
+          </span>
+        )}
+        <span style={{ fontSize: compact ? 13 : 17, fontWeight: 800, color }}>{percent}%</span>
+        {!compact && <span style={{ fontSize: 12, fontWeight: 600, color: "#7a7299" }}>match</span>}
+        <Info style={{ width: compact ? 11 : 13, height: compact ? 11 : 13, color: "#9a90b8", marginLeft: compact ? 2 : 4 }} />
+      </button>
+
+      {open && (
+        <div className="fad" style={{
+          position: "absolute", top: "calc(100% + 8px)", right: 0, zIndex: 30,
+          background: "#fff", border: "1px solid #ece7f7", borderRadius: 16,
+          boxShadow: "0 36px 70px -28px rgba(60,40,110,.45)",
+          padding: "16px 18px", minWidth: 280, maxWidth: 360,
+          textAlign: "left",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between",
+            marginBottom: 10 }}>
+            <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: ".1em",
+              textTransform: "uppercase", color: "#b0a6c8" }}>Why {percent}%</span>
+            <button onClick={() => setOpen(false)} className="pressable"
+              aria-label="Close"
+              style={{ background: "none", border: "none", cursor: "pointer", color: "#9a90b8",
+                width: 22, height: 22, display: "grid", placeItems: "center" }}>
+              <X style={{ width: 14, height: 14 }} />
+            </button>
+          </div>
+          {!eligible && gates && gates.gpa && !gates.gpa.pass && (
+            <div style={{ background: "#fef2f2", border: "1px solid #fecaca", borderRadius: 11,
+              padding: "10px 12px", marginBottom: 12, fontSize: 12.5, color: "#991b1b" }}>
+              <strong>Not eligible:</strong> {gates.gpa.reason}
+            </div>
+          )}
+          <div style={{ display: "grid", gap: 9 }}>
+            {order.map((k) => {
+              const c = fit.components[k];
+              const col = signalColor(c);
+              return (
+                <div key={k} style={{ display: "flex", gap: 9, alignItems: "flex-start" }}>
+                  <span style={{
+                    width: 18, height: 18, borderRadius: 999, flexShrink: 0,
+                    background: col, color: "#fff", fontWeight: 800, fontSize: 11,
+                    display: "grid", placeItems: "center", marginTop: 1,
+                  }}>{signalIcon(c)}</span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: 12.5, fontWeight: 700, color: "#1c1830" }}>{SIGNAL_LABELS[k]}</div>
+                    <div style={{ fontSize: 12, color: "#564d75", lineHeight: 1.45 }}>{c.reason}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div style={{ marginTop: 12, paddingTop: 10, borderTop: "1px solid #f0ecf9",
+            fontSize: 11, color: "#9a90b8", lineHeight: 1.5 }}>
+            ✓ full credit · · partial · — unknown or no match. Weights: subject 40 · language 20 · term 15 · vibe 10 · credit 15.
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function DestinationsStep({
   srcLoading, chosen, ranked, primaryVibe, contLabel, schoolObj, major,
@@ -71,8 +180,9 @@ export function DestinationsStep({
                     style={{ position: "absolute", top: "50%", left: "50%",
                       width: isCenter ? 560 : 300,
                       transform: `translate(-50%,-50%) translateX(${x}px) translateZ(${z}px) rotateY(${ry}deg) scale(${scale})`,
-                      opacity: op, zIndex: isCenter ? 5 : 5 - abs,
-                      filter: isCenter ? "none" : "saturate(.8) blur(.4px)",
+                      opacity: item.fit.eligible ? op : op * 0.55, zIndex: isCenter ? 5 : 5 - abs,
+                      filter: item.fit.eligible ? (isCenter ? "none" : "saturate(.8) blur(.4px)")
+                                                : "grayscale(.5) saturate(.5)",
                       cursor: isCenter ? "default" : "pointer",
                       pointerEvents: abs > 1 ? "none" : "auto",
                       transition: "transform .85s cubic-bezier(.22,1,.36,1), opacity .85s ease, filter .6s ease",
@@ -89,16 +199,14 @@ export function DestinationsStep({
                           photo={item.dd.photo}
                           h={isCenter ? 300 : 180} round={isCenter ? 22 : 16} />
                         {isCenter && (
-                          <div style={{ position: "absolute", top: 26, right: 26, display: "flex", alignItems: "center", gap: 9,
-                            background: "rgba(255,255,255,.94)", backdropFilter: "blur(6px)",
-                            borderRadius: 999, padding: "10px 16px 10px 12px",
-                            boxShadow: "0 14px 30px -14px rgba(0,0,0,.4)" }}>
-                            <span style={{ width: 28, height: 28, borderRadius: 999, background: mColor(item.m),
-                              display: "grid", placeItems: "center" }}>
-                              <Check style={{ width: 16, height: 16, color: "#fff" }} strokeWidth={3} />
-                            </span>
-                            <span style={{ fontSize: 17, fontWeight: 800, color: mColor(item.m) }}>{item.m}%</span>
-                            <span style={{ fontSize: 12, fontWeight: 600, color: "#7a7299" }}>match</span>
+                          <div style={{ position: "absolute", top: 26, right: 26 }}>
+                            <FitBreakdown
+                              fit={item.fit}
+                              percent={item.m}
+                              color={mColor(item.m)}
+                              eligible={item.fit.eligible}
+                              gates={item.fit.gates}
+                            />
                           </div>
                         )}
                       </div>
@@ -109,6 +217,15 @@ export function DestinationsStep({
                             <span style={{ fontSize: 15, color: "#9a90b8" }}>{item.dd.country}</span>
                           </div>
                           <p style={{ fontSize: 15, color: "#564d75", lineHeight: 1.5, marginBottom: 14 }}>{item.dd.desc}</p>
+                          {!item.fit.eligible && item.fit.gates.gpa && !item.fit.gates.gpa.pass && (
+                            <div style={{ display: "flex", gap: 8, alignItems: "flex-start",
+                              background: "#fef2f2", border: "1px solid #fecaca",
+                              borderRadius: 12, padding: "10px 13px", marginBottom: 14,
+                              fontSize: 12.5, color: "#991b1b", lineHeight: 1.5 }}>
+                              <AlertCircle style={{ width: 14, height: 14, color: "#dc2626", flexShrink: 0, marginTop: 1 }} />
+                              <span>{item.fit.gates.gpa.reason} Shown for transparency — confirm with your study-abroad office.</span>
+                            </div>
+                          )}
                           {(() => {
                             const c = costInfo(item.dd.city, item.dd.country);
                             return (
@@ -136,8 +253,11 @@ export function DestinationsStep({
                           <div className="ser" style={{ fontSize: 20, fontWeight: 600, color: "#1c1830" }}>{item.dd.city}</div>
                           <div style={{ fontSize: 12.5, color: "#9a90b8", marginTop: 2 }}>{item.dd.country}</div>
                           <div style={{ marginTop: 10, display: "inline-flex", alignItems: "center", gap: 6,
-                            fontSize: 12.5, fontWeight: 700, color: mColor(item.m) }}>
-                            <Check style={{ width: 13, height: 13 }} strokeWidth={3} /> {item.m}% match
+                            fontSize: 12.5, fontWeight: 700,
+                            color: item.fit.eligible ? mColor(item.m) : "#9a90b8" }}>
+                            {item.fit.eligible
+                              ? (<><Check style={{ width: 13, height: 13 }} strokeWidth={3} /> {item.m}% match</>)
+                              : (<><X style={{ width: 13, height: 13 }} strokeWidth={3} /> Not eligible</>)}
                           </div>
                         </div>
                       )}

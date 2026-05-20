@@ -77,7 +77,7 @@ export function countryProfile(country) {
 // Seeded with the actual CMC-econ / Paris determination from the
 // study-abroad email thread (Apr 2026) as a worked example. Add more real
 // rulings here as the study-abroad office provides them.
-const COURSE_CREDIT = {
+export const COURSE_CREDIT = {
   "Paris": {
     cmc: {
       business: {

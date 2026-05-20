@@ -6,7 +6,8 @@ import { FONTS } from "./theme/fonts.jsx";
 import { VIBES, CONTINENTS, SCHOOLS, SCORE_MAP } from "./data/options.js";
 import { TESTI, GEN_TESTI } from "./data/testimonials.js";
 import { DATA, loadPrograms } from "./data/programs.js";
-import { matchSubjects } from "./data/majorSubjects.js";
+import { fitScore } from "./data/fit.js";
+import { COURSE_CREDIT } from "./data/country.js";
 
 const EMPTY_SRC = { neon:{}, cobble:{}, beach:{}, nordic:{}, cafe:{}, alpine:{}, market:{}, campus:{} };
 
@@ -199,23 +200,20 @@ export default function App() {
   };
   const chosen = destForVibe(destKey);
   const primaryVibe = VIBES.find((v) => v.id === destKey);
-  // Major fit comes from real program subject areas now (see matchSubjects).
-  // The hash-based "match %" below is a placeholder until Phase 4 replaces it
-  // with a transparent weighted sum across {subject, language, term, vibe,
-  // credit-history}. In the meantime we surface subject match as the primary
-  // signal so the ranking is at least defensible — no more city-array hack.
-  const matchScore = (dd, i) => {
-    const sm = matchSubjects(dd, major);                 // 0..1
-    const subjectComponent = Math.round(sm.score * 40);  // up to 40 pts
-    // Tiny deterministic jitter so two equal scores don't shuffle on render.
-    const s = (dd.city + dd.country + (destKey || "")).split("")
-      .reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
-    const jitter = s % 9;
-    return 50 + subjectComponent + jitter - i * 2;
-  };
+  // Real matchScore — see src/data/fit.js for the weighted-sum formula. The
+  // user object packages everything the fit function needs; eligible=false
+  // programs are kept in the ranking (muted in the UI) so the user can see
+  // why they were excluded rather than wondering where the program went.
+  const fitUser = { major, school, gpa, termPref, langProf };
   const ranked = chosen
-    .map((dd, i) => ({ dd, m: Math.max(58, Math.min(99, matchScore(dd, i))) }))
-    .sort((a, b) => b.m - a.m);
+    .map((dd) => ({ dd, fit: fitScore(dd, fitUser, COURSE_CREDIT) }))
+    .sort((a, b) => {
+      // Eligible always above ineligible. Then total, then subject tie-break.
+      if (a.fit.eligible !== b.fit.eligible) return a.fit.eligible ? -1 : 1;
+      if (b.fit.total !== a.fit.total) return b.fit.total - a.fit.total;
+      return b.fit.tieBreak - a.fit.tieBreak;
+    })
+    .map((x) => ({ ...x, m: x.fit.total }));
   const cityPreview = (vid) => {
     if (vid === "surprise") {
       const a = aggList();

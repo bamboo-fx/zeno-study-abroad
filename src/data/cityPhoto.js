@@ -13,7 +13,13 @@ export async function fetchCityPhoto(city, country) {
       const r = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(q)}`);
       if (!r.ok) continue;
       const j = await r.json();
-      const url = j.thumbnail && j.thumbnail.source;
+      // Prefer full-resolution originalimage; fall back to upscaled thumbnail.
+      let url = j.originalimage && j.originalimage.source;
+      if (!url && j.thumbnail && j.thumbnail.source) {
+        // Wikipedia thumb URLs look like .../thumb/a/ab/Foo.jpg/320px-Foo.jpg
+        // Rewrite the width segment to get a sharper image.
+        url = j.thumbnail.source.replace(/\/\d+px-/, "/1280px-");
+      }
       if (url) {
         try { sessionStorage.setItem(key, url); } catch {}
         return url;

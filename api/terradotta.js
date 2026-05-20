@@ -62,4 +62,4 @@ export default async function (req) {
   });
 }
 
-export const config = { runtime: "edge" };
+export const config = { runtime: "nodejs" };

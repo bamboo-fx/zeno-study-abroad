@@ -5,7 +5,10 @@
 import { Sun, CloudRain, CloudSnow, Cloud, Leaf, Snowflake } from "lucide-react";
 
 const GEOCODE = "https://geocoding-api.open-meteo.com/v1/search";
-const CLIMATE = "https://climate-api.open-meteo.com/v1/climate";
+// ERA5 reanalysis archive — historical observations, not climate projections.
+// Faster and more honest than the /v1/climate model endpoint for 2020–2024
+// seasonal normals.
+const ARCHIVE = "https://archive-api.open-meteo.com/v1/archive";
 
 async function geocode(city, country) {
   const key = `geo:${city}|${country || ""}`;
@@ -72,9 +75,9 @@ export async function fetchCityClim(city, country) {
   if (cached) { try { return rehydrate(JSON.parse(cached)); } catch {} }
 
   const { lat, lon } = await geocode(city, country);
-  const url = `${CLIMATE}?latitude=${lat}&longitude=${lon}&start_date=2020-01-01&end_date=2024-12-31&models=EC_Earth3P_HR&daily=temperature_2m_max,temperature_2m_min,precipitation_sum`;
+  const url = `${ARCHIVE}?latitude=${lat}&longitude=${lon}&start_date=2020-01-01&end_date=2024-12-31&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=UTC`;
   const r = await fetch(url);
-  if (!r.ok) throw new Error(`climate ${r.status}`);
+  if (!r.ok) throw new Error(`archive ${r.status}`);
   const j = await r.json();
   const stats = bucketSeasons(j.daily || {});
   const hemisphere = lat >= 0 ? "N" : "S";

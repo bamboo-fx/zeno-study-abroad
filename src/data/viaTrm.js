@@ -68,7 +68,11 @@ function splitLocation(loc) {
   if (!loc) return { city: "", country: "" };
   const first = loc.split(";")[0].trim();
   const idx = first.lastIndexOf(",");
-  if (idx < 0) return { city: first, country: "" };
+  if (idx < 0) {
+    // City-state or country-only record (e.g. "Hong Kong", "Singapore").
+    // Use the same value for both so continent lookup still works.
+    return { city: first, country: first };
+  }
   return { city: first.slice(0, idx).trim(), country: first.slice(idx + 1).trim() };
 }
 

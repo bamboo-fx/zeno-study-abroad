@@ -21,15 +21,16 @@ export const COUNTRY_CONTINENT = {
   "Uruguay":"americas","Costa Rica":"americas","Panama":"americas","Mexico":"americas",
   "Cuba":"americas","Colombia":"americas","Bolivia":"americas","Guatemala":"americas",
   "Dominican Republic":"americas","Nicaragua":"americas","Canada":"americas","United States":"americas",
-  // Africa rolls into oceania-adjacent? No — keep the four-bucket model: put African
-  // programs in "americas" only if expressly labeled; otherwise hide them by routing
-  // to a stable bucket. Real list of African study-abroad locations from approved
-  // programs goes into a synthetic Europe→Africa adjacency. For now, put them in
-  // their nearest continent the UI surfaces. Most users land here via "campus" or
-  // "market" vibes — bucketed pragmatically:
-  "Morocco":"europe","Ghana":"americas","Cameroon":"americas","Senegal":"americas",
-  "Tanzania":"oceania","Kenya":"oceania","South Africa":"oceania","South Africa (Atlantic)":"oceania",
-  "Egypt":"europe","Ethiopia":"oceania","Rwanda":"oceania","Uganda":"oceania","Botswana":"oceania",
+  // Africa: no dedicated continent bucket in the UI. Route all African
+  // programs to "americas" for consistency — picking "Americas" then surfaces
+  // the cross-cultural programs (Ghana, Cape Town, etc.) alongside Latin
+  // America. Morocco stays with Europe since most Morocco programs are
+  // Mediterranean-facing and pair with Spain/Portugal in vibe scoring.
+  "Morocco":"europe","Egypt":"europe",
+  "Ghana":"americas","Cameroon":"americas","Senegal":"americas",
+  "Tanzania":"americas","Tanzania (Indian Ocean)":"americas",
+  "Kenya":"americas","South Africa":"americas","South Africa (Atlantic)":"americas",
+  "Ethiopia":"americas","Rwanda":"americas","Uganda":"americas","Botswana":"americas",
   // Caribbean
   "Turks & Caicos":"americas","Bahamas":"americas","Jamaica":"americas","Haiti":"americas",
 };

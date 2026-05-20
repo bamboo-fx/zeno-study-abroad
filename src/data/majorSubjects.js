@@ -13,6 +13,7 @@
 // match "Business Administration" for the *humanities* major).
 
 import { MAJORS } from "./options.js";
+import catalogIndex from "./catalogIndex.json" with { type: "json" };
 
 export const MAJOR_SUBJECTS = {
   business: {
@@ -198,6 +199,68 @@ export function matchSubjects(program, majorId) {
   const score = Math.min(1, matched.length / denom);
   return { score, matched };
 }
+
+// Classify a single string (course title or department name) against every
+// major. Returns the first major whose regex hits, or null. Order matches the
+// MAJOR_SUBJECTS object — cs before stem before social, so "Computer Science"
+// resolves to cs not stem.
+function classifyText(text) {
+  if (!text) return null;
+  for (const majorId of Object.keys(MAJOR_SUBJECTS)) {
+    const cfg = MAJOR_SUBJECTS[majorId];
+    if (!cfg.include || cfg.include.length === 0) continue;
+    if (cfg.exclude && cfg.exclude.some((re) => re.test(text))) continue;
+    if (cfg.include.some((re) => re.test(text))) return majorId;
+  }
+  return null;
+}
+
+// Per-school catalog-derived department → major mapping. Each school resolves
+// to { [majorId]: [{prefix, sampleTitle}] }. Built once at module load from
+// catalogIndex.json (Phase 6a). Only "owned" prefixes count — joint listings
+// that don't belong to this school are ignored.
+//
+// Exposed for future use — Course Credit can show "your major's likely
+// departments at {school}" in the advisor-email template, and per-school
+// major-fit weighting can sanity-check abroad subject matches against the
+// student's actual home-school taxonomy.
+export const MAJOR_DEPARTMENTS_BY_SCHOOL = (() => {
+  const out = {};
+  for (const school of Object.keys(catalogIndex)) {
+    const node = catalogIndex[school];
+    if (!node || !Array.isArray(node.departments)) continue;
+    const bySchool = {};
+    for (const d of node.departments) {
+      if (!d.owned) continue;
+      // Try each sample title until one classifies. Fall back to the prefix
+      // itself (so "GOVT" matches /\bgovernment\b/ via a soft expansion).
+      const candidates = [...(d.sampleTitles || []), d.prefix];
+      let major = null;
+      for (const t of candidates) { major = classifyText(t); if (major) break; }
+      if (!major) continue;
+      if (!bySchool[major]) bySchool[major] = [];
+      bySchool[major].push({ prefix: d.prefix, sampleTitle: d.sampleTitles[0] || null, count: d.count });
+    }
+    // Stable sort: most courses first, so the highest-signal department wins
+    // any UI that surfaces only the top few.
+    for (const m of Object.keys(bySchool)) bySchool[m].sort((a, b) => b.count - a.count);
+    out[school] = bySchool;
+  }
+  return out;
+})();
+
+// Flat list of (prefix, sampleTitle) per school — convenient for autocomplete.
+export const DEPARTMENTS_BY_SCHOOL = (() => {
+  const out = {};
+  for (const school of Object.keys(catalogIndex)) {
+    const node = catalogIndex[school];
+    if (!node || !Array.isArray(node.departments)) continue;
+    out[school] = node.departments
+      .filter((d) => d.owned)
+      .map((d) => ({ prefix: d.prefix, sampleTitle: d.sampleTitles[0] || null, count: d.count }));
+  }
+  return out;
+})();
 
 // Friendly label for the UI breakdown chip.
 export function majorLabel(majorId) {

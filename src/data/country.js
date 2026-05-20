@@ -181,12 +181,64 @@ export const VISA_NOTES = {
       ["Register with the Federal Police", "After arrival, register with the Brazilian Federal Police within the required window."],
     ] },
 };
+// Canonical US-student-facing visa info pages, by destination country.
+// Pulled from each consulate's English site (or the closest equivalent: a
+// .gob/.gov page or an official cultural-attaché portal). These are stable
+// URLs — when they break, fix them rather than fall back to a search engine.
+export const CONSULATE_URLS = {
+  "Spain": "https://www.exteriores.gob.es/Consulados/losangeles/en/ServiciosConsulares/Paginas/index.aspx?scco=USA&scd=104&scca=Visas&scs=Student+visa",
+  "France": "https://france-visas.gouv.fr/en/web/france-visas/student",
+  "Italy": "https://vistoperitalia.esteri.it/home/en",
+  "United Kingdom": "https://www.gov.uk/student-visa",
+  "Ireland": "https://www.irishimmigration.ie/coming-to-study-in-ireland/",
+  "Germany": "https://www.germany.info/us-en/service/05-VisaEinreise/student-visa/925220",
+  "Netherlands": "https://www.netherlandsworldwide.nl/visa-the-netherlands/study",
+  "Switzerland": "https://www.eda.admin.ch/eda/en/fdfa/entry-switzerland-residence/visa-application-residence.html",
+  "Austria": "https://www.austria.org/visas",
+  "Czech Republic": "https://www.mzv.gov.cz/washington/en/visa_consular_information/long_term_visa/index.html",
+  "Hungary": "https://washington.mfa.gov.hu/eng/page/consular-affairs",
+  "Greece": "https://www.mfa.gr/usa/en/services-for-foreigners/visas.html",
+  "Portugal": "https://washingtondc.embaixadaportugal.mne.gov.pt/en/consular-section/visas",
+  "Denmark": "https://nyidanmark.dk/en-GB/Applying/Study",
+  "Sweden": "https://www.migrationsverket.se/English/Private-individuals/Studying-and-researching-in-Sweden.html",
+  "Iceland": "https://utl.is/index.php/en/student",
+  "Japan": "https://www.us.emb-japan.go.jp/itpr_en/visa_index.html",
+  "South Korea": "https://overseas.mofa.go.kr/us-en/wpge/m_4493/contents.do",
+  "China": "https://www.visaforchina.cn/",
+  "Hong Kong": "https://www.immd.gov.hk/eng/services/visas/study.html",
+  "Taiwan": "https://www.boca.gov.tw/cp-149-275-c06f5-2.html",
+  "Vietnam": "https://vietnamembassy-usa.org/consular/visa",
+  "India": "https://www.in.ckgs.us/visa/",
+  "Nepal": "https://us.nepalembassy.gov.np/visa/",
+  "Jordan": "https://www.jordanembassyus.org/consular/visa-information",
+  "Morocco": "https://www.embassyofmorocco.us/visa.html",
+  "Ghana": "https://ghanaembassydc.org/consular-services-2/visa/",
+  "Australia": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500",
+  "New Zealand": "https://www.immigration.govt.nz/new-zealand-visas/options/study",
+  "Argentina": "https://eeeuu.cancilleria.gob.ar/en/visas",
+  "Brazil": "https://washington.itamaraty.gov.br/en-us/visas.xml",
+  "Chile": "https://chile.gob.cl/estados-unidos/en/consular-services/visa-information/",
+  "Peru": "https://www.gob.pe/institucion/rree/informes-publicaciones/2305-visa-de-estudiante",
+  "Ecuador": "https://www.cancilleria.gob.ec/en/visas/",
+  "Uruguay": "https://www.gub.uy/ministerio-relaciones-exteriores/tramites-y-servicios/tramites",
+  "Costa Rica": "https://www.costarica-embassy.org/index.php?q=node/24",
+  "Mexico": "https://consulmex.sre.gob.mx/washington/index.php/en/non-mexicans/visas",
+  "South Africa": "https://www.dha.gov.za/index.php/immigration-services/study-visa",
+  "South Africa (Atlantic)": "https://www.dha.gov.za/index.php/immigration-services/study-visa",
+};
+
+export function consulateURL(country) {
+  return CONSULATE_URLS[country] || `https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/${encodeURIComponent(country)}.html`;
+}
+
 export function visaGuide(country) {
   const schengen = SCHENGEN.has(country);
   const note = VISA_NOTES[country] || null;
   const level = note ? note.level : (schengen ? "Moderate" : "Standard");
   const color = note ? note.color : (schengen ? "#d97706" : "#16a34a");
   const lead = note ? note.lead : (schengen ? "Start ~2–3 months out" : "Start 1–2 months out");
+  const officialURL = consulateURL(country);
+  const officialKnown = !!CONSULATE_URLS[country];
   const type = note ? note.type
     : (schengen ? "National long-stay student visa (Schengen, >90 days)" : "Student / study visa");
   // Country-specific flow if we have a real one; otherwise the accurate
@@ -200,5 +252,5 @@ export function visaGuide(country) {
     ["Wait — then collect", "Processing can take weeks. Don't book non-refundable travel until it's approved."],
     [schengen ? "Register / residency on arrival" : "On-arrival steps", schengen ? "Many Schengen countries require registering your address or a residency permit step shortly after you arrive." : "Some countries require registration or a permit step after you land — check before you travel."],
   ];
-  return { schengen, note, level, color, lead, type, steps };
+  return { schengen, note, level, color, lead, type, steps, officialURL, officialKnown };
 }

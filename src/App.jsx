@@ -930,9 +930,13 @@ export default function App() {
           {dashTab === "academics" && (() => {
             const cc = courseCredit(picked.city, school, major);
             const majorLabel = (MAJORS.find((x) => x.id === major) || {}).label || "your major";
+            const subjects = Array.isArray(picked.subjects) ? picked.subjects : [];
+            const subjectsLine = subjects.length
+              ? `The program lists these subject areas: ${subjects.join(", ")}.`
+              : "";
             const advisorEmail = `Hi Professor,
 
-I hope you're well. I'm a ${schoolObj?.name || "home-school"} student planning to study abroad in ${picked.city} through ${picked.highlight}. I'm a ${majorLabel} major and want to confirm how specific courses there would count toward my major.
+I hope you're well. I'm a ${schoolObj?.name || "home-school"} student planning to study abroad in ${picked.city} through ${picked.highlight}. I'm a ${majorLabel} major and want to confirm how specific courses there would count toward my major.${subjectsLine ? "\n\n" + subjectsLine : ""}
 
 Could you let me know whether the following would count, and at what level (e.g. major requirement / elective / Level I or II)? I've attached the syllabi.
 
@@ -951,6 +955,20 @@ Best,
                 boxShadow: "0 40px 70px -30px rgba(60,40,110,.4)", padding: "26px 30px 28px" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: ".12em",
                   textTransform: "uppercase", color: "#b0a6c8", marginBottom: 8 }}>Course credit · {majorLabel}</div>
+
+                {subjects.length > 0 && (
+                  <div style={{ marginBottom: 18 }}>
+                    <div style={{ fontSize: 12, fontWeight: 600, color: "#564d75", marginBottom: 8 }}>
+                      Subject areas at this program (from {schoolObj?.live ? "the live portal" : "the snapshot"}):
+                    </div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                      {subjects.map((s) => (
+                        <span key={s} className="san" style={{ fontSize: 12, fontWeight: 600,
+                          color: "#7c4dff", background: "#f0ebfa", borderRadius: 999, padding: "5px 11px" }}>{s}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {cc ? (
                   <>
@@ -1205,9 +1223,18 @@ Best,
                             textTransform: "uppercase", color: "#b0a6c8", marginBottom: 4 }}>
                             Likely visa for {picked.country}
                           </div>
-                          <div className="ser" style={{ fontSize: 17, fontWeight: 600, color: "#1c1830", marginBottom: 14 }}>
+                          <div className="ser" style={{ fontSize: 17, fontWeight: 600, color: "#1c1830", marginBottom: 8 }}>
                             {vg.type}
                           </div>
+                          <a href={vg.officialURL} target="_blank" rel="noopener noreferrer"
+                            style={{ display: "inline-flex", alignItems: "center", gap: 6, marginBottom: 14,
+                              fontSize: 13, fontWeight: 600, color: "#7c4dff",
+                              background: "#f0ebfa", borderRadius: 10, padding: "8px 13px",
+                              textDecoration: "none", border: "1px solid #e1d6f7" }}>
+                            {vg.officialKnown
+                              ? `Official ${picked.country} student visa page`
+                              : `Official ${picked.country} travel info (US State Dept)`} ↗
+                          </a>
                           {vg.note && (
                             <div style={{ display: "flex", gap: 9, alignItems: "flex-start",
                               background: vg.color + "12", border: `1px solid ${vg.color}33`,

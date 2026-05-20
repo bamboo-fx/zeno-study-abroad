@@ -59,21 +59,26 @@ export const DATA = { cmc: CMC, pomona: POMONA, pitzer: PITZER, scripps: SCRIPPS
 // Live loaders. Returns SRC[vibe][continent] = [...programs]. Default returns
 // the mock DATA — overridden per-school for live sources.
 import { fetchVIAPrograms, VIA_ORG_IDS } from "./viaTrm.js";
+import { fetchTerraDottaPrograms, TERRADOTTA_SUBDOMAINS } from "./terradotta.js";
+
+function mergeOver(mock, live) {
+  // Live vibe buckets replace mock buckets; mock fills in any vibe the live
+  // data didn't cover so the UI never feels empty.
+  const merged = { ...(mock || {}) };
+  for (const v of Object.keys(live)) merged[v] = live[v];
+  return merged;
+}
 
 export async function loadPrograms(schoolId) {
-  const liveOrg = VIA_ORG_IDS[schoolId];
-  if (liveOrg) {
-    try {
-      const live = await fetchVIAPrograms(liveOrg);
-      // If a vibe bucket is empty in the live data, fall back to the mock for that vibe
-      // (so the UI doesn't show "Nothing here" everywhere while the dataset is still small).
-      const mock = DATA[schoolId] || {};
-      const merged = { ...mock };
-      for (const v of Object.keys(live)) merged[v] = live[v];
-      return merged;
-    } catch (e) {
-      console.warn("Live program fetch failed, falling back to snapshot:", e);
-    }
+  const viaId = VIA_ORG_IDS[schoolId];
+  if (viaId) {
+    try { return mergeOver(DATA[schoolId], await fetchVIAPrograms(viaId)); }
+    catch (e) { console.warn("VIA-TRM fetch failed, using snapshot:", e); }
+  }
+  const tdSub = TERRADOTTA_SUBDOMAINS[schoolId];
+  if (tdSub) {
+    try { return mergeOver(DATA[schoolId], await fetchTerraDottaPrograms(tdSub)); }
+    catch (e) { console.warn("Terra Dotta fetch failed, using snapshot:", e); }
   }
   return DATA[schoolId] || CMC;
 }

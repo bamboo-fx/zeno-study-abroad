@@ -15,7 +15,7 @@ export function ContinentStep({ setContinent, setSelected, setStep }) {
     <Wrap narrow>
       <StepHead kicker={<><Globe style={{ width: 13, height: 13 }} /> Step 3</>}
         title="Where in the world?"
-        back={() => setStep("major")} />
+        back={() => setStep("profile")} />
 
       <div className="fl" style={{ animationDelay: ".2s" }}>
         <Coverflow

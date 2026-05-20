@@ -1,0 +1,3942 @@
+{
+  "cmc": {
+    "school": "cmc",
+    "scrapedAt": "2026-05-20",
+    "departments": [
+      {
+        "prefix": "HIST",
+        "count": 270,
+        "suffixes": [
+          "AF",
+          "CH",
+          "CM",
+          "PO",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p4)",
+        "sampleTitles": [
+          "Introduction to Chicanx-Latinx History",
+          "All Power to the People!",
+          "US Immigration History"
+        ]
+      },
+      {
+        "prefix": "GOVT",
+        "count": 230,
+        "suffixes": [
+          "CM",
+          "JT"
+        ],
+        "owned": true,
+        "sectionName": "(root p3)",
+        "sampleTitles": [
+          "Introduction to American Politics",
+          "Washington Internship",
+          "Mock Trial"
+        ]
+      },
+      {
+        "prefix": "LIT",
+        "count": 190,
+        "suffixes": [
+          "AF",
+          "CM",
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "(root p6)",
+        "sampleTitles": [
+          "Introduction to Video Art",
+          "Introduction to Creative Writing",
+          "Creative Journalism"
+        ]
+      },
+      {
+        "prefix": "RLST",
+        "count": 172,
+        "suffixes": [
+          "AF",
+          "CM",
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p9)",
+        "sampleTitles": [
+          "Introduction to South Asian Religious Traditions",
+          "Myth and Religion",
+          "Life-Story of the Buddha"
+        ]
+      },
+      {
+        "prefix": "ECON",
+        "count": 136,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p2)",
+        "sampleTitles": [
+          "Principles of Economic Analysis",
+          "Innovation Management",
+          "Principles of Financial Economics"
+        ]
+      },
+      {
+        "prefix": "PSYC",
+        "count": 118,
+        "suffixes": [
+          "AF",
+          "CH",
+          "CM",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p9)",
+        "sampleTitles": [
+          "Introduction to African American Psychology",
+          "Introduction to Psychology",
+          "Organizational Psychology"
+        ]
+      },
+      {
+        "prefix": "PHIL",
+        "count": 112,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p8)",
+        "sampleTitles": [
+          "Introduction to Philosophy: Philosophical Questions",
+          "Introduction to Philosophy: Philosophy of Science",
+          "Introduction to Philosophy: Philosophy and the Arts"
+        ]
+      },
+      {
+        "prefix": "MATH",
+        "count": 110,
+        "suffixes": [
+          "CM",
+          "HM",
+          "PO"
+        ],
+        "owned": true,
+        "sectionName": "(root p7)",
+        "sampleTitles": [
+          "Calculus I",
+          "Calculus I-A",
+          "Calculus II"
+        ]
+      },
+      {
+        "prefix": "FREN",
+        "count": 76,
+        "suffixes": [
+          "CM",
+          "PO",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p3)",
+        "sampleTitles": [
+          "Introductory French",
+          "Continuing Introductory French",
+          "Intensive Introductory French"
+        ]
+      },
+      {
+        "prefix": "SPAN",
+        "count": 60,
+        "suffixes": [
+          "CH",
+          "CM",
+          "PO",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p10)",
+        "sampleTitles": [
+          "Introductory Spanish",
+          "Continuing Introductory Spanish",
+          "Intensive Introductory Spanish"
+        ]
+      },
+      {
+        "prefix": "CHST",
+        "count": 56,
+        "suffixes": [
+          "CH"
+        ],
+        "owned": false,
+        "sectionName": "(root p2)",
+        "sampleTitles": [
+          "Introduction to Chicanx Latinx Studies",
+          "Intro to Contemporary Central Americas Studies Part II: Contemporary Politics and",
+          "Digitizing our Testimonies: Chicanx-Latinx Documentary Storytelling"
+        ]
+      },
+      {
+        "prefix": "CSCI",
+        "count": 44,
+        "suffixes": [
+          "CM",
+          "HM",
+          "PO",
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p2)",
+        "sampleTitles": [
+          "Introduction to Computer Science for Non-majors",
+          "Introduction to Computer Science",
+          "Computer Science for Insight"
+        ]
+      },
+      {
+        "prefix": "AFRI",
+        "count": 40,
+        "suffixes": [
+          "AF",
+          "PO",
+          "PZ"
+        ],
+        "owned": false,
+        "sectionName": null,
+        "sampleTitles": [
+          "Community Poetry: Black Feminist rEVOlution",
+          "Introduction to Africana Studies",
+          "Research Methods in Africana Studies"
+        ]
+      },
+      {
+        "prefix": "SCI",
+        "count": 38,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p5)",
+        "sampleTitles": [
+          "The Codes of Life",
+          "Fields, Waves, and Quanta",
+          "Computing for Discovery"
+        ]
+      },
+      {
+        "prefix": "ARBC",
+        "count": 34,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": null,
+        "sampleTitles": [
+          "Introductory Arabic",
+          "Continuing Introductory Arabic",
+          "Introductory Arabic Conversation I"
+        ]
+      },
+      {
+        "prefix": "FIN",
+        "count": 34,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p7)",
+        "sampleTitles": [
+          "Seminar in Finance and Accounting Practices",
+          "Leadership Development in Finance and Accounting",
+          "Leadership Development in Finance and Accounting"
+        ]
+      },
+      {
+        "prefix": "CHLT",
+        "count": 28,
+        "suffixes": [
+          "CH",
+          "PZ"
+        ],
+        "owned": false,
+        "sectionName": null,
+        "sampleTitles": [
+          "Introduction to Comparative Ethnic Studies",
+          "Women in the Third World",
+          "Contemporary Issues of Chicanas and Latinas"
+        ]
+      },
+      {
+        "prefix": "ARHI",
+        "count": 22,
+        "suffixes": [
+          "CM",
+          "JT",
+          "PO"
+        ],
+        "owned": true,
+        "sectionName": null,
+        "sampleTitles": [
+          "Introduction to Latin/x American Art",
+          "US-Mexico Border Art",
+          "Latin American Art, 1500-1800"
+        ]
+      },
+      {
+        "prefix": "MSL",
+        "count": 22,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p8)",
+        "sampleTitles": [
+          "American Military History, from the Civil War to the Present",
+          "Riflery and Orienteering",
+          "Army Physical Training Program"
+        ]
+      },
+      {
+        "prefix": "LEAD",
+        "count": 20,
+        "suffixes": [
+          "CM",
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "(root p6)",
+        "sampleTitles": [
+          "Foundations of Leadership",
+          "Practicum in Event Management",
+          "Leadership in Sports"
+        ]
+      },
+      {
+        "prefix": "ID",
+        "count": 16,
+        "suffixes": [
+          "CM",
+          "JT"
+        ],
+        "owned": true,
+        "sectionName": "(root p6)",
+        "sampleTitles": [
+          "Intersections: Gender, Race and Sexuality",
+          "Social and Environmental Inequalities in the Inland Empire",
+          "Introductory Personal Finance"
+        ]
+      },
+      {
+        "prefix": "SOC",
+        "count": 16,
+        "suffixes": [
+          "AA",
+          "CH",
+          "PO",
+          "PZ"
+        ],
+        "owned": false,
+        "sectionName": "(root p10)",
+        "sampleTitles": [
+          "Chicanxs-Latinxs in Contemporary Society",
+          "Race and Ethnic Relations",
+          "Moon Called: Black Women, Pregnancy and Ritual"
+        ]
+      },
+      {
+        "prefix": "KORE",
+        "count": 14,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p6)",
+        "sampleTitles": [
+          "Introductory Korean",
+          "Continuing Introductory Korean",
+          "Intermediate Korean"
+        ]
+      },
+      {
+        "prefix": "ENGL",
+        "count": 12,
+        "suffixes": [
+          "AF",
+          "PO",
+          "PZ"
+        ],
+        "owned": false,
+        "sectionName": "(root p3)",
+        "sampleTitles": [
+          "Black Feminist Community Learning",
+          "Introduction to African American Literature Before 1865",
+          "Introduction to African American Literature After 1865"
+        ]
+      },
+      {
+        "prefix": "PPE",
+        "count": 12,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p8)",
+        "sampleTitles": [
+          "Philosophy Seminar",
+          "Philosophy Tutorial",
+          "Politics Seminar"
+        ]
+      },
+      {
+        "prefix": "BIOL",
+        "count": 10,
+        "suffixes": [
+          "KS"
+        ],
+        "owned": false,
+        "sectionName": null,
+        "sampleTitles": [
+          "Concepts in Biology for Non-majors",
+          "Genomics and Bioinformatics",
+          "Introduction to Biology Research Statistics"
+        ]
+      },
+      {
+        "prefix": "MUS",
+        "count": 10,
+        "suffixes": [
+          "JM",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p8)",
+        "sampleTitles": [
+          "Fundamentals of Music",
+          "Introduction to Music: Sound and Meaning",
+          "Claremont Concert Choir"
+        ]
+      },
+      {
+        "prefix": "POLI",
+        "count": 10,
+        "suffixes": [
+          "AF",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p9)",
+        "sampleTitles": [
+          "Black Americans and the Political System",
+          "Marxist and Post-Marxist Political Thought",
+          "Civil Liberties and Fundamental Rights"
+        ]
+      },
+      {
+        "prefix": "PORT",
+        "count": 10,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p9)",
+        "sampleTitles": [
+          "Introductory Portuguese I",
+          "Introductory Portuguese II",
+          "Intensive Introductory Portuguese"
+        ]
+      },
+      {
+        "prefix": "ARBT",
+        "count": 8,
+        "suffixes": [
+          "CM",
+          "JT"
+        ],
+        "owned": true,
+        "sectionName": null,
+        "sampleTitles": [
+          "Modern Arabic Poetry in Translation",
+          "Arab Cultural Histories, Islam, Literature and Traditions: Past and Present",
+          "Special Topics in Arabic Translation"
+        ]
+      },
+      {
+        "prefix": "AMST",
+        "count": 6,
+        "suffixes": [
+          "JT",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": null,
+        "sampleTitles": [
+          "Introduction to American Cultures",
+          "American Studies Seminar",
+          "Senior Thesis Seminar"
+        ]
+      },
+      {
+        "prefix": "ASAM",
+        "count": 6,
+        "suffixes": [
+          "CM",
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": null,
+        "sampleTitles": [
+          "Introduction to Comparative Ethnic Studies",
+          "Transformative Life of Malcolm X",
+          "The Care Work of Asian Women"
+        ]
+      },
+      {
+        "prefix": "MS",
+        "count": 6,
+        "suffixes": [
+          "HM",
+          "PZ"
+        ],
+        "owned": false,
+        "sectionName": "(root p8)",
+        "sampleTitles": [
+          "Introduction to Film",
+          "Introduction to Video",
+          "Exile in Cinema"
+        ]
+      },
+      {
+        "prefix": "PHYS",
+        "count": 6,
+        "suffixes": [
+          "KS"
+        ],
+        "owned": false,
+        "sectionName": "(root p8)",
+        "sampleTitles": [
+          "Computational Physics and Engineering",
+          "Programming for Science and Engineering",
+          "Statistical Physics with Computational Applications"
+        ]
+      },
+      {
+        "prefix": "DS",
+        "count": 4,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p2)",
+        "sampleTitles": [
+          "Advanced Projects in Data Science",
+          "Advanced Projects in Data Science: Silicon Valley Program"
+        ]
+      },
+      {
+        "prefix": "EA",
+        "count": 4,
+        "suffixes": [
+          "CM",
+          "PO"
+        ],
+        "owned": true,
+        "sectionName": "(root p2)",
+        "sampleTitles": [
+          "EnviroLab Asia: Research and Methodologies",
+          "Urban Health Equity"
+        ]
+      },
+      {
+        "prefix": "NEUR",
+        "count": 4,
+        "suffixes": [
+          "KS"
+        ],
+        "owned": false,
+        "sectionName": "(root p8)",
+        "sampleTitles": [
+          "Introduction to Computational Neuroscience",
+          "Selected Topics in Computational Neuroscience"
+        ]
+      },
+      {
+        "prefix": "POST",
+        "count": 4,
+        "suffixes": [
+          "CH"
+        ],
+        "owned": false,
+        "sectionName": "(root p9)",
+        "sampleTitles": [
+          "Latino Politics",
+          "US Immigration Policy"
+        ]
+      },
+      {
+        "prefix": "SPCH",
+        "count": 4,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p10)",
+        "sampleTitles": [
+          "Speech and Debate",
+          "Speech and Debate"
+        ]
+      },
+      {
+        "prefix": "ART",
+        "count": 2,
+        "suffixes": [
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": null,
+        "sampleTitles": [
+          "Books & Prints: Representing Blackness"
+        ]
+      },
+      {
+        "prefix": "ASTR",
+        "count": 2,
+        "suffixes": [
+          "KS"
+        ],
+        "owned": false,
+        "sectionName": null,
+        "sampleTitles": [
+          "Elementary Astronomy"
+        ]
+      },
+      {
+        "prefix": "CLAS",
+        "count": 2,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p2)",
+        "sampleTitles": [
+          "Senior Seminar"
+        ]
+      },
+      {
+        "prefix": "FHS",
+        "count": 2,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p3)",
+        "sampleTitles": [
+          "First-Year Humanities Seminar"
+        ]
+      },
+      {
+        "prefix": "FWS",
+        "count": 2,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p3)",
+        "sampleTitles": [
+          "First-Year Writing Seminar"
+        ]
+      },
+      {
+        "prefix": "KRNT",
+        "count": 2,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p6)",
+        "sampleTitles": [
+          "Korean Cinema and Culture"
+        ]
+      },
+      {
+        "prefix": "ORST",
+        "count": 2,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": false,
+        "sectionName": "(root p8)",
+        "sampleTitles": [
+          "Organizing in the 21st Century: is a New World Possible? Global Social Movements"
+        ]
+      },
+      {
+        "prefix": "PONT",
+        "count": 2,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p9)",
+        "sampleTitles": [
+          "Introduction to Brazilian Literature and Culture"
+        ]
+      },
+      {
+        "prefix": "INT",
+        "count": 2,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": true,
+        "sectionName": "(root p10)",
+        "sampleTitles": [
+          "Silicon Valley Program Internship"
+        ]
+      },
+      {
+        "prefix": "THEA",
+        "count": 2,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p11)",
+        "sampleTitles": [
+          "Beginning Acting: Black Theatre"
+        ]
+      }
+    ]
+  },
+  "harvey-mudd": {
+    "school": "harvey-mudd",
+    "scrapedAt": "2026-05-20",
+    "departments": [
+      {
+        "prefix": "ENGR",
+        "count": 119,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "HMC Common Core",
+        "sampleTitles": [
+          "Introduction to Engineering Systems",
+          "Introduction to Engineering Design and Manufacturing",
+          "Introduction to Aviation"
+        ]
+      },
+      {
+        "prefix": "MATH",
+        "count": 116,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "HMC Common Core",
+        "sampleTitles": [
+          "Single and Multivariable Calculus",
+          "Linear Algebra",
+          "Mathematics of Games and Puzzles"
+        ]
+      },
+      {
+        "prefix": "CHEM",
+        "count": 112,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "HMC Common Core",
+        "sampleTitles": [
+          "Chemistry Laboratory",
+          "Chemistry in the Modern World",
+          "Introduction to Chemical Research"
+        ]
+      },
+      {
+        "prefix": "PHYS",
+        "count": 98,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "HMC Common Core",
+        "sampleTitles": [
+          "Special Relativity",
+          "Mechanics and Wave Motion",
+          "Physics Laboratory"
+        ]
+      },
+      {
+        "prefix": "CSCI",
+        "count": 97,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "HMC Common Core",
+        "sampleTitles": [
+          "Introduction to Computer Science",
+          "Introduction to Biology and Computer Science",
+          "Computer Science for Insight"
+        ]
+      },
+      {
+        "prefix": "BIOL",
+        "count": 78,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "HMC Common Core",
+        "sampleTitles": [
+          "Biology Laboratory",
+          "Introduction to Biology",
+          "Science vs Pseudoscience"
+        ]
+      },
+      {
+        "prefix": "MUS",
+        "count": 36,
+        "suffixes": [
+          "HM",
+          "JM",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p4)",
+        "sampleTitles": [
+          "Fundamentals of Music",
+          "Early Music Ensemble",
+          "Electronic Music Ensemble"
+        ]
+      },
+      {
+        "prefix": "HSA",
+        "count": 30,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Academic Program",
+        "sampleTitles": [
+          "Critical Inquiry",
+          "Special Topic Courses",
+          "Independent Study Courses"
+        ]
+      },
+      {
+        "prefix": "LIT",
+        "count": 22,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p3)",
+        "sampleTitles": [
+          "Fiction Workshop",
+          "Performing Shakespeare",
+          "Critical Shakespeares"
+        ]
+      },
+      {
+        "prefix": "ASTR",
+        "count": 20,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions",
+        "sampleTitles": [
+          "Stars, Planets, and Life: Introduction to Astrobiology",
+          "Introduction to Astrophysics",
+          "Observational Astronomy"
+        ]
+      },
+      {
+        "prefix": "CLES",
+        "count": 18,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p2)",
+        "sampleTitles": [
+          "Climate Wayfinding",
+          "Climate Dynamics",
+          "Games for Climate Change Literacy"
+        ]
+      },
+      {
+        "prefix": "PHIL",
+        "count": 18,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p4)",
+        "sampleTitles": [
+          "Knowledge, Self, and Value",
+          "Empirical and Experimental Philosophy",
+          "Ethical Theory"
+        ]
+      },
+      {
+        "prefix": "ASAM",
+        "count": 16,
+        "suffixes": [
+          "AA",
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions",
+        "sampleTitles": [
+          "Social Documentation/Asian American",
+          "Pacific Islanders and Education",
+          "Pacific Islander History and Culture through Life Writing"
+        ]
+      },
+      {
+        "prefix": "RLST",
+        "count": 16,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p4)",
+        "sampleTitles": [
+          "Religions in American Culture",
+          "Engaging Religion",
+          "God, Darwin, Design in America: A Historical Survey of Religion and Science"
+        ]
+      },
+      {
+        "prefix": "GEOG",
+        "count": 12,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p3)",
+        "sampleTitles": [
+          "Place, Power, and Difference",
+          "Geographies of Disease and Health Justice",
+          "Feeling Natural?"
+        ]
+      },
+      {
+        "prefix": "HIST",
+        "count": 12,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p3)",
+        "sampleTitles": [
+          "Science and Technology in the Early Modern World",
+          "Science and Technology in the Modern World",
+          "Twentieth-Century U.S. History"
+        ]
+      },
+      {
+        "prefix": "MS",
+        "count": 12,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p4)",
+        "sampleTitles": [
+          "Animal Media Studies",
+          "The Harmony of Sound and Light",
+          "Digital Cinema: Experimental Animation"
+        ]
+      },
+      {
+        "prefix": "ECON",
+        "count": 10,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p2)",
+        "sampleTitles": [
+          "Principles of Macroeconomics",
+          "Principles of Microeconomics",
+          "Environmental Economics"
+        ]
+      },
+      {
+        "prefix": "STS",
+        "count": 10,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p4)",
+        "sampleTitles": [
+          "Introduction to Science, Technology, and Society",
+          "Social and Political Issues in Clinic",
+          "Communicating Science"
+        ]
+      },
+      {
+        "prefix": "ART",
+        "count": 8,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions",
+        "sampleTitles": [
+          "Modern and Contemporary Art Practices",
+          "Photography",
+          "Workshop in Hand Press Printing"
+        ]
+      },
+      {
+        "prefix": "MCBI",
+        "count": 8,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p3)",
+        "sampleTitles": [
+          "Game Theory and the Evolution of Cooperation",
+          "Introduction to Mathematical Biology",
+          "Introduction to Computational Biology"
+        ]
+      },
+      {
+        "prefix": "POST",
+        "count": 8,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p4)",
+        "sampleTitles": [
+          "Comparative Environmental Politics",
+          "Global Environmental Politics",
+          "Bicycle Revolution"
+        ]
+      },
+      {
+        "prefix": "PSYC",
+        "count": 8,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p4)",
+        "sampleTitles": [
+          "Introduction to Psychology",
+          "Introduction to Social Psychology",
+          "Human Nature and Genocide"
+        ]
+      },
+      {
+        "prefix": "WRIT",
+        "count": 7,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "HMC Common Core",
+        "sampleTitles": [
+          "Introduction to Academic Writing",
+          "Academic Writing: Extended"
+        ]
+      },
+      {
+        "prefix": "CSMT",
+        "count": 6,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p2)",
+        "sampleTitles": [
+          "Special Topics in Computer Science and Mathematics",
+          "Computer Science and Mathematics Clinic I",
+          "Computer Science and Mathematics Clinic II"
+        ]
+      },
+      {
+        "prefix": "LEAD",
+        "count": 6,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p3)",
+        "sampleTitles": [
+          "Fundamentals of Leadership",
+          "Intersectionality of Leadership",
+          "Interpersonal Dynamics"
+        ]
+      },
+      {
+        "prefix": "CORE",
+        "count": 5,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "HMC Common Core",
+        "sampleTitles": [
+          "STEM & Social Impact: Climate Change"
+        ]
+      },
+      {
+        "prefix": "EDUC",
+        "count": 4,
+        "suffixes": [
+          "CG"
+        ],
+        "owned": false,
+        "sectionName": "Other Programs",
+        "sampleTitles": [
+          "Introduction to Public School Teaching"
+        ]
+      },
+      {
+        "prefix": "AMST",
+        "count": 4,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions",
+        "sampleTitles": [
+          "Introduction to American Cultures",
+          "Hyphenated Americans"
+        ]
+      },
+      {
+        "prefix": "EA",
+        "count": 4,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p3)",
+        "sampleTitles": [
+          "Introduction to Environmental Analysis",
+          "Building Los Angeles"
+        ]
+      },
+      {
+        "prefix": "SOSC",
+        "count": 4,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p4)",
+        "sampleTitles": [
+          "Public Speaking For Science and Citizenship",
+          "Tropical Forests: Policy and Practice"
+        ]
+      },
+      {
+        "prefix": "ARHI",
+        "count": 2,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions",
+        "sampleTitles": [
+          "A History of Landscape Photography"
+        ]
+      },
+      {
+        "prefix": "ID",
+        "count": 2,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions (p3)",
+        "sampleTitles": [
+          "Social Justice & Equity/STEM Educ"
+        ]
+      }
+    ]
+  },
+  "scripps": {
+    "school": "scripps",
+    "scrapedAt": "2026-05-20",
+    "departments": [
+      {
+        "prefix": "HIST",
+        "count": 519,
+        "suffixes": [
+          "AF",
+          "CH",
+          "CM",
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p12)",
+        "sampleTitles": [
+          "U.S. Labor and Working Class History",
+          "Modern Korean History",
+          "Modern U.S. History Since 1877"
+        ]
+      },
+      {
+        "prefix": "RLST",
+        "count": 444,
+        "suffixes": [
+          "AF",
+          "CM",
+          "HM",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p19)",
+        "sampleTitles": [
+          "Queering Christian Mysticism",
+          "Activism, Vocation, Justice",
+          "African-American Religions"
+        ]
+      },
+      {
+        "prefix": "MS",
+        "count": 398,
+        "suffixes": [
+          "AA",
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p14)",
+        "sampleTitles": [
+          "Seriality Studies",
+          "Topics in Media Theory: Global Cinema",
+          "Advanced Editing"
+        ]
+      },
+      {
+        "prefix": "ENGL",
+        "count": 378,
+        "suffixes": [
+          "AF",
+          "CH",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p9)",
+        "sampleTitles": [
+          "Advanced Fiction Writing Workshop",
+          "AfroFuturisms",
+          "American Modernism"
+        ]
+      },
+      {
+        "prefix": "PSYC",
+        "count": 361,
+        "suffixes": [
+          "AA",
+          "AF",
+          "CH",
+          "CM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p18)",
+        "sampleTitles": [
+          "Adolescent Development",
+          "Advanced Statistics I: Multivariate Statistics",
+          "Advanced Statistics II: Structural Equation Modeling"
+        ]
+      },
+      {
+        "prefix": "PHIL",
+        "count": 349,
+        "suffixes": [
+          "CM",
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p16)",
+        "sampleTitles": [
+          "Ancient Philosophy",
+          "Autonomy and Well-Being",
+          "Bioethics"
+        ]
+      },
+      {
+        "prefix": "POLI",
+        "count": 341,
+        "suffixes": [
+          "AF",
+          "JT",
+          "PO",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p17)",
+        "sampleTitles": [
+          "Global Migration and Citizenship",
+          "Revolution and Mutual Aid",
+          "Revolution and Mutual Aid"
+        ]
+      },
+      {
+        "prefix": "SPAN",
+        "count": 335,
+        "suffixes": [
+          "CH",
+          "CM",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p20)",
+        "sampleTitles": [
+          "A Time of Crisis: Spanish Literature from 1898-1920",
+          "Advanced Conversation and Composition",
+          "Advanced Spanish: Readings in Literature and Civilization"
+        ]
+      },
+      {
+        "prefix": "BIOL",
+        "count": 334,
+        "suffixes": [
+          "HM",
+          "JT",
+          "KS",
+          "PO",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p4)",
+        "sampleTitles": [
+          "Advanced Data Analysis (Biology)",
+          "Advanced Topics in Environmental Biology",
+          "Analyses of Human Motor Skills"
+        ]
+      },
+      {
+        "prefix": "ARHI",
+        "count": 330,
+        "suffixes": [
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p2)",
+        "sampleTitles": [
+          "Alison Saar: Sculpting the Unseen",
+          "Architectural Models, Monuments, and Miniatures",
+          "Architecture in East Asia"
+        ]
+      },
+      {
+        "prefix": "CORE",
+        "count": 316,
+        "suffixes": [
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p6)",
+        "sampleTitles": [
+          "Creating and Recreating Genji",
+          "Cosmopolitanism & Revolutions"
+        ]
+      },
+      {
+        "prefix": "DANC",
+        "count": 309,
+        "suffixes": [
+          "PO",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p7)",
+        "sampleTitles": [
+          "Advanced Ballet Technique",
+          "Advanced Ballet Technique and Theory",
+          "Advanced Contemporary Dance Practice"
+        ]
+      },
+      {
+        "prefix": "ASAM",
+        "count": 300,
+        "suffixes": [
+          "AA",
+          "CM",
+          "HM",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p3)",
+        "sampleTitles": [
+          "Islamophobia and its Discontents",
+          "Afro-Asian Politics and Expressive Culture",
+          "Anti-Muslim Racism: A Global Perspective"
+        ]
+      },
+      {
+        "prefix": "ANTH",
+        "count": 294,
+        "suffixes": [
+          "HM",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p2)",
+        "sampleTitles": [
+          "Chicana Feminism & Anthropology",
+          "American Political Discourses",
+          "Anthropology of Public Policy"
+        ]
+      },
+      {
+        "prefix": "MUS",
+        "count": 257,
+        "suffixes": [
+          "HM",
+          "JM",
+          "PO",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p15)",
+        "sampleTitles": [
+          "American Gamelan Ensemble",
+          "Balinese Gamelan",
+          "Beethoven and His Sphere of Influence"
+        ]
+      },
+      {
+        "prefix": "ART",
+        "count": 196,
+        "suffixes": [
+          "JT",
+          "PO",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p2)",
+        "sampleTitles": [
+          "Materials & Extractions",
+          "Advanced Digital Art",
+          "Advanced Senior Project in Art"
+        ]
+      },
+      {
+        "prefix": "ECON",
+        "count": 185,
+        "suffixes": [
+          "CG",
+          "CM",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p8)",
+        "sampleTitles": [
+          "Accounting for Decision Making",
+          "Advanced Econometrics",
+          "Advanced Macroeconomic Analysis"
+        ]
+      },
+      {
+        "prefix": "THEA",
+        "count": 180,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p21)",
+        "sampleTitles": [
+          "Acting: A Physical Approach",
+          "Acting Studio: Acting for Film and Television",
+          "Alexander Technique and Pedagogy-Individual"
+        ]
+      },
+      {
+        "prefix": "FREN",
+        "count": 173,
+        "suffixes": [
+          "CM",
+          "PO",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p10)",
+        "sampleTitles": [
+          "Advanced French: Readings in Literature and Civilization",
+          "Advanced Oral French",
+          "Africa in France: The French of African Ancestry through Text and Film"
+        ]
+      },
+      {
+        "prefix": "EA",
+        "count": 168,
+        "suffixes": [
+          "KS",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p9)",
+        "sampleTitles": [
+          "California's Landscapes: Diverse Peoples and Cultures",
+          "Case Studies in Sustainable Built Environments",
+          "Chemical Pollution and Social Life"
+        ]
+      },
+      {
+        "prefix": "MATH",
+        "count": 155,
+        "suffixes": [
+          "CM",
+          "HM",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p6)",
+        "sampleTitles": [
+          "Biography of Mathematics",
+          "History of Algorithms",
+          "Abstract Algebra I"
+        ]
+      },
+      {
+        "prefix": "CHEM",
+        "count": 154,
+        "suffixes": [
+          "JT",
+          "KS"
+        ],
+        "owned": false,
+        "sectionName": "(root p5)",
+        "sampleTitles": [
+          "Accelerated General Chemistry with Lab",
+          "Advanced Laboratory in Biochemistry",
+          "Advanced Laboratory in Chemistry"
+        ]
+      },
+      {
+        "prefix": "WRIT",
+        "count": 134,
+        "suffixes": [
+          "IO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p17)",
+        "sampleTitles": [
+          "Academic vs. Creative Non/Fiction",
+          "A Genealogy of Writing",
+          "Advanced Argumentative Writing"
+        ]
+      },
+      {
+        "prefix": "GERM",
+        "count": 128,
+        "suffixes": [
+          "PO",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p11)",
+        "sampleTitles": [
+          "A History of German Film",
+          "Accelerated Introductory German",
+          "Advanced German"
+        ]
+      },
+      {
+        "prefix": "GOVT",
+        "count": 120,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": false,
+        "sectionName": "(root p11)",
+        "sampleTitles": [
+          "American Culture Wars",
+          "Chinese Foreign Policy",
+          "Comparative Politics of the Middle East"
+        ]
+      },
+      {
+        "prefix": "LIT",
+        "count": 116,
+        "suffixes": [
+          "AF",
+          "CM",
+          "HM"
+        ],
+        "owned": false,
+        "sectionName": "(root p13)",
+        "sampleTitles": [
+          "African Literature",
+          "Alfred Hitchcock",
+          "American Poetry: Tradition and Experiment"
+        ]
+      },
+      {
+        "prefix": "AFRI",
+        "count": 113,
+        "suffixes": [
+          "AF",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions",
+        "sampleTitles": [
+          "Africana Philosophy",
+          "Africana Political Theory: Black Political Theory in the United States",
+          "Africana Studies Directed Readings"
+        ]
+      },
+      {
+        "prefix": "CHST",
+        "count": 110,
+        "suffixes": [
+          "CH"
+        ],
+        "owned": false,
+        "sectionName": "(root p5)",
+        "sampleTitles": [
+          "Artivistas in the Americas",
+          "Chicana-Latina, Gender, and Popular Culture",
+          "Chicanx Art and Its Antecedents"
+        ]
+      },
+      {
+        "prefix": "SOC",
+        "count": 108,
+        "suffixes": [
+          "AA",
+          "AF",
+          "CH",
+          "PO",
+          "PZ"
+        ],
+        "owned": false,
+        "sectionName": "(root p20)",
+        "sampleTitles": [
+          "Cast, Class and Colonialism",
+          "Chicanxs Latinxs and Education",
+          "Chicanxs Latinxs in Contemporary Society"
+        ]
+      },
+      {
+        "prefix": "PHYS",
+        "count": 104,
+        "suffixes": [
+          "HM",
+          "KS",
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p16)",
+        "sampleTitles": [
+          "Advanced Laboratory in Physics",
+          "Biophysics",
+          "Classical Mechanics with Computational Applications"
+        ]
+      },
+      {
+        "prefix": "NEUR",
+        "count": 100,
+        "suffixes": [
+          "JT",
+          "KS",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p15)",
+        "sampleTitles": [
+          "Behavioral Neurobiology: How Nervous Systems Produce Behavior",
+          "Cell and Molecular Neuroscience",
+          "Cognitive Neuroscience"
+        ]
+      },
+      {
+        "prefix": "ITAL",
+        "count": 93,
+        "suffixes": [
+          "JT",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p12)",
+        "sampleTitles": [
+          "Advanced Italian: Readings in Literature and Civilization",
+          "Contemporary Italy",
+          "Continued Introductory Italian"
+        ]
+      },
+      {
+        "prefix": "FGSS",
+        "count": 83,
+        "suffixes": [
+          "JT",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p10)",
+        "sampleTitles": [
+          "Advanced Topics in Feminist Gender and Sexuality Studies",
+          "Antiracist Feminist and Queer Praxis: Theory, Ethics and Social Action",
+          "Creating Revolutions"
+        ]
+      },
+      {
+        "prefix": "JAPN",
+        "count": 60,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p13)",
+        "sampleTitles": [
+          "Advanced Conversation",
+          "Advanced Japanese",
+          "Advanced Japanese"
+        ]
+      },
+      {
+        "prefix": "CLAS",
+        "count": 59,
+        "suffixes": [
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p6)",
+        "sampleTitles": [
+          "Ancient Comedy",
+          "Ancient Greek Leadership",
+          "Ancient Political Thought"
+        ]
+      },
+      {
+        "prefix": "AMST",
+        "count": 56,
+        "suffixes": [
+          "HM",
+          "PO",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "Course Descriptions",
+        "sampleTitles": [
+          "American Studies Seminar",
+          "Asian/American Geographies",
+          "Black Queer in America"
+        ]
+      },
+      {
+        "prefix": "POST",
+        "count": 52,
+        "suffixes": [
+          "CH",
+          "HM",
+          "PZ"
+        ],
+        "owned": false,
+        "sectionName": "(root p17)",
+        "sampleTitles": [
+          "Comparative Environmental Politics",
+          "Crime and Punishment",
+          "Criminalization of Latinos & Resistance"
+        ]
+      },
+      {
+        "prefix": "RUSS",
+        "count": 52,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p20)",
+        "sampleTitles": [
+          "Advanced Conversation",
+          "Advanced Russian",
+          "Animated Russia: Cartoons and the Language of Culture"
+        ]
+      },
+      {
+        "prefix": "HMSC",
+        "count": 49,
+        "suffixes": [
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p12)",
+        "sampleTitles": [
+          "Critical Theory and Modern Culture",
+          "Epistemology of European Colonialism",
+          "Foundations in Postcolonial Theory"
+        ]
+      },
+      {
+        "prefix": "GRMT",
+        "count": 41,
+        "suffixes": [
+          "PO",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p11)",
+        "sampleTitles": [
+          "Culture of Nature: Green Movements",
+          "Karl Marx",
+          "Metropolis: Imagining the City"
+        ]
+      },
+      {
+        "prefix": "REL",
+        "count": 40,
+        "suffixes": [
+          "CG"
+        ],
+        "owned": false,
+        "sectionName": "(root p19)",
+        "sampleTitles": [
+          "Archaeology of the Bible",
+          "Classical Arabic Literature and the Quar'an",
+          "Environmental Ethics and Mystical Traditions in Islam"
+        ]
+      },
+      {
+        "prefix": "CHLT",
+        "count": 36,
+        "suffixes": [
+          "CH",
+          "PZ"
+        ],
+        "owned": false,
+        "sectionName": "(root p5)",
+        "sampleTitles": [
+          "Black & Indigenous Central Americans: Ancestral Territory, Water Defenders, a",
+          "Transformative Life of Malcolm X",
+          "Chicana Feminist Epistemologies"
+        ]
+      },
+      {
+        "prefix": "ARBC",
+        "count": 32,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": false,
+        "sectionName": "(root p2)",
+        "sampleTitles": [
+          "Arabic Grammar: Morphology & Syntax",
+          "Arabic Media",
+          "Continuing Introductory Arabic"
+        ]
+      },
+      {
+        "prefix": "GREK",
+        "count": 32,
+        "suffixes": [
+          "PO",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p11)",
+        "sampleTitles": [
+          "Advanced Greek Reading",
+          "Advanced Greek Readings",
+          "Intermediate Classical Greek"
+        ]
+      },
+      {
+        "prefix": "RUST",
+        "count": 32,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p20)",
+        "sampleTitles": [
+          "Dostoevsky and Popular Culture",
+          "Politicizing Magic: Classic, Russian and Soviet Fairy Tales",
+          "Russia: Empire and Identity"
+        ]
+      },
+      {
+        "prefix": "CHIN",
+        "count": 30,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p6)",
+        "sampleTitles": [
+          "Advanced Chinese",
+          "Advanced Chinese",
+          "Advanced Readings in Modern Chinese Literature and Culture"
+        ]
+      },
+      {
+        "prefix": "ARCN",
+        "count": 28,
+        "suffixes": [
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p2)",
+        "sampleTitles": [
+          "Art and Crime: Plunder, Fakes & Forensics",
+          "Artists' Materials and Technologies-Ancient and Modern",
+          "Capturing Art: Cultural Sustainability and Digital Preservation"
+        ]
+      },
+      {
+        "prefix": "CGS",
+        "count": 28,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": false,
+        "sectionName": "(root p7)",
+        "sampleTitles": [
+          "International Relations of the Middle East",
+          "Introduction to Critical Theory",
+          "Introduction to Postcolonial Studies"
+        ]
+      },
+      {
+        "prefix": "GWS",
+        "count": 28,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p11)",
+        "sampleTitles": [
+          "Racial Capitalism and Abolition Democracy",
+          "Decolonizing Gender and Sexuality in Asian/America",
+          "Disability Studies: Foundations, Intersections, and Future"
+        ]
+      },
+      {
+        "prefix": "LATN",
+        "count": 28,
+        "suffixes": [
+          "PO",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p13)",
+        "sampleTitles": [
+          "Advanced Latin Readings",
+          "Intermediate Latin",
+          "Intermediate/Advanced Readings in Latin"
+        ]
+      },
+      {
+        "prefix": "STS",
+        "count": 28,
+        "suffixes": [
+          "HM",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p20)",
+        "sampleTitles": [
+          "Communicating Science",
+          "Independent Study: Reading and Research",
+          "Introduction to Science, Technology, and Society"
+        ]
+      },
+      {
+        "prefix": "GEOL",
+        "count": 24,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p11)",
+        "sampleTitles": [
+          "GIS for Geologists",
+          "Mineralogy w/ Laboratory",
+          "Sedimentology w/Laboratory"
+        ]
+      },
+      {
+        "prefix": "GEOG",
+        "count": 24,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": false,
+        "sectionName": "(root p11)",
+        "sampleTitles": [
+          "Geographies of Disease and Health Justice",
+          "Geographies of Education",
+          "Geographies of Labor"
+        ]
+      },
+      {
+        "prefix": "CSCI",
+        "count": 20,
+        "suffixes": [
+          "CM",
+          "HM",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p6)",
+        "sampleTitles": [
+          "Computer Science for Insight",
+          "Computing for the Web",
+          "Data Structures and Algorithms"
+        ]
+      },
+      {
+        "prefix": "JPNT",
+        "count": 20,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p13)",
+        "sampleTitles": [
+          "Graphically Speaking: Japanese Manga and Its Buds",
+          "Japanese and Japanese American Women Writers",
+          "Modern Japanese Literature in English: Literary Reconfigurations of Japanese Iden"
+        ]
+      },
+      {
+        "prefix": "KORE",
+        "count": 20,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": false,
+        "sectionName": "(root p13)",
+        "sampleTitles": [
+          "Advanced Korean",
+          "Continuing Introductory Korean",
+          "Intermediate Korean"
+        ]
+      },
+      {
+        "prefix": "DS",
+        "count": 16,
+        "suffixes": [
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p8)",
+        "sampleTitles": [
+          "AI/DS Ethics and Justice",
+          "Data and Justice",
+          "Introduction to Data Science"
+        ]
+      },
+      {
+        "prefix": "ID",
+        "count": 16,
+        "suffixes": [
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p12)",
+        "sampleTitles": [
+          "Independent Study",
+          "Mellon Mays Undergraduate Seminar",
+          "Senior Thesis for Dual Majors"
+        ]
+      },
+      {
+        "prefix": "FLAN",
+        "count": 12,
+        "suffixes": [
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p10)",
+        "sampleTitles": [
+          "Foreign Language and Culture Teaching Clinic 2",
+          "Independent Study",
+          "Senior Thesis"
+        ]
+      },
+      {
+        "prefix": "LGCS",
+        "count": 12,
+        "suffixes": [
+          "PO",
+          "PZ"
+        ],
+        "owned": false,
+        "sectionName": "(root p13)",
+        "sampleTitles": [
+          "Language and Gender",
+          "Corpus Linguistics",
+          "Introduction to Linguistics"
+        ]
+      },
+      {
+        "prefix": "WGS",
+        "count": 12,
+        "suffixes": [
+          "CG"
+        ],
+        "owned": false,
+        "sectionName": "(root p22)",
+        "sampleTitles": [
+          "Feminist Research Methods and Inquiry",
+          "Gender and Reproductive Health",
+          "Introduction to Women and Gender Studies"
+        ]
+      },
+      {
+        "prefix": "HUM",
+        "count": 9,
+        "suffixes": [
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p12)",
+        "sampleTitles": [
+          "Fellowship in the Humanities Institute"
+        ]
+      },
+      {
+        "prefix": "MCBI",
+        "count": 8,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": false,
+        "sectionName": "Course Descriptions",
+        "sampleTitles": [
+          "Introduction to Computational Biology",
+          "Introduction to Mathematical Biology"
+        ]
+      },
+      {
+        "prefix": "AWS",
+        "count": 8,
+        "suffixes": [
+          "CG"
+        ],
+        "owned": false,
+        "sectionName": "(root p2)",
+        "sampleTitles": [
+          "Applied Feminist Applications",
+          "Feminist Theory and Epistemology"
+        ]
+      },
+      {
+        "prefix": "ARBT",
+        "count": 8,
+        "suffixes": [
+          "CM",
+          "JT"
+        ],
+        "owned": false,
+        "sectionName": "(root p2)",
+        "sampleTitles": [
+          "Arab/Islamic Cultural Histories",
+          "Modern Arabic Poetry in Translation"
+        ]
+      },
+      {
+        "prefix": "CHNT",
+        "count": 8,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p6)",
+        "sampleTitles": [
+          "Chinese Fiction, Old and New",
+          "Gender and Sexuality in Modern Chinese Literature",
+          "Poetry and Poetics"
+        ]
+      },
+      {
+        "prefix": "SCI",
+        "count": 8,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": false,
+        "sectionName": "(root p9)",
+        "sampleTitles": [
+          "Oceans",
+          "Neurobiology of Eating and Eating Disorders"
+        ]
+      },
+      {
+        "prefix": "ONT",
+        "count": 8,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": false,
+        "sectionName": "(root p16)",
+        "sampleTitles": [
+          "Critical Community Studies",
+          "Research Methods for Community Change"
+        ]
+      },
+      {
+        "prefix": "POL",
+        "count": 8,
+        "suffixes": [
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p17)",
+        "sampleTitles": [
+          "Critical Perspectives and Marginalized Voices in Global Politics",
+          "The Global Politics of (B)orders & Migration"
+        ]
+      },
+      {
+        "prefix": "SOSC",
+        "count": 8,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": false,
+        "sectionName": "(root p20)",
+        "sampleTitles": [
+          "Enterprise and the Entrepreneur",
+          "Tropical Forests: Policy and Practice"
+        ]
+      },
+      {
+        "prefix": "ORST",
+        "count": 4,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": false,
+        "sectionName": "Course Descriptions",
+        "sampleTitles": [
+          "Organizing in the 21st Century"
+        ]
+      },
+      {
+        "prefix": "GEO",
+        "count": 4,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "Course Descriptions",
+        "sampleTitles": [
+          "Sedimentology w/Laboratory"
+        ]
+      },
+      {
+        "prefix": "ASTR",
+        "count": 4,
+        "suffixes": [
+          "KS"
+        ],
+        "owned": false,
+        "sectionName": "(root p4)",
+        "sampleTitles": [
+          "Elementary Astronomy"
+        ]
+      },
+      {
+        "prefix": "CREA",
+        "count": 4,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": false,
+        "sectionName": "(root p7)",
+        "sampleTitles": [
+          "The Bible and Homer"
+        ]
+      },
+      {
+        "prefix": "CLST",
+        "count": 4,
+        "suffixes": [
+          "CG"
+        ],
+        "owned": false,
+        "sectionName": "(root p7)",
+        "sampleTitles": [
+          "Feminist and Queer Theory: Bodies of Knowledge"
+        ]
+      },
+      {
+        "prefix": "KRNT",
+        "count": 4,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": false,
+        "sectionName": "(root p13)",
+        "sampleTitles": [
+          "Korean Cinema and Culture"
+        ]
+      },
+      {
+        "prefix": "LAST",
+        "count": 4,
+        "suffixes": [
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p13)",
+        "sampleTitles": [
+          "Senior Thesis in Latin American and Caribbean Studies"
+        ]
+      },
+      {
+        "prefix": "PPE",
+        "count": 4,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p16)",
+        "sampleTitles": [
+          "Freedom, Markets, and Well-Being"
+        ]
+      },
+      {
+        "prefix": "EEP",
+        "count": 4,
+        "suffixes": [
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p18)",
+        "sampleTitles": [
+          "Senior Thesis in Environment, Economics, and Politics"
+        ]
+      },
+      {
+        "prefix": "PORT",
+        "count": 4,
+        "suffixes": [
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p18)",
+        "sampleTitles": [
+          "Intensive Introductory Portuguese"
+        ]
+      },
+      {
+        "prefix": "PPA",
+        "count": 4,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p19)",
+        "sampleTitles": [
+          "Introduction to Public Policy Analysis"
+        ]
+      },
+      {
+        "prefix": "COGS",
+        "count": 2,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": false,
+        "sectionName": "(root p6)",
+        "sampleTitles": [
+          "Minds and Machines"
+        ]
+      }
+    ]
+  },
+  "pitzer": {
+    "school": "pitzer",
+    "scrapedAt": "2026-05-20",
+    "departments": [
+      {
+        "prefix": "HIST",
+        "count": 758,
+        "suffixes": [
+          "AF",
+          "BK",
+          "CH",
+          "CM",
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p28)",
+        "sampleTitles": [
+          "Ancient Heroes and Heroines",
+          "European Union",
+          "Humn Histrs:Onset to 1492(Or So)"
+        ]
+      },
+      {
+        "prefix": "PSYC",
+        "count": 538,
+        "suffixes": [
+          "AA",
+          "AF",
+          "CH",
+          "CM",
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p49)",
+        "sampleTitles": [
+          "Introduction to Psychology",
+          "Introduction to Psychology",
+          "Organizational Psychology"
+        ]
+      },
+      {
+        "prefix": "ENGL",
+        "count": 492,
+        "suffixes": [
+          "AA",
+          "AF",
+          "CH",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p19)",
+        "sampleTitles": [
+          "Literary Theory",
+          "Narrative Arts for Soc Justice",
+          "Introduction to Close Reading"
+        ]
+      },
+      {
+        "prefix": "MATH",
+        "count": 464,
+        "suffixes": [
+          "CM",
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p36)",
+        "sampleTitles": [
+          "Math, Phil & the Real World",
+          "Philosophy of Mathematics",
+          "The Mathematics of Democracy"
+        ]
+      },
+      {
+        "prefix": "ECON",
+        "count": 394,
+        "suffixes": [
+          "CM",
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p17)",
+        "sampleTitles": [
+          "Personal Financial Decisions",
+          "Econ Basics for Non-Majors",
+          "Personal Finance"
+        ]
+      },
+      {
+        "prefix": "PHIL",
+        "count": 392,
+        "suffixes": [
+          "CM",
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p43)",
+        "sampleTitles": [
+          "Problems of Philosophy",
+          "Introduction to Ethics",
+          "Gods/Humans/Justice:Ancnt Greece"
+        ]
+      },
+      {
+        "prefix": "BIOL",
+        "count": 386,
+        "suffixes": [
+          "HM",
+          "JT",
+          "KS",
+          "PO",
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p7)",
+        "sampleTitles": [
+          "Human Genetics for Non-Majors",
+          "Ecology for Non-Majors w/ Lab",
+          "Science, Power, & Identity w/Lab"
+        ]
+      },
+      {
+        "prefix": "POLI",
+        "count": 328,
+        "suffixes": [
+          "JT",
+          "PO",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p46)",
+        "sampleTitles": [
+          "Classical Political Theory",
+          "Modern Political Theory",
+          "American Political Thought"
+        ]
+      },
+      {
+        "prefix": "RLST",
+        "count": 324,
+        "suffixes": [
+          "AF",
+          "CM",
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p52)",
+        "sampleTitles": [
+          "Ideas of Love",
+          "Intro to South Asian Religions",
+          "Africana Religion and Politics"
+        ]
+      },
+      {
+        "prefix": "GOVT",
+        "count": 296,
+        "suffixes": [
+          "CM",
+          "JT"
+        ],
+        "owned": false,
+        "sectionName": "(root p26)",
+        "sampleTitles": [
+          "Introduction American Politics",
+          "Intro American Politics (Honors)",
+          "Washington Internship"
+        ]
+      },
+      {
+        "prefix": "SPAN",
+        "count": 296,
+        "suffixes": [
+          "CH",
+          "CM",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p55)",
+        "sampleTitles": [
+          "Introductory Spanish",
+          "Elementary Spanish",
+          "Introductory Spanish"
+        ]
+      },
+      {
+        "prefix": "LIT",
+        "count": 294,
+        "suffixes": [
+          "AF",
+          "CM",
+          "HM",
+          "JT"
+        ],
+        "owned": false,
+        "sectionName": "(root p34)",
+        "sampleTitles": [
+          "Introduction to Video Art",
+          "Intro to Creative Writing",
+          "Creative Journalism"
+        ]
+      },
+      {
+        "prefix": "ART",
+        "count": 278,
+        "suffixes": [
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p4)",
+        "sampleTitles": [
+          "Modern & Contemp Art Practices",
+          "Drawing I",
+          "Painting I"
+        ]
+      },
+      {
+        "prefix": "MS",
+        "count": 272,
+        "suffixes": [
+          "AA",
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p38)",
+        "sampleTitles": [
+          "Worldbuilding",
+          "Machine Learning for Artists",
+          "Curatorial Practice"
+        ]
+      },
+      {
+        "prefix": "CHEM",
+        "count": 264,
+        "suffixes": [
+          "HM",
+          "JT",
+          "KS",
+          "PO",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p9)",
+        "sampleTitles": [
+          "General Chemistry w/Laboratory",
+          "General Chemistry w/Laboratory",
+          "Basic Principles of Chemistry"
+        ]
+      },
+      {
+        "prefix": "MUS",
+        "count": 262,
+        "suffixes": [
+          "HM",
+          "JM",
+          "PO",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p40)",
+        "sampleTitles": [
+          "Fundamentals of Music",
+          "Fundamentals of Music",
+          "Materials of Music"
+        ]
+      },
+      {
+        "prefix": "ANTH",
+        "count": 246,
+        "suffixes": [
+          "HM",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p2)",
+        "sampleTitles": [
+          "Intro to Sociocultural Anth",
+          "Intro Sociocultural Anthropology",
+          "Intro Sociocultural Anthropology"
+        ]
+      },
+      {
+        "prefix": "CSCI",
+        "count": 236,
+        "suffixes": [
+          "CM",
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p13)",
+        "sampleTitles": [
+          "Intro to Comp Sci for Non-majors",
+          "Intro to Computer Science Lab",
+          "Peer Mentoring in STEM"
+        ]
+      },
+      {
+        "prefix": "PHYS",
+        "count": 230,
+        "suffixes": [
+          "HM",
+          "JT",
+          "KS",
+          "PO",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p45)",
+        "sampleTitles": [
+          "The Physics of Music",
+          "Questioning Physics",
+          "Art and Science of Optics"
+        ]
+      },
+      {
+        "prefix": "DANC",
+        "count": 212,
+        "suffixes": [
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p15)",
+        "sampleTitles": [
+          "Beginning Modern Dance",
+          "Beginning Tap Dance",
+          "Intro to Dance/Dance Studies"
+        ]
+      },
+      {
+        "prefix": "FREN",
+        "count": 208,
+        "suffixes": [
+          "CM",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p23)",
+        "sampleTitles": [
+          "Introductory French",
+          "Introductory French",
+          "Introductory French"
+        ]
+      },
+      {
+        "prefix": "EA",
+        "count": 204,
+        "suffixes": [
+          "CM",
+          "HM",
+          "JT",
+          "KS",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p16)",
+        "sampleTitles": [
+          "Intro to Environmental Analysis",
+          "Intro to Environmental Analysis",
+          "Intro to Environmental Analysis"
+        ]
+      },
+      {
+        "prefix": "ARHI",
+        "count": 198,
+        "suffixes": [
+          "CM",
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p3)",
+        "sampleTitles": [
+          "Introduction to Art History",
+          "Intro to Art Hist: Prehist-1400",
+          "Intro to Art Hist: c. 1400-pres"
+        ]
+      },
+      {
+        "prefix": "SOC",
+        "count": 190,
+        "suffixes": [
+          "AA",
+          "CH",
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p54)",
+        "sampleTitles": [
+          "Introduction to Sociology",
+          "SRX: Introduction to Sociology",
+          "Organized Crime"
+        ]
+      },
+      {
+        "prefix": "ASAM",
+        "count": 162,
+        "suffixes": [
+          "AA",
+          "CM",
+          "HM",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p5)",
+        "sampleTitles": [
+          "Healing Justice",
+          "Critical SWANA Studies",
+          "Intro Mid East Stud-Crit SWANA S"
+        ]
+      },
+      {
+        "prefix": "ENGR",
+        "count": 150,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": false,
+        "sectionName": "(root p21)",
+        "sampleTitles": [
+          "Intro Engr Design/Manufacturing",
+          "Intro Engr Design/Manufact Lab",
+          "Introduction to Aviation"
+        ]
+      },
+      {
+        "prefix": "POST",
+        "count": 142,
+        "suffixes": [
+          "CH",
+          "HM",
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p48)",
+        "sampleTitles": [
+          "The Human Condition",
+          "US Politics: Resistnce & Transfr",
+          "US Politics: Resistnce & Transfr"
+        ]
+      },
+      {
+        "prefix": "THEA",
+        "count": 122,
+        "suffixes": [
+          "AF",
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p57)",
+        "sampleTitles": [
+          "Basic Acting:Tools & Fundamentls",
+          "Beginning Acting: Black Theatre",
+          "Basic Acting:Acting Soc Change"
+        ]
+      },
+      {
+        "prefix": "WRIT",
+        "count": 114,
+        "suffixes": [
+          "HM",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p57)",
+        "sampleTitles": [
+          "Introduction to Academic Writing",
+          "Academic Writing: Extended",
+          "Justice, Inclus Liber Learning"
+        ]
+      },
+      {
+        "prefix": "GERM",
+        "count": 110,
+        "suffixes": [
+          "JT",
+          "PO",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p25)",
+        "sampleTitles": [
+          "Elementary German 1",
+          "Elementary German 1",
+          "Introductory German"
+        ]
+      },
+      {
+        "prefix": "CLAS",
+        "count": 102,
+        "suffixes": [
+          "CM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p12)",
+        "sampleTitles": [
+          "Greek and Roman Classics",
+          "Epic Heroes & Form in Pop Cult",
+          "Greek Tragedy/Modern World"
+        ]
+      },
+      {
+        "prefix": "NEUR",
+        "count": 100,
+        "suffixes": [
+          "JT",
+          "KS",
+          "PO",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p42)",
+        "sampleTitles": [
+          "Hormones and Behavior",
+          "Drugs and the Brain",
+          "Foundations of Neuroscience"
+        ]
+      },
+      {
+        "prefix": "ID",
+        "count": 90,
+        "suffixes": [
+          "CM",
+          "HM",
+          "JT",
+          "PO",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p32)",
+        "sampleTitles": [
+          "Critical Inquiry Seminar",
+          "Peer Mentoring in STEM",
+          "Global Partnership Course"
+        ]
+      },
+      {
+        "prefix": "LGCS",
+        "count": 90,
+        "suffixes": [
+          "JT",
+          "PO",
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p33)",
+        "sampleTitles": [
+          "Writing Systems",
+          "Introduction to Linguistics",
+          "Introduction to Linguistics"
+        ]
+      },
+      {
+        "prefix": "FS",
+        "count": 86,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p24)",
+        "sampleTitles": [
+          "Art in an Age of Protest",
+          "Philosophical Questions",
+          "The Ancient World:Past & Present"
+        ]
+      },
+      {
+        "prefix": "AFRI",
+        "count": 74,
+        "suffixes": [
+          "AF",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": null,
+        "sampleTitles": [
+          "Intro to Africana Studies",
+          "Research Methods",
+          "Unruly Bodies: Black Womanhood"
+        ]
+      },
+      {
+        "prefix": "CHST",
+        "count": 74,
+        "suffixes": [
+          "CH",
+          "PO",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p12)",
+        "sampleTitles": [
+          "Intro to Chicanx Latinx Studies",
+          "Intro Contemp Central America II",
+          "Digitizing our Testimonios"
+        ]
+      },
+      {
+        "prefix": "ORST",
+        "count": 72,
+        "suffixes": [
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p42)",
+        "sampleTitles": [
+          "Organizational Life",
+          "Social Justice in Education",
+          "Qi Gong & Embodied Learning"
+        ]
+      },
+      {
+        "prefix": "GEOL",
+        "count": 68,
+        "suffixes": [
+          "PO",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p24)",
+        "sampleTitles": [
+          "SoCal Earthquakes and Water",
+          "Intro to Geology: Geohazards",
+          "Intro to Geo:Planetary Geology"
+        ]
+      },
+      {
+        "prefix": "CGS",
+        "count": 64,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p9)",
+        "sampleTitles": [
+          "Introduction to CGS",
+          "Beginning Nepali Language I",
+          "Nature,Movemnt,Meditation:QiGong"
+        ]
+      },
+      {
+        "prefix": "CHLT",
+        "count": 64,
+        "suffixes": [
+          "CH",
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p11)",
+        "sampleTitles": [
+          "Intro to Caribbean Studies",
+          "Borderlands Tek",
+          "Chicanx/Latinx Sporting Hist"
+        ]
+      },
+      {
+        "prefix": "AMST",
+        "count": 62,
+        "suffixes": [
+          "HM",
+          "JT",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": null,
+        "sampleTitles": [
+          "Intro Race, Ethn & Am Cltrl Stud",
+          "Intro to American Cultures",
+          "Intro to American Cultures"
+        ]
+      },
+      {
+        "prefix": "FGSS",
+        "count": 58,
+        "suffixes": [
+          "JT",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p22)",
+        "sampleTitles": [
+          "Intro Fem+Gndr+Sexuality Studies",
+          "Introduction to Queer Studies",
+          "Materials & Extraction"
+        ]
+      },
+      {
+        "prefix": "ASTR",
+        "count": 54,
+        "suffixes": [
+          "HM",
+          "JT",
+          "KS",
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p6)",
+        "sampleTitles": [
+          "Introductory Astronomy w/Lab",
+          "Intro to Galaxies & Cosmology",
+          "Stars,Planets,Life: Astrobiology"
+        ]
+      },
+      {
+        "prefix": "ITAL",
+        "count": 52,
+        "suffixes": [
+          "JT",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p32)",
+        "sampleTitles": [
+          "Introductory Italian",
+          "Continued Introductory Italian",
+          "Intensive Introductory Italian"
+        ]
+      },
+      {
+        "prefix": "STS",
+        "count": 52,
+        "suffixes": [
+          "HM",
+          "JT",
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p45)",
+        "sampleTitles": [
+          "Philosophy of Technology",
+          "Intro to Sci, Tech and Society",
+          "Intro to Sci, Tech, and Society"
+        ]
+      },
+      {
+        "prefix": "HMSC",
+        "count": 50,
+        "suffixes": [
+          "AF",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p32)",
+        "sampleTitles": [
+          "Black France",
+          "Enlightenment Sexualities",
+          "Enlightenment and Culture"
+        ]
+      },
+      {
+        "prefix": "CHIN",
+        "count": 48,
+        "suffixes": [
+          "HM",
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p11)",
+        "sampleTitles": [
+          "Elementary Chinese",
+          "Elementary Chinese",
+          "Elem Chinese for Bilinguals"
+        ]
+      },
+      {
+        "prefix": "GWS",
+        "count": 42,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p27)",
+        "sampleTitles": [
+          "Intro Gender and Women's Studies",
+          "Introduction to Queer Studies",
+          "Racial Capitalism and Abolition"
+        ]
+      },
+      {
+        "prefix": "JAPN",
+        "count": 42,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p33)",
+        "sampleTitles": [
+          "Elementary Japanese",
+          "Elementary Japanese",
+          "Japanese Conversation, Intermed"
+        ]
+      },
+      {
+        "prefix": "ARBC",
+        "count": 40,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": false,
+        "sectionName": "(root p3)",
+        "sampleTitles": [
+          "Introductory Arabic",
+          "Continuing Introductory Arabic",
+          "Spoken Jordanian Arabic"
+        ]
+      },
+      {
+        "prefix": "LEAD",
+        "count": 38,
+        "suffixes": [
+          "CM",
+          "HM"
+        ],
+        "owned": false,
+        "sectionName": "(root p33)",
+        "sampleTitles": [
+          "Foundations of Leadership",
+          "Practicum in Event Management",
+          "Leadership in Sports"
+        ]
+      },
+      {
+        "prefix": "GRMT",
+        "count": 36,
+        "suffixes": [
+          "PO",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p27)",
+        "sampleTitles": [
+          "German Syntax for Translation",
+          "Manifestos",
+          "Karl Marx: Capital"
+        ]
+      },
+      {
+        "prefix": "RUSS",
+        "count": 36,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p53)",
+        "sampleTitles": [
+          "Elementary Russian 1",
+          "Elementary Russian 2",
+          "Russian Conversation, Intermed"
+        ]
+      },
+      {
+        "prefix": "RUST",
+        "count": 30,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p54)",
+        "sampleTitles": [
+          "Modern Russian Culture & Society",
+          "Russian Short Fiction",
+          "The Great Utopia: 20thC Russ Lit"
+        ]
+      },
+      {
+        "prefix": "CLES",
+        "count": 28,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": false,
+        "sectionName": "(root p13)",
+        "sampleTitles": [
+          "Climate Wayfinding",
+          "Climate Wayfinding / Spec Topics: Climate Science",
+          "Climate Dynamics"
+        ]
+      },
+      {
+        "prefix": "PORT",
+        "count": 28,
+        "suffixes": [
+          "CM",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p48)",
+        "sampleTitles": [
+          "Introductory Portuguese I",
+          "Introductory Portuguese 1",
+          "Introductory Portuguese II"
+        ]
+      },
+      {
+        "prefix": "GEOG",
+        "count": 26,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": false,
+        "sectionName": "(root p24)",
+        "sampleTitles": [
+          "Place, Power, and Difference",
+          "Geographies Disease/Health Justi",
+          "Feeling Natural?"
+        ]
+      },
+      {
+        "prefix": "PPE",
+        "count": 22,
+        "suffixes": [
+          "CM",
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p49)",
+        "sampleTitles": [
+          "Philosophy Seminar",
+          "Philosophy Tutorial",
+          "Politics Seminar"
+        ]
+      },
+      {
+        "prefix": "ASIA",
+        "count": 20,
+        "suffixes": [
+          "PO",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p6)",
+        "sampleTitles": [
+          "The One Source Of All Things",
+          "A Culinary History of China",
+          "Confucius and his interpreters"
+        ]
+      },
+      {
+        "prefix": "CR",
+        "count": 20,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p13)",
+        "sampleTitles": [
+          "Intensive Beginning Spanish II",
+          "Intensive Intermediate Spanish I",
+          "Intensive Intermediate Spanish II"
+        ]
+      },
+      {
+        "prefix": "LATN",
+        "count": 20,
+        "suffixes": [
+          "PO",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p33)",
+        "sampleTitles": [
+          "Introductory Latin",
+          "Introductory Latin",
+          "Introductory Latin Accelerated"
+        ]
+      },
+      {
+        "prefix": "MLLC",
+        "count": 20,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p38)",
+        "sampleTitles": [
+          "American Sign Language",
+          "Introductory Vietnamese",
+          "Intermediate Vietnamese"
+        ]
+      },
+      {
+        "prefix": "ARCN",
+        "count": 18,
+        "suffixes": [
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p3)",
+        "sampleTitles": [
+          "Intro to Art Conservation",
+          "Artists Materials:Ancient/Modern",
+          "Art & Crime: Fakes & Forensics"
+        ]
+      },
+      {
+        "prefix": "DS",
+        "count": 18,
+        "suffixes": [
+          "CM",
+          "PO",
+          "PZ",
+          "SC"
+        ],
+        "owned": true,
+        "sectionName": "(root p16)",
+        "sampleTitles": [
+          "Intro to Python & Data Analysis",
+          "Intro to Data Science",
+          "Foundations of Data Science, R"
+        ]
+      },
+      {
+        "prefix": "SCI",
+        "count": 18,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": false,
+        "sectionName": "(root p54)",
+        "sampleTitles": [
+          "The Codes of Life",
+          "Computing for Discovery",
+          "The Senses"
+        ]
+      },
+      {
+        "prefix": "GFS",
+        "count": 16,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p25)",
+        "sampleTitles": [
+          "Introduction to Gender Studies",
+          "Introduction to Queer Studies",
+          "Activism and Liberation Politics"
+        ]
+      },
+      {
+        "prefix": "GREK",
+        "count": 16,
+        "suffixes": [
+          "PO",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p27)",
+        "sampleTitles": [
+          "Introductory Classical Greek",
+          "Introductory Classical Greek",
+          "Intro Classical Greek Accel"
+        ]
+      },
+      {
+        "prefix": "JPNT",
+        "count": 16,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p33)",
+        "sampleTitles": [
+          "Japanese Media",
+          "Lit Aesthetics of Pre-Mod Japan",
+          "Intro to Japanese Philosophy"
+        ]
+      },
+      {
+        "prefix": "KORE",
+        "count": 16,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": false,
+        "sectionName": "(root p33)",
+        "sampleTitles": [
+          "Introductory Korean",
+          "Continuing Introductory Korean",
+          "Intermediate Korean"
+        ]
+      },
+      {
+        "prefix": "CHNT",
+        "count": 14,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p12)",
+        "sampleTitles": [
+          "Poetry and Poetics",
+          "Chinese Fiction, Old and New",
+          "City in Chinese Lit and Film"
+        ]
+      },
+      {
+        "prefix": "ARBT",
+        "count": 12,
+        "suffixes": [
+          "CM",
+          "JT"
+        ],
+        "owned": false,
+        "sectionName": "(root p3)",
+        "sampleTitles": [
+          "Arab Society, Tradition, Culture",
+          "Modern Arabic Poetry in Transltn",
+          "Arab/Islamic Cultural Histories"
+        ]
+      },
+      {
+        "prefix": "IR",
+        "count": 12,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p32)",
+        "sampleTitles": [
+          "Intermediate IR Seminar",
+          "Cases, Comparisons, Causality",
+          "Lessons Learned on Study Abroad"
+        ]
+      },
+      {
+        "prefix": "COGS",
+        "count": 10,
+        "suffixes": [
+          "JT",
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p13)",
+        "sampleTitles": [
+          "Intro to Cognitive Science",
+          "Consciousness",
+          "Mind, Brains & Programs"
+        ]
+      },
+      {
+        "prefix": "GLAS",
+        "count": 10,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p26)",
+        "sampleTitles": [
+          "Navigating Pitzer with Purpose",
+          "IGLAS Seminar",
+          "Global Local Research Workshop"
+        ]
+      },
+      {
+        "prefix": "AISS",
+        "count": 8,
+        "suffixes": [
+          "KS"
+        ],
+        "owned": false,
+        "sectionName": null,
+        "sampleTitles": [
+          "Accelerated Integrated Science Sequence 1",
+          "Accelerated Integrated Science Sequence 1",
+          "Accelerated Integrated Science Sequence 2"
+        ]
+      },
+      {
+        "prefix": "CASA",
+        "count": 8,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p9)",
+        "sampleTitles": [
+          "Critical Community Studies",
+          "Research Methods for Comm Change",
+          "Radical Resrch & Social Prtnshps"
+        ]
+      },
+      {
+        "prefix": "ENTR",
+        "count": 8,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": false,
+        "sectionName": "(root p22)",
+        "sampleTitles": [
+          "Entrepreneurship Seminar /Spec Topics in Entrepreneurship",
+          "Special Topics: Entrepreneurship",
+          "Entrepreneurial Workshop /Special Topics:Entrepreneurship"
+        ]
+      },
+      {
+        "prefix": "MCBI",
+        "count": 8,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": false,
+        "sectionName": "(root p38)",
+        "sampleTitles": [
+          "Game Theory&EvolutionCooperation",
+          "Intro to Mathematical Biology",
+          "Intro to Computational Biology"
+        ]
+      },
+      {
+        "prefix": "CSMT",
+        "count": 6,
+        "suffixes": [
+          "HM",
+          "JT"
+        ],
+        "owned": false,
+        "sectionName": "(root p14)",
+        "sampleTitles": [
+          "Discrete Differential Geometry / Special Topics in CS / Math",
+          "Computer Science & Math Clinic I",
+          "Computer Science&Math Clinic II"
+        ]
+      },
+      {
+        "prefix": "NPL",
+        "count": 6,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p42)",
+        "sampleTitles": [
+          "Beginning/Intermediate Nepali Language",
+          "Topics in Nepal Studies",
+          "Independent Study Project: Nepal"
+        ]
+      },
+      {
+        "prefix": "ECU",
+        "count": 4,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p19)",
+        "sampleTitles": [
+          "Topics in Ecuadorian Studies",
+          "Independent Study Project: Ecuador"
+        ]
+      },
+      {
+        "prefix": "FLAN",
+        "count": 4,
+        "suffixes": [
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p23)",
+        "sampleTitles": [
+          "Lang & Culture Tchng Clinic 2",
+          "Senior Thesis: Foreign Language"
+        ]
+      },
+      {
+        "prefix": "HSA",
+        "count": 4,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": false,
+        "sectionName": "(root p32)",
+        "sampleTitles": [
+          "Critical Inquiry",
+          "Soc/EthIssues:CommunityEngagemnt / Special Topics"
+        ]
+      },
+      {
+        "prefix": "HUM",
+        "count": 4,
+        "suffixes": [
+          "PO",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p32)",
+        "sampleTitles": [
+          "Fellowship in Humanities Inst",
+          "Humanities Studio Seminar"
+        ]
+      },
+      {
+        "prefix": "LAST",
+        "count": 4,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p33)",
+        "sampleTitles": [
+          "Feminist and LGTBQ+ Movs in LA",
+          "Citizen Participation in Lat Am"
+        ]
+      },
+      {
+        "prefix": "SPCH",
+        "count": 4,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": false,
+        "sectionName": "(root p56)",
+        "sampleTitles": [
+          "Speech and Debate",
+          "Speech and Debate"
+        ]
+      },
+      {
+        "prefix": "SPNT",
+        "count": 4,
+        "suffixes": [
+          "CH",
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p56)",
+        "sampleTitles": [
+          "Latino/a Theater & Performance",
+          "Latino/a Theater & Performance"
+        ]
+      },
+      {
+        "prefix": "ARCT",
+        "count": 2,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": false,
+        "sectionName": "(root p3)",
+        "sampleTitles": [
+          "Architecture on Display / Special Topics in Architecture"
+        ]
+      },
+      {
+        "prefix": "CGH",
+        "count": 2,
+        "suffixes": [
+          "JT"
+        ],
+        "owned": false,
+        "sectionName": "(root p9)",
+        "sampleTitles": [
+          "Introduction to Public Health"
+        ]
+      },
+      {
+        "prefix": "DGHM",
+        "count": 2,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": false,
+        "sectionName": "(root p16)",
+        "sampleTitles": [
+          "Digital Humanities Studio"
+        ]
+      },
+      {
+        "prefix": "FRNT",
+        "count": 2,
+        "suffixes": [
+          "SC"
+        ],
+        "owned": false,
+        "sectionName": "(root p24)",
+        "sampleTitles": [
+          "French Film and Theory in Transl"
+        ]
+      },
+      {
+        "prefix": "KRNT",
+        "count": 2,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": false,
+        "sectionName": "(root p33)",
+        "sampleTitles": [
+          "Korean Cinema & Culture"
+        ]
+      },
+      {
+        "prefix": "LAS",
+        "count": 2,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p33)",
+        "sampleTitles": [
+          "Gender and Dev in Latin Amer"
+        ]
+      },
+      {
+        "prefix": "MCSI",
+        "count": 2,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p38)",
+        "sampleTitles": [
+          "Garbage and Trash"
+        ]
+      },
+      {
+        "prefix": "PONT",
+        "count": 2,
+        "suffixes": [
+          "CM"
+        ],
+        "owned": false,
+        "sectionName": "(root p48)",
+        "sampleTitles": [
+          "Intro Brazilian Lit/Culture"
+        ]
+      },
+      {
+        "prefix": "RLIT",
+        "count": 2,
+        "suffixes": [
+          "PO"
+        ],
+        "owned": false,
+        "sectionName": "(root p52)",
+        "sampleTitles": [
+          "Lit, Film & Cognitive Science"
+        ]
+      },
+      {
+        "prefix": "SECU",
+        "count": 2,
+        "suffixes": [
+          "PZ"
+        ],
+        "owned": true,
+        "sectionName": "(root p54)",
+        "sampleTitles": [
+          "History of Atheism/Freethought"
+        ]
+      },
+      {
+        "prefix": "SOSC",
+        "count": 2,
+        "suffixes": [
+          "HM"
+        ],
+        "owned": false,
+        "sectionName": "(root p55)",
+        "sampleTitles": [
+          "Tropical Forests: Policy & Prac"
+        ]
+      }
+    ]
+  }
+}

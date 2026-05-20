@@ -1,0 +1,15 @@
+import { CloudRain, CloudSnow, Sun, Leaf, Cloud } from "lucide-react";
+
+export const CLIM = {
+  ukmar:{fall:{t:"8–14°C",w:"Cool & often rainy",icon:CloudRain,note:"Waterproof layer; short daylight by December."},spring:{t:"7–15°C",w:"Mild, showery, greening",icon:CloudRain,note:"Changeable — sun and rain in a day."},summer:{t:"14–22°C",w:"Mild, long daylight",icon:Sun,note:"Rarely hot; bright late evenings."}},
+  cont:{fall:{t:"6–16°C",w:"Crisp, colorful foliage",icon:Leaf,note:"Cold snaps by late November."},spring:{t:"8–18°C",w:"Warming, blossom season",icon:Sun,note:"Pleasant; occasional rain."},summer:{t:"20–30°C",w:"Warm to hot",icon:Sun,note:"Humid in cities."}},
+  med:{fall:{t:"15–24°C",w:"Warm & mostly dry",icon:Sun,note:"Sea swimmable early fall."},spring:{t:"14–23°C",w:"Sunny & comfortable",icon:Sun,note:"Ideal; low rain."},summer:{t:"26–35°C",w:"Hot & dry",icon:Sun,note:"Intense midday heat."}},
+  arctic:{fall:{t:"2–9°C",w:"Cold, wet, darkening",icon:CloudRain,note:"Daylight drops fast; first snow."},spring:{t:"0–8°C",w:"Cold, slowly thawing",icon:CloudSnow,note:"Snow lingers into April."},summer:{t:"10–18°C",w:"Cool, very long days",icon:Sun,note:"Near-midnight sun in June."}},
+  easia:{fall:{t:"12–22°C",w:"Mild & clear",icon:Sun,note:"One of the best seasons."},spring:{t:"10–20°C",w:"Cherry blossom, mild",icon:Sun,note:"Famous bloom; some rain."},summer:{t:"26–34°C",w:"Hot & very humid",icon:CloudRain,note:"Rainy season then sticky heat."}},
+  trop:{fall:{t:"27–32°C",w:"Hot, humid, some rain",icon:CloudRain,note:"Wet-season showers; warm sea."},spring:{t:"28–34°C",w:"Hot & humid",icon:Sun,note:"Among the hottest months."},summer:{t:"27–32°C",w:"Hot, humid, wetter",icon:CloudRain,note:"Monsoon; brief downpours."}},
+  shemi:{fall:{t:"16–24°C",w:"Their spring — warming",icon:Sun,note:"N. fall = their spring: mild & fresh."},spring:{t:"18–27°C",w:"Their fall — pleasant",icon:Leaf,note:"N. spring = their autumn: crisp."},summer:{t:"8–16°C",w:"Their winter — cool",icon:CloudRain,note:"N. summer = their winter: cool, wetter."}},
+  alt:{fall:{t:"8–20°C",w:"Clear mountain air",icon:Sun,note:"Best trekking visibility."},spring:{t:"6–18°C",w:"Mild, blooming valleys",icon:Sun,note:"Rhododendron season."},summer:{t:"12–22°C",w:"Monsoon, cloudier",icon:CloudRain,note:"Greener but wetter."}},
+  latam:{fall:{t:"14–22°C",w:"Their spring — warming",icon:Sun,note:"N. fall = their spring."},spring:{t:"16–25°C",w:"Their fall — golden",icon:Leaf,note:"N. spring = their autumn."},summer:{t:"6–15°C",w:"Their winter — cool",icon:CloudRain,note:"N. summer = their winter."}},
+  pat:{fall:{t:"5–12°C",w:"Their spring — windy",icon:Cloud,note:"Cold, gusty even in their spring."},spring:{t:"7–14°C",w:"Their fall — crisp",icon:Leaf,note:"Short, sharp autumn."},summer:{t:"0–8°C",w:"Their winter — harsh",icon:CloudSnow,note:"N. summer = deep southern winter."}},
+  natemp:{fall:{t:"5–16°C",w:"Crisp, brilliant foliage",icon:Leaf,note:"Classic autumn."},spring:{t:"4–17°C",w:"Cool to mild, muddy thaw",icon:CloudRain,note:"Late snow possible."},summer:{t:"20–30°C",w:"Warm & humid",icon:Sun,note:"Pleasant long evenings."}},
+};

@@ -5,7 +5,10 @@ import { FONTS } from "./theme/fonts.jsx";
 
 import { VIBES, CONTINENTS, SCHOOLS, SCORE_MAP } from "./data/options.js";
 import { TESTI, GEN_TESTI } from "./data/testimonials.js";
-import { CMC, DATA, loadPrograms } from "./data/programs.js";
+import { DATA, loadPrograms } from "./data/programs.js";
+import { matchSubjects } from "./data/majorSubjects.js";
+
+const EMPTY_SRC = { neon:{}, cobble:{}, beach:{}, nordic:{}, cafe:{}, alpine:{}, market:{}, campus:{} };
 
 import { Canvas } from "./components/Canvas.jsx";
 import { Nav } from "./components/Nav.jsx";
@@ -74,7 +77,7 @@ export default function App() {
     setSrcLoading(true);
     loadPrograms(school).then((p) => {
       if (alive) { setSrcPrograms(p); setSrcLoading(false); }
-    }).catch(() => { if (alive) { setSrcPrograms(DATA[school] || CMC); setSrcLoading(false); } });
+    }).catch(() => { if (alive) { setSrcPrograms(DATA[school] || EMPTY_SRC); setSrcLoading(false); } });
     return () => { alive = false; };
   }, [school]);
 
@@ -157,7 +160,7 @@ export default function App() {
     setTimeout(() => goToDest(bestId), 850);
   };
 
-  const SRC = srcPrograms || (school ? (DATA[school] || CMC) : CMC);
+  const SRC = srcPrograms || (school ? (DATA[school] || EMPTY_SRC) : EMPTY_SRC);
   const activeCont = continent || null;
   const VIBE_KEYS = ["neon","cobble","beach","nordic","cafe","alpine","market","campus"];
   const aggList = () => {
@@ -179,29 +182,19 @@ export default function App() {
   };
   const chosen = destForVibe(destKey);
   const primaryVibe = VIBES.find((v) => v.id === destKey);
-  // Designed heuristic: which cities tend to suit which academic focus.
-  // Not official eligibility — a fit nudge so relevant programs rank first.
-  const MAJOR_FIT = {
-    business: ["London", "Hong Kong", "Geneva", "Madrid", "Shanghai"],
-    stem: ["Stockholm", "Copenhagen", "Tokyo", "Edinburgh"],
-    cs: ["London", "Berlin", "Stockholm", "Tokyo", "Seoul", "Amsterdam"],
-    social: ["Geneva", "London", "Vienna", "Paris", "Cape Town"],
-    humanities: ["Rome", "Florence", "Oxford", "Cambridge", "Edinburgh", "Athens", "Paris", "Prague", "St Andrews"],
-    arts: ["Paris", "Florence", "Berlin", "Barcelona", "Vienna", "Copenhagen", "Tokyo", "London"],
-    language: ["Madrid", "Seville", "Salamanca", "Paris", "Buenos Aires", "Tokyo", "Seoul", "Berlin", "Florence"],
-    open: [],
-  };
-  const majorBonus = (dd) => {
-    if (!major || major === "open") return 0;
-    const list = MAJOR_FIT[major] || [];
-    return list.some((c) => dd.city && dd.city.toLowerCase().includes(c.toLowerCase())) ? 9 : -3;
-  };
-  // Deterministic "match %" per destination so it's stable across renders.
+  // Major fit comes from real program subject areas now (see matchSubjects).
+  // The hash-based "match %" below is a placeholder until Phase 4 replaces it
+  // with a transparent weighted sum across {subject, language, term, vibe,
+  // credit-history}. In the meantime we surface subject match as the primary
+  // signal so the ranking is at least defensible — no more city-array hack.
   const matchScore = (dd, i) => {
-    const s = (dd.city + dd.country + (destKey || "") + (major || "")).split("")
+    const sm = matchSubjects(dd, major);                 // 0..1
+    const subjectComponent = Math.round(sm.score * 40);  // up to 40 pts
+    // Tiny deterministic jitter so two equal scores don't shuffle on render.
+    const s = (dd.city + dd.country + (destKey || "")).split("")
       .reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
-    // base 72–98, then a major-fit nudge
-    return 98 - (s % 17) - i * 2 + majorBonus(dd);
+    const jitter = s % 9;
+    return 50 + subjectComponent + jitter - i * 2;
   };
   const ranked = chosen
     .map((dd, i) => ({ dd, m: Math.max(58, Math.min(99, matchScore(dd, i))) }))

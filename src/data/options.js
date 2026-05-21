@@ -69,7 +69,7 @@ export const MAJORS = [
 ];
 
 export const SCHOOLS = [
-  { id: "cmc", name: "Claremont McKenna College", note: "Snapshot — CMC's public list is gated; data here is a curated reference, not live", live: false },
+  { id: "cmc", name: "Claremont McKenna College", note: "Live data from CMC's Center for Global Education portal", live: true },
   { id: "pomona", name: "Pomona College", note: "Live data from Pomona IDPO's Terra Dotta portal", live: true },
   { id: "pitzer", name: "Pitzer College", note: "Live data from Pitzer SAIP's Terra Dotta portal", live: true },
   { id: "scripps", name: "Scripps College", note: "Live data from Scripps SAGE's Terra Dotta portal", live: true },

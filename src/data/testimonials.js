@@ -6,7 +6,7 @@ export const TESTI = {
         "9:30 — Walk 20 min to class past Modernista facades; the morning light hits the tiled buildings gold.",
         "13:00 — Long lunch — menú del día, three courses, 12 euros — with classmates near the university.",
         "16:00 — Library or a study café in El Born; narrow medieval lanes the whole walk there.",
-        "18:30 — Swim or run at Barceloneta beach; the water's ~22°C through October.",
+        "18:30 — Swim or run at Barceloneta beach; the water's ~72°F through October.",
         "21:30 — Late dinner, tapas crawl; the city doesn't really eat until 9."] },
     spring: { who: "Diego, IR major, spring semester",
       quote: "Spring is orange-blossom air and the Mediterranean turning swimmable again right as finals loom.",
@@ -22,7 +22,7 @@ export const TESTI = {
         "10:00 — Short class block — summer schedules are compressed.",
         "14:00 — Hide from the heat; long lunch, then genuinely everyone slows down.",
         "19:00 — City comes back to life as it cools; markets and plazas fill.",
-        "22:00 — Dinner outside, 28°C and pleasant, music somewhere nearby.",
+        "22:00 — Dinner outside, 82°F and pleasant, music somewhere nearby.",
         "00:30 — Walk home along streets still full of people."] } },
 };
 

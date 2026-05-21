@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
+import { TileBgPhoto } from "./TileBgPhoto.jsx";
 
 // 3D ring carousel of continent cards. Pure CSS 3D (no WebGL/CDN).
 // Rotates CONTINUOUSLY and smoothly via requestAnimationFrame — cards flow
@@ -115,8 +116,9 @@ export function Coverflow({ items, onPick, grads }) {
                 boxShadow: "0 24px 56px -22px rgba(60,40,110,.45)",
                 border: "1px solid rgba(255,255,255,.5)",
               }}>
+              <TileBgPhoto query={c.photoQ} />
               <div style={{ position: "absolute", inset: 0,
-                background: "linear-gradient(180deg,rgba(0,0,0,.06) 0%,transparent 35%,rgba(0,0,0,.55) 100%)" }} />
+                background: "linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,.05) 35%,rgba(0,0,0,.7) 100%)" }} />
               <div style={{ position: "absolute", top: 22, left: 22,
                 width: 46, height: 46, borderRadius: 14, background: "rgba(255,255,255,.22)",
                 backdropFilter: "blur(4px)", display: "grid", placeItems: "center" }}>

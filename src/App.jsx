@@ -16,6 +16,7 @@ import { Nav } from "./components/Nav.jsx";
 
 import { Hero } from "./steps/Hero.jsx";
 import { MajorStep } from "./steps/MajorStep.jsx";
+import { CourseStep } from "./steps/CourseStep.jsx";
 import { ProfileStep } from "./steps/ProfileStep.jsx";
 import { ContinentStep, CONT_GRAD } from "./steps/ContinentStep.jsx";
 import { SchoolStep } from "./steps/SchoolStep.jsx";
@@ -25,21 +26,24 @@ import { Dashboard } from "./steps/Dashboard.jsx";
 
 export default function App() {
   const [step, setStep] = useState("hero");
-  const STEP_ORDER = ["hero", "school", "major", "profile", "continent", "images", "destinations", "dashboard"];
+  const STEP_ORDER = ["hero", "school", "major", "profile", "course", "continent", "images", "destinations", "dashboard"];
   const STEP_META = {
     school: { label: "Pick your college", n: "Step 1", grad: G.campus },
     major: { label: "Choose your major", n: "Step 2", grad: G.cafe },
     profile: { label: "Sharpen the ranking", n: "Optional", grad: G.nordic },
-    continent: { label: "Choose your region", n: "Step 3", grad: G.beach },
-    images: { label: "Find your vibe", n: "Step 4", grad: G.neon },
-    destinations: { label: "See the cities", n: "Step 5", grad: G.cobble },
-    dashboard: { label: "Your trip, season by season", n: "Step 6", grad: G.market },
+    course: { label: "Course credit", n: "Step 3", grad: G.cafe },
+    continent: { label: "Choose your region", n: "Step 4", grad: G.beach },
+    images: { label: "Find your vibe", n: "Step 5", grad: G.neon },
+    destinations: { label: "See the cities", n: "Step 6", grad: G.cobble },
+    dashboard: { label: "Your trip, season by season", n: "Step 7", grad: G.market },
   };
   const prevStepRef = useRef("hero");
   const goingBack = STEP_ORDER.indexOf(step) < STEP_ORDER.indexOf(prevStepRef.current);
   useEffect(() => { prevStepRef.current = step; }, [step]);
   const [school, setSchool] = useState("");
   const [major, setMajor] = useState(null);
+  const [sequence, setSequence] = useState("");
+  const [courseReq, setCourseReq] = useState(null);
   const [query, setQuery] = useState("");
   // Mirrors the school-step dropdown's open state so the page footer can hide
   // while the dropdown is showing. SchoolStep owns the real state.
@@ -112,6 +116,9 @@ export default function App() {
       if (name) setQuery(name);
     }
     const mj = params.get("major"); if (mj) setMajor(mj);
+    const sq = params.get("seq"); if (sq) setSequence(sq);
+    const crT = params.get("creqT");
+    if (crT) setCourseReq({ types: crT.split(",") });
     const g = params.get("gpa"); if (g) { const n = parseFloat(g); if (Number.isFinite(n)) setGpa(n); }
     const tp = params.get("term"); if (tp) setTermPref(tp);
     const lp = params.get("lang"); if (lp) {
@@ -147,6 +154,8 @@ export default function App() {
     p.set("step", step);
     if (school) p.set("school", school);
     if (major) p.set("major", major);
+    if (sequence) p.set("seq", sequence);
+    if (courseReq?.types?.length) p.set("creqT", courseReq.types.join(","));
     if (gpa != null) p.set("gpa", String(gpa));
     if (termPref) p.set("term", termPref);
     if (langProf.length) p.set("lang", langProf.map((l) => `${l.language}:${l.level}`).join(","));
@@ -154,7 +163,7 @@ export default function App() {
     if (destKey) p.set("vibe", destKey);
     if (picked?.city) p.set("city", picked.city);
     window.history.replaceState(null, "", `${base}#${p.toString()}`);
-  }, [step, school, major, gpa, termPref, langProf, continent, destKey, picked]);
+  }, [step, school, major, sequence, courseReq, gpa, termPref, langProf, continent, destKey, picked]);
 
   const schoolObj = SCHOOLS.find((s) => s.id === school);
   const contLabel = CONTINENTS.find((c) => c.id === continent)?.label;
@@ -225,7 +234,7 @@ export default function App() {
     return src.slice(0, 3).map((x) => x.city).join(" · ");
   };
   const choose = (dd) => { setPicked(dd); setSemTab("fall"); setDayOpen(false); setCostOpen(false); setVisaOpen(false); setDashTab("overview"); setStep("dashboard"); };
-  const restart = () => { setStep("hero"); setSchool(""); setMajor(null); setGpa(null); setTermPref(null); setLangProf([]); setQuery(""); setContinent(null); setSelected([]); setDestKey(null); setPicked(null); setChatInput(""); setChatNote(""); window.scrollTo({ top: 0, behavior: "auto" }); };
+  const restart = () => { setStep("hero"); setSchool(""); setMajor(null); setSequence(""); setCourseReq(null); setGpa(null); setTermPref(null); setLangProf([]); setQuery(""); setContinent(null); setSelected([]); setDestKey(null); setPicked(null); setChatInput(""); setChatNote(""); window.scrollTo({ top: 0, behavior: "auto" }); };
 
   const testiFor = (city, clim, sem) => (TESTI[city] || GEN_TESTI(city, clim))[sem];
 
@@ -243,7 +252,9 @@ export default function App() {
         />
       )}
 
-      {s === "major" && <MajorStep major={major} setMajor={setMajor} setStep={setStep} />}
+      {s === "major" && <MajorStep major={major} setMajor={setMajor} sequence={sequence} setSequence={setSequence} setStep={setStep} />}
+
+      {s === "course" && <CourseStep courseReq={courseReq} setCourseReq={setCourseReq} setStep={setStep} />}
 
       {s === "profile" && (
         <ProfileStep
@@ -260,7 +271,7 @@ export default function App() {
         <VibeStep
           selected={selected} toggleVibe={toggleVibe}
           setStep={setStep} findFromSelected={findFromSelected}
-          contGrad={contGrad} contLabel={contLabel} schoolObj={schoolObj}
+          contGrad={contGrad} contLabel={contLabel} continent={continent} schoolObj={schoolObj}
           chatInput={chatInput} setChatInput={setChatInput}
           chatNote={chatNote} setChatNote={setChatNote} submitChat={submitChat}
           cityPreview={cityPreview}
@@ -278,7 +289,7 @@ export default function App() {
 
       {s === "dashboard" && picked && (
         <Dashboard
-          picked={picked} school={school} major={major} schoolObj={schoolObj}
+          picked={picked} school={school} major={major} courseReq={courseReq} schoolObj={schoolObj}
           semTab={semTab} setSemTab={setSemTab} setDayOpen={setDayOpen}
           dashTab={dashTab} setDashTab={setDashTab}
           costOpen={costOpen} setCostOpen={setCostOpen}

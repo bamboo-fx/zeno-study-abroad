@@ -5,22 +5,47 @@ import {
 import { G } from "../theme/gradients.js";
 
 export const VIBES = [
-  { id: "neon", label: "Neon City Nights", sub: "Electric, fast, futuristic", icon: Moon, grad: G.neon },
-  { id: "cobble", label: "Old-World Cobblestone", sub: "Historic, romantic", icon: Building2, grad: G.cobble },
-  { id: "beach", label: "Coastal Sun", sub: "Salt air, slow mornings", icon: Waves, grad: G.beach },
-  { id: "nordic", label: "Minimalist Calm", sub: "Quiet, clean, focused", icon: BookOpen, grad: G.nordic },
-  { id: "alpine", label: "Mountain & Nature", sub: "Peaks, trails, fresh air", icon: Mountain, grad: G.alpine },
-  { id: "market", label: "Bustling Markets", sub: "Spice, color, energy", icon: Utensils, grad: G.market },
-  { id: "campus", label: "Storied Campus", sub: "Ivy, history, ambition", icon: GraduationCap, grad: G.campus },
-  { id: "cafe", label: "Cozy Café Culture", sub: "Warm, bookish, lingering", icon: Coffee, grad: G.cafe },
+  { id: "neon", label: "Neon City Nights", sub: "Electric, fast, futuristic", icon: Moon, grad: G.neon, photoQ: "Shibuya Crossing" },
+  { id: "cobble", label: "Old-World Cobblestone", sub: "Historic, romantic", icon: Building2, grad: G.cobble, photoQ: "Prague" },
+  { id: "beach", label: "Coastal Sun", sub: "Salt air, slow mornings", icon: Waves, grad: G.beach, photoQ: "Bondi Beach" },
+  { id: "nordic", label: "Minimalist Calm", sub: "Quiet, clean, focused", icon: BookOpen, grad: G.nordic, photoQ: "Nyhavn" },
+  { id: "alpine", label: "Mountain & Nature", sub: "Peaks, trails, fresh air", icon: Mountain, grad: G.alpine, photoQ: "Matterhorn" },
+  { id: "market", label: "Bustling Markets", sub: "Spice, color, energy", icon: Utensils, grad: G.market, photoQ: "Marrakesh" },
+  { id: "campus", label: "Storied Campus", sub: "Ivy, history, ambition", icon: GraduationCap, grad: G.campus, photoQ: "Trinity College, Cambridge" },
+  { id: "cafe", label: "Cozy Café Culture", sub: "Warm, bookish, lingering", icon: Coffee, grad: G.cafe, photoQ: "Paris" },
 ];
 
 export const CONTINENTS = [
-  { id: "europe", label: "Europe", sub: "UK, France, Nordics, Spain…", icon: Building2 },
-  { id: "asia", label: "Asia", sub: "Japan, Korea, Vietnam…", icon: Moon },
-  { id: "oceania", label: "Oceania", sub: "Australia, New Zealand", icon: Waves },
-  { id: "americas", label: "Americas", sub: "Latin America & US", icon: GraduationCap },
+  { id: "europe", label: "Europe", sub: "UK, France, Nordics, Spain…", icon: Building2, photoQ: "Prague" },
+  { id: "asia", label: "Asia", sub: "Japan, Korea, Vietnam…", icon: Moon, photoQ: "Great Wall of China" },
+  { id: "oceania", label: "Oceania", sub: "Australia, New Zealand", icon: Waves, photoQ: "Sydney Opera House" },
+  { id: "americas", label: "Americas", sub: "Latin America & US", icon: GraduationCap, photoQ: "Rio de Janeiro" },
 ];
+
+// Region-specific imagery per vibe. Falls back to VIBES[i].photoQ when the
+// continent is "any" or missing.
+export const VIBE_PHOTO_BY_REGION = {
+  europe: {
+    neon: "Berlin", cobble: "Prague", beach: "Barcelona",
+    nordic: "Nyhavn", alpine: "Matterhorn", market: "Marrakesh",
+    campus: "Trinity College, Cambridge", cafe: "Paris",
+  },
+  asia: {
+    neon: "Shibuya Crossing", cobble: "Kyoto", beach: "Bali",
+    nordic: "Osaka", alpine: "Mount Fuji", market: "Bangkok",
+    campus: "Yasuda Auditorium", cafe: "Hanoi",
+  },
+  oceania: {
+    neon: "Sydney", cobble: "Christchurch", beach: "Bondi Beach",
+    nordic: "Wellington", alpine: "Queenstown", market: "Melbourne",
+    campus: "Main Quadrangle, University of Sydney", cafe: "Melbourne",
+  },
+  americas: {
+    neon: "Times Square", cobble: "Cusco", beach: "Rio de Janeiro",
+    nordic: "Montevideo", alpine: "Torres del Paine", market: "Mexico City",
+    campus: "Nassau Hall", cafe: "Buenos Aires",
+  },
+};
 
 // Major → academic focus. Drives a best-fit weighting on programs.
 // NOTE: this is a designed heuristic, not official "your major can only go here" data.

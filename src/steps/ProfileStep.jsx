@@ -171,10 +171,10 @@ export function ProfileStep({
         )}
       </Card>
 
-      <button onClick={() => setStep("continent")} className="pressable" style={{ ...CTA, width: "100%", marginTop: 10 }}>
+      <button onClick={() => setStep("course")} className="pressable" style={{ ...CTA, width: "100%", marginTop: 10 }}>
         <Check style={{ width: 17, height: 17 }} /> Continue
       </button>
-      <button onClick={() => setStep("continent")} className="pressable"
+      <button onClick={() => setStep("course")} className="pressable"
         style={{
           width: "100%", marginTop: 10,
           fontSize: 13, color: "#9a90b8", background: "none", border: "none", cursor: "pointer",

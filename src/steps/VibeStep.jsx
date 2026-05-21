@@ -1,17 +1,20 @@
 import React from "react";
 import { ChevronLeft, Globe, MapPin, Sparkles, Send, BadgeCheck, ArrowRight, Check } from "lucide-react";
 
-import { VIBES } from "../data/options.js";
+import { VIBES, VIBE_PHOTO_BY_REGION } from "../data/options.js";
 import { INK, CTA } from "../theme/colors.js";
 import { Wrap } from "../components/Wrap.jsx";
 import { Tilt } from "../components/Tilt.jsx";
+import { TileBgPhoto } from "../components/TileBgPhoto.jsx";
 
 export function VibeStep({
   selected, toggleVibe, setStep, findFromSelected,
-  contGrad, contLabel, schoolObj,
+  contGrad, contLabel, continent, schoolObj,
   chatInput, setChatInput, chatNote, setChatNote, submitChat,
   cityPreview,
 }) {
+  const regionMap = (continent && continent !== "any") ? (VIBE_PHOTO_BY_REGION[continent] || {}) : {};
+  const photoFor = (v) => regionMap[v.id] || v.photoQ;
   return (
     <Wrap>
       <button onClick={() => setStep("continent")} className="pressable"
@@ -60,7 +63,8 @@ export function VibeStep({
               <div style={{ position: "relative", height: 148, borderRadius: 18, overflow: "hidden", cursor: "pointer",
                 boxShadow: on ? "0 0 0 3px #4ea8ff, 0 20px 38px -20px rgba(0,0,0,.55)" : "0 16px 32px -20px rgba(0,0,0,.5)" }}>
                 <div style={{ position: "absolute", inset: 0, background: v.grad }} />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(0,0,0,.12) 0%,transparent 38%,rgba(0,0,0,.66) 100%)" }} />
+                <TileBgPhoto query={photoFor(v)} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(0,0,0,.22) 0%,rgba(0,0,0,.05) 38%,rgba(0,0,0,.72) 100%)" }} />
                 <Icon style={{ position: "absolute", top: 13, left: 13, width: 21, height: 21, color: "rgba(255,255,255,.92)" }} />
                 {on && <div style={{ position: "absolute", top: 11, right: 11, width: 24, height: 24, borderRadius: 999,
                   background: "linear-gradient(135deg,#4ea8ff,#9d7bff)", display: "grid", placeItems: "center" }}><Check style={{ width: 14, height: 14, color: "#06121f" }} strokeWidth={3} /></div>}

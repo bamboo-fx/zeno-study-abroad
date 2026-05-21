@@ -5,6 +5,7 @@ import { climOf, continentOf } from "./regions.js";
 import { SCORE_MAP } from "./options.js";
 
 export const TERRADOTTA_SUBDOMAINS = {
+  cmc: "cmc-ge",
   pomona: "pomona-sa",
   pitzer: "pitzer-sa",
   scripps: "scrippscollege-sa",
@@ -41,19 +42,36 @@ function vibesFor(text, city) {
   return out;
 }
 
-function normalize(p) {
-  const text = [p.name, p.city, p.country, p.region].join(" ");
+function normalize(p, editorial) {
+  // Subjects (from hydrate) feed into vibe scoring — programs about "Marine
+  // Biology" or "Tropical Ecology" should lean beach/alpine rather than
+  // whatever city seed says.
+  const subjectsText = Array.isArray(p.subjectAreas) ? p.subjectAreas.join(" ") : "";
+  const text = [p.name, p.city, p.country, p.region, subjectsText].join(" ");
   const vibes = vibesFor(text, p.city);
+  const ed = editorial && editorial.get(`${p.city}|${p.country}`);
   return {
     id: `td-${p.id}`,
     city: p.city,
     country: p.country,
-    desc: p.name, // Terra Dotta search results don't include a description column
+    desc: (ed && ed.desc) || p.name,
     highlight: p.name,
-    grad: gradFor(p.city, vibes[0]),
-    clim: climOf(p.country),
-    photo: null, // Terra Dotta doesn't expose program images via search; Phase 3 adds Wikipedia fallback
+    grad: (ed && ed.grad) || gradFor(p.city, vibes[0]),
+    clim: (ed && ed.clim) || climOf(p.country),
+    photo: null,
     vibes,
+    // ── Hydrated fields (present when the brochure REST endpoint responded).
+    // Always pass arrays/null even when missing so downstream callers can
+    // treat them as data, not "undefined means anything goes".
+    subjects:    Array.isArray(p.subjectAreas) ? p.subjectAreas : [],
+    language:    Array.isArray(p.language)     ? p.language     : [],
+    terms:       Array.isArray(p.terms)        ? p.terms        : [],
+    classLevel:  Array.isArray(p.classLevel)   ? p.classLevel   : [],
+    programType: Array.isArray(p.programType)  ? p.programType  : [],
+    housing:     Array.isArray(p.housing)      ? p.housing      : [],
+    languageLevel: Array.isArray(p.languageLevel) ? p.languageLevel : [],
+    minGpa:      typeof p.minGpa === "number"  ? p.minGpa       : null,
+    detailOk:    p.detailOk !== false,
   };
 }
 
@@ -70,14 +88,33 @@ function group(flat) {
   return out;
 }
 
-export async function fetchTerraDottaPrograms(subdomain) {
-  const key = `td:${subdomain}`;
+// Flatten a curated school snapshot into a city|country → editorial lookup.
+// First entry wins (stable across vibes — they share the same city flavor).
+export function buildEditorialIndex(schoolData) {
+  const idx = new Map();
+  if (!schoolData) return idx;
+  for (const vibe of Object.keys(schoolData)) {
+    const buckets = schoolData[vibe] || {};
+    for (const cont of Object.keys(buckets)) {
+      for (const p of buckets[cont] || []) {
+        const key = `${p.city}|${p.country}`;
+        if (!idx.has(key)) idx.set(key, { desc: p.desc, grad: p.grad, clim: p.clim });
+      }
+    }
+  }
+  return idx;
+}
+
+export async function fetchTerraDottaPrograms(subdomain, editorial) {
+  // Cache key bumps when we change the shape (now hydrated). Editorial presence
+  // is also part of the key so dev toggles don't serve stale.
+  const key = `td2:${subdomain}:${editorial && editorial.size ? "ed" : "raw"}`;
   const cached = sessionStorage.getItem(key);
   if (cached) { try { return JSON.parse(cached); } catch {} }
-  const r = await fetch(`/api/terradotta?subdomain=${encodeURIComponent(subdomain)}`);
+  const r = await fetch(`/api/terradotta?subdomain=${encodeURIComponent(subdomain)}&hydrate=true`);
   if (!r.ok) throw new Error(`Terra Dotta proxy: HTTP ${r.status}`);
   const j = await r.json();
-  const grouped = group((j.programs || []).map(normalize));
+  const grouped = group((j.programs || []).map((p) => normalize(p, editorial)));
   try { sessionStorage.setItem(key, JSON.stringify(grouped)); } catch {}
   return grouped;
 }

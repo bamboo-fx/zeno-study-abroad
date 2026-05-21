@@ -31,10 +31,10 @@ export function CourseStep({ courseReq, setCourseReq, setStep }) {
   return (
     <Wrap narrow>
       <StepHead
-        kicker={<><BookOpen style={{ width: 13, height: 13 }} /> Step 3</>}
+        kicker={<><BookOpen style={{ width: 13, height: 13 }} /> Step 4</>}
         title="What are you trying to fulfill abroad?"
         sub="Pick any that apply — you can stack a GE, a major requirement, and a free elective."
-        back={() => setStep("major")}
+        back={() => setStep("profile")}
       />
 
       <div style={{ display: "grid", gap: 10, maxWidth: 620, margin: "0 auto" }}>

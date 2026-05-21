@@ -22,7 +22,8 @@ export function MajorStep({ major, setMajor, sequence, setSequence, setStep }) {
           const on = major === mj.id; const Icon = mj.icon;
           return (
             <Tilt key={mj.id} max={10} className="fl" style={{ animationDelay: `${.1 + i * .035}s`, borderRadius: 18 }}
-              onClick={() => setMajor(mj.id)}>
+              onClick={() => { setMajor(mj.id); setStep("profile"); }}>
+
               <div style={{ position: "relative", minHeight: 132, borderRadius: 18, overflow: "hidden", cursor: "pointer",
                 background: "#fff", border: on ? "2px solid #7c4dff" : "1px solid #ece7f7",
                 boxShadow: on ? "0 24px 44px -22px rgba(124,77,255,.5)" : "0 16px 32px -22px rgba(60,40,110,.4)",

@@ -5,7 +5,11 @@ import { FONTS } from "./theme/fonts.jsx";
 
 import { VIBES, CONTINENTS, SCHOOLS, SCORE_MAP } from "./data/options.js";
 import { TESTI, GEN_TESTI } from "./data/testimonials.js";
-import { CMC, DATA, loadPrograms } from "./data/programs.js";
+import { DATA, loadPrograms } from "./data/programs.js";
+import { fitScore } from "./data/fit.js";
+import { COURSE_CREDIT } from "./data/country.js";
+
+const EMPTY_SRC = { neon:{}, cobble:{}, beach:{}, nordic:{}, cafe:{}, alpine:{}, market:{}, campus:{} };
 
 import { Canvas } from "./components/Canvas.jsx";
 import { Nav } from "./components/Nav.jsx";
@@ -13,6 +17,7 @@ import { Nav } from "./components/Nav.jsx";
 import { Hero } from "./steps/Hero.jsx";
 import { MajorStep } from "./steps/MajorStep.jsx";
 import { CourseStep } from "./steps/CourseStep.jsx";
+import { ProfileStep } from "./steps/ProfileStep.jsx";
 import { ContinentStep, CONT_GRAD } from "./steps/ContinentStep.jsx";
 import { SchoolStep } from "./steps/SchoolStep.jsx";
 import { VibeStep } from "./steps/VibeStep.jsx";
@@ -21,10 +26,11 @@ import { Dashboard } from "./steps/Dashboard.jsx";
 
 export default function App() {
   const [step, setStep] = useState("hero");
-  const STEP_ORDER = ["hero", "school", "major", "course", "continent", "images", "destinations", "dashboard"];
+  const STEP_ORDER = ["hero", "school", "major", "profile", "course", "continent", "images", "destinations", "dashboard"];
   const STEP_META = {
     school: { label: "Pick your college", n: "Step 1", grad: G.campus },
     major: { label: "Choose your major", n: "Step 2", grad: G.cafe },
+    profile: { label: "Sharpen the ranking", n: "Optional", grad: G.nordic },
     course: { label: "Course credit", n: "Step 3", grad: G.cafe },
     continent: { label: "Choose your region", n: "Step 4", grad: G.beach },
     images: { label: "Find your vibe", n: "Step 5", grad: G.neon },
@@ -42,6 +48,9 @@ export default function App() {
   // Mirrors the school-step dropdown's open state so the page footer can hide
   // while the dropdown is showing. SchoolStep owns the real state.
   const [schoolDropdownOpen, setSchoolDropdownOpen] = useState(false);
+  const [gpa, setGpa] = useState(null);
+  const [termPref, setTermPref] = useState(null);
+  const [langProf, setLangProf] = useState([]);
   const [continent, setContinent] = useState(null);
   const [selected, setSelected] = useState([]);
   const [chatInput, setChatInput] = useState("");
@@ -78,7 +87,7 @@ export default function App() {
     setSrcLoading(true);
     loadPrograms(school).then((p) => {
       if (alive) { setSrcPrograms(p); setSrcLoading(false); }
-    }).catch(() => { if (alive) { setSrcPrograms(DATA[school] || CMC); setSrcLoading(false); } });
+    }).catch(() => { if (alive) { setSrcPrograms(DATA[school] || EMPTY_SRC); setSrcLoading(false); } });
     return () => { alive = false; };
   }, [school]);
 
@@ -110,6 +119,15 @@ export default function App() {
     const sq = params.get("seq"); if (sq) setSequence(sq);
     const crT = params.get("creqT");
     if (crT) setCourseReq({ types: crT.split(",") });
+    const g = params.get("gpa"); if (g) { const n = parseFloat(g); if (Number.isFinite(n)) setGpa(n); }
+    const tp = params.get("term"); if (tp) setTermPref(tp);
+    const lp = params.get("lang"); if (lp) {
+      try {
+        const parsed = lp.split(",").map((s) => { const [language, level] = s.split(":"); return { language, level }; })
+                         .filter((x) => x.language && x.level);
+        if (parsed.length) setLangProf(parsed.slice(0, 3));
+      } catch {}
+    }
     const cont = params.get("continent"); if (cont) setContinent(cont);
     const vibe = params.get("vibe"); if (vibe) { setSelected([vibe]); setDestKey(vibe); }
     const city = params.get("city"); if (city) pendingCityRef.current = city;
@@ -138,11 +156,14 @@ export default function App() {
     if (major) p.set("major", major);
     if (sequence) p.set("seq", sequence);
     if (courseReq?.types?.length) p.set("creqT", courseReq.types.join(","));
+    if (gpa != null) p.set("gpa", String(gpa));
+    if (termPref) p.set("term", termPref);
+    if (langProf.length) p.set("lang", langProf.map((l) => `${l.language}:${l.level}`).join(","));
     if (continent) p.set("continent", continent);
     if (destKey) p.set("vibe", destKey);
     if (picked?.city) p.set("city", picked.city);
     window.history.replaceState(null, "", `${base}#${p.toString()}`);
-  }, [step, school, major, sequence, courseReq, continent, destKey, picked]);
+  }, [step, school, major, sequence, courseReq, gpa, termPref, langProf, continent, destKey, picked]);
 
   const schoolObj = SCHOOLS.find((s) => s.id === school);
   const contLabel = CONTINENTS.find((c) => c.id === continent)?.label;
@@ -166,7 +187,7 @@ export default function App() {
     setTimeout(() => goToDest(bestId), 850);
   };
 
-  const SRC = srcPrograms || (school ? (DATA[school] || CMC) : CMC);
+  const SRC = srcPrograms || (school ? (DATA[school] || EMPTY_SRC) : EMPTY_SRC);
   const activeCont = continent || null;
   const VIBE_KEYS = ["neon","cobble","beach","nordic","cafe","alpine","market","campus"];
   const aggList = () => {
@@ -188,33 +209,20 @@ export default function App() {
   };
   const chosen = destForVibe(destKey);
   const primaryVibe = VIBES.find((v) => v.id === destKey);
-  // Designed heuristic: which cities tend to suit which academic focus.
-  // Not official eligibility — a fit nudge so relevant programs rank first.
-  const MAJOR_FIT = {
-    business: ["London", "Hong Kong", "Geneva", "Madrid", "Shanghai"],
-    stem: ["Stockholm", "Copenhagen", "Tokyo", "Edinburgh"],
-    cs: ["London", "Berlin", "Stockholm", "Tokyo", "Seoul", "Amsterdam"],
-    social: ["Geneva", "London", "Vienna", "Paris", "Cape Town"],
-    humanities: ["Rome", "Florence", "Oxford", "Cambridge", "Edinburgh", "Athens", "Paris", "Prague", "St Andrews"],
-    arts: ["Paris", "Florence", "Berlin", "Barcelona", "Vienna", "Copenhagen", "Tokyo", "London"],
-    language: ["Madrid", "Seville", "Salamanca", "Paris", "Buenos Aires", "Tokyo", "Seoul", "Berlin", "Florence"],
-    open: [],
-  };
-  const majorBonus = (dd) => {
-    if (!major || major === "open") return 0;
-    const list = MAJOR_FIT[major] || [];
-    return list.some((c) => dd.city && dd.city.toLowerCase().includes(c.toLowerCase())) ? 9 : -3;
-  };
-  // Deterministic "match %" per destination so it's stable across renders.
-  const matchScore = (dd, i) => {
-    const s = (dd.city + dd.country + (destKey || "") + (major || "")).split("")
-      .reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
-    // base 72–98, then a major-fit nudge
-    return 98 - (s % 17) - i * 2 + majorBonus(dd);
-  };
+  // Real matchScore — see src/data/fit.js for the weighted-sum formula. The
+  // user object packages everything the fit function needs; eligible=false
+  // programs are kept in the ranking (muted in the UI) so the user can see
+  // why they were excluded rather than wondering where the program went.
+  const fitUser = { major, school, gpa, termPref, langProf };
   const ranked = chosen
-    .map((dd, i) => ({ dd, m: Math.max(58, Math.min(99, matchScore(dd, i))) }))
-    .sort((a, b) => b.m - a.m);
+    .map((dd) => ({ dd, fit: fitScore(dd, fitUser, COURSE_CREDIT) }))
+    .sort((a, b) => {
+      // Eligible always above ineligible. Then total, then subject tie-break.
+      if (a.fit.eligible !== b.fit.eligible) return a.fit.eligible ? -1 : 1;
+      if (b.fit.total !== a.fit.total) return b.fit.total - a.fit.total;
+      return b.fit.tieBreak - a.fit.tieBreak;
+    })
+    .map((x) => ({ ...x, m: x.fit.total }));
   const cityPreview = (vid) => {
     if (vid === "surprise") {
       const a = aggList();
@@ -226,7 +234,7 @@ export default function App() {
     return src.slice(0, 3).map((x) => x.city).join(" · ");
   };
   const choose = (dd) => { setPicked(dd); setSemTab("fall"); setDayOpen(false); setCostOpen(false); setVisaOpen(false); setDashTab("overview"); setStep("dashboard"); };
-  const restart = () => { setStep("hero"); setSchool(""); setMajor(null); setSequence(""); setCourseReq(null); setQuery(""); setContinent(null); setSelected([]); setDestKey(null); setPicked(null); setChatInput(""); setChatNote(""); window.scrollTo({ top: 0, behavior: "auto" }); };
+  const restart = () => { setStep("hero"); setSchool(""); setMajor(null); setSequence(""); setCourseReq(null); setGpa(null); setTermPref(null); setLangProf([]); setQuery(""); setContinent(null); setSelected([]); setDestKey(null); setPicked(null); setChatInput(""); setChatNote(""); window.scrollTo({ top: 0, behavior: "auto" }); };
 
   const testiFor = (city, clim, sem) => (TESTI[city] || GEN_TESTI(city, clim))[sem];
 
@@ -247,6 +255,15 @@ export default function App() {
       {s === "major" && <MajorStep major={major} setMajor={setMajor} sequence={sequence} setSequence={setSequence} setStep={setStep} />}
 
       {s === "course" && <CourseStep courseReq={courseReq} setCourseReq={setCourseReq} setStep={setStep} />}
+
+      {s === "profile" && (
+        <ProfileStep
+          gpa={gpa} setGpa={setGpa}
+          termPref={termPref} setTermPref={setTermPref}
+          langProf={langProf} setLangProf={setLangProf}
+          setStep={setStep}
+        />
+      )}
 
       {s === "continent" && <ContinentStep setContinent={setContinent} setSelected={setSelected} setStep={setStep} />}
 
@@ -334,7 +351,7 @@ export default function App() {
       {!(step === "school" && schoolDropdownOpen) && (
         <div style={{ position: "relative", zIndex: 1, textAlign: "center", padding: "10px 0 50px",
           color: "#6b82a4", fontSize: 12 }}>
-          Peel · honest by design — live programs from each school's official portal · climate from Open-Meteo · photos from program portals & Wikipedia
+          Peel · honest by design — live programs from each school's official portal · match % derived from subject, language, term, vibe, and credit-history signals · climate from Open-Meteo · photos from program portals & Wikipedia
         </div>
       )}
     </Canvas>

@@ -52,30 +52,30 @@ function bucketSeasons(daily) {
 function describe(season, stats, hemisphere) {
   if (!stats) return null;
   const { avgMax, avgMin, avgT, rainyRatio } = stats;
-  const t = `${Math.round(avgMin)}–${Math.round(avgMax)}°C`;
+  const t = `${Math.round(avgMin)}–${Math.round(avgMax)}°F`;
 
-  // Pick icon
+  // Pick icon (thresholds in °F)
   let icon, w, note;
-  if (avgT < 0 || (avgT < 5 && rainyRatio > 0.3)) { icon = CloudSnow; w = "Cold, often snowy"; note = "Pack serious cold-weather layers."; }
-  else if (rainyRatio > 0.5)                      { icon = CloudRain; w = `${avgT < 12 ? "Cool" : avgT < 20 ? "Mild" : "Warm"} & frequently wet`; note = "Bring a waterproof layer."; }
-  else if (rainyRatio > 0.35)                     { icon = Cloud;     w = `${avgT < 12 ? "Cool" : avgT < 20 ? "Mild" : "Warm"}, often overcast`; note = "Variable — sun and rain in a day."; }
-  else if (avgT >= 25)                            { icon = Sun;       w = "Hot & mostly dry"; note = "Plan for strong midday heat."; }
-  else if (avgT >= 15)                            { icon = Sun;       w = "Warm & sunny"; note = "Pleasant most days."; }
-  else if (avgT >= 5)                             { icon = Sun;       w = "Cool & bright"; note = "Layer up; light most days."; }
-  else                                            { icon = Snowflake; w = "Cold & dry"; note = "Bring real winter gear."; }
+  if (avgT < 32 || (avgT < 41 && rainyRatio > 0.3)) { icon = CloudSnow; w = "Cold, often snowy"; note = "Pack serious cold-weather layers."; }
+  else if (rainyRatio > 0.5)                        { icon = CloudRain; w = `${avgT < 54 ? "Cool" : avgT < 68 ? "Mild" : "Warm"} & frequently wet`; note = "Bring a waterproof layer."; }
+  else if (rainyRatio > 0.35)                       { icon = Cloud;     w = `${avgT < 54 ? "Cool" : avgT < 68 ? "Mild" : "Warm"}, often overcast`; note = "Variable — sun and rain in a day."; }
+  else if (avgT >= 77)                              { icon = Sun;       w = "Hot & mostly dry"; note = "Plan for strong midday heat."; }
+  else if (avgT >= 59)                              { icon = Sun;       w = "Warm & sunny"; note = "Pleasant most days."; }
+  else if (avgT >= 41)                              { icon = Sun;       w = "Cool & bright"; note = "Layer up; light most days."; }
+  else                                              { icon = Snowflake; w = "Cold & dry"; note = "Bring real winter gear."; }
 
   // Editorial twist for canonical "fall foliage" / "blossom" seasons
-  if (season === "fall" && hemisphere === "N" && avgT >= 5 && avgT <= 16) { icon = Leaf; w = "Crisp, colorful foliage"; }
+  if (season === "fall" && hemisphere === "N" && avgT >= 41 && avgT <= 61) { icon = Leaf; w = "Crisp, colorful foliage"; }
   return { t, w, icon, note };
 }
 
 export async function fetchCityClim(city, country) {
-  const cacheKey = `clim:${city}|${country || ""}`;
+  const cacheKey = `climF:${city}|${country || ""}`;
   const cached = sessionStorage.getItem(cacheKey);
   if (cached) { try { return rehydrate(JSON.parse(cached)); } catch {} }
 
   const { lat, lon } = await geocode(city, country);
-  const url = `${ARCHIVE}?latitude=${lat}&longitude=${lon}&start_date=2020-01-01&end_date=2024-12-31&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=UTC`;
+  const url = `${ARCHIVE}?latitude=${lat}&longitude=${lon}&start_date=2020-01-01&end_date=2024-12-31&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=UTC&temperature_unit=fahrenheit`;
   const r = await fetch(url);
   if (!r.ok) throw new Error(`archive ${r.status}`);
   const j = await r.json();

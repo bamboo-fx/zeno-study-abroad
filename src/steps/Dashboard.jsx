@@ -2,12 +2,13 @@ import React from "react";
 import {
   ChevronLeft, ChevronDown, GraduationCap, AlertCircle, Check,
   Sparkles, Globe, Coffee, MapPin, Quote,
+  Languages, Train, Sun, CalendarClock,
 } from "lucide-react";
 
 import { SEMS, MAJORS } from "../data/options.js";
 import { CLIM } from "../data/climate.js";
 import { costInfo } from "../data/cost.js";
-import { countryProfile, visaGuide } from "../data/country.js";
+import { countryProfile, visaGuide, languageDifficulty, adjustmentNotes, transitInfo, applicationDeadline } from "../data/country.js";
 import { courseCredit } from "../data/courseCredit.js";
 
 import { CTA } from "../theme/colors.js";
@@ -15,8 +16,16 @@ import { Wrap } from "../components/Wrap.jsx";
 import { Tilt } from "../components/Tilt.jsx";
 import { Photo } from "../components/Photo.jsx";
 
+const REQ_LABELS = {
+  "major-req": "Major requirement",
+  "major-seq": "Major sequence / elective",
+  "ge": "GE requirement",
+  "language": "Language requirement",
+  "elective": "Free elective",
+};
+
 export function Dashboard({
-  picked, school, major, schoolObj,
+  picked, school, major, courseReq, schoolObj,
   semTab, setSemTab, setDayOpen,
   dashTab, setDashTab,
   costOpen, setCostOpen,
@@ -63,7 +72,7 @@ export function Dashboard({
             minHeight: 340, border: "1px solid #ece7f7",
             boxShadow: "0 50px 90px -34px rgba(60,40,110,.5), 0 8px 20px -12px rgba(60,40,110,.25)" }}>
             <div style={{ position: "absolute", inset: 0 }}>
-              <Photo city={picked.city} country={picked.country} grad={picked.grad} photo={picked.photo} h={340} round={0} hideLabel />
+              <Photo city={picked.city} country={picked.country} grad={picked.grad} photo={picked.photo} h={340} round={0} hideLabel cycle cycleMs={4500} />
             </div>
             <div style={{ position: "absolute", inset: 0,
               background: "linear-gradient(180deg, rgba(20,16,40,.15) 0%, rgba(20,16,40,.1) 38%, rgba(20,16,40,.78) 100%)" }} />
@@ -220,7 +229,79 @@ export function Dashboard({
         );
       })()}
 
-      {dashTab === "academics" && (() => {
+      {dashTab === "academics" && courseReq?.types?.length > 0 && (() => {
+        const types = courseReq.types;
+        const majorLabel = (MAJORS.find((x) => x.id === major) || {}).label || "your major";
+        return (
+          <Tilt max={4} className="bob" style={{ borderRadius: 26, marginBottom: 16 }}>
+          <div style={{ background: "#ffffff", overflow: "hidden", borderRadius: 26,
+            border: "1px solid #ece7f7",
+            boxShadow: "0 40px 70px -30px rgba(60,40,110,.4)", padding: "26px 30px 28px" }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: ".12em",
+              textTransform: "uppercase", color: "#b0a6c8", marginBottom: 8 }}>
+              Courses at {picked.city} · {majorLabel}
+            </div>
+            <div className="ser" style={{ fontSize: 22, fontWeight: 600, color: "#1c1830", marginBottom: 6 }}>
+              Courses that count toward what you picked
+            </div>
+            <p className="san" style={{ fontSize: 13.5, color: "#564d75", lineHeight: 1.55, marginBottom: 20 }}>
+              Each section below lists the courses at {picked.highlight} that have historically counted toward this kind of credit at {schoolObj?.name || "your school"}. Verify every course with your home department before enrolling.
+            </p>
+
+            <div style={{ display: "grid", gap: 18 }}>
+              {types.map((tid) => {
+                const label = REQ_LABELS[tid] || tid;
+                return (
+                  <section key={tid} style={{ border: "1px solid #ece7f7", borderRadius: 18,
+                    background: "#faf9fe", padding: "18px 20px" }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between",
+                      gap: 10, marginBottom: 14, flexWrap: "wrap" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                        <div style={{ width: 30, height: 30, borderRadius: 9, background: "#7c4dff",
+                          display: "grid", placeItems: "center" }}>
+                          <GraduationCap style={{ width: 16, height: 16, color: "#fff" }} />
+                        </div>
+                        <div>
+                          <div className="ser" style={{ fontSize: 16, fontWeight: 600, color: "#1c1830" }}>{label}</div>
+                          <div style={{ fontSize: 12, color: "#9a90b8", marginTop: 1 }}>
+                            Courses that fulfill {label.toLowerCase()}
+                          </div>
+                        </div>
+                      </div>
+                      <span className="san" style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: ".08em",
+                        textTransform: "uppercase", color: "#9a90b8" }}>Data pending</span>
+                    </div>
+
+                    <div style={{ display: "grid", gap: 2, borderTop: "1px solid #eee9f8" }}>
+                      {[1, 2, 3].map((k) => (
+                        <div key={k} style={{ display: "flex", gap: 14, padding: "14px 4px",
+                          alignItems: "center",
+                          borderBottom: k < 3 ? "1px solid #f4f1fb" : "none" }}>
+                          <div style={{ flex: 1 }}>
+                            <div style={{ height: 13, width: "38%", background: "#ece7f7", borderRadius: 6 }} />
+                            <div style={{ height: 11, width: "62%", background: "#f4f1fb",
+                              borderRadius: 6, marginTop: 8 }} />
+                          </div>
+                          <div style={{ height: 22, width: 90, background: "#ece7f7", borderRadius: 999 }} />
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                );
+              })}
+            </div>
+
+            <div style={{ display: "flex", gap: 8, alignItems: "flex-start", marginTop: 22,
+              paddingTop: 16, borderTop: "1px solid #f0ecf9", fontSize: 11.5, color: "#9a90b8" }}>
+              <AlertCircle style={{ width: 13, height: 13, color: "#9d6bff", flexShrink: 0, marginTop: 1 }} />
+              <span>Course rulings are issued by your home department based on the actual syllabus. This list surfaces likely fits — every course must still be confirmed in writing before it counts.</span>
+            </div>
+          </div>
+          </Tilt>
+        );
+      })()}
+
+      {dashTab === "academics" && !courseReq?.types?.length && (() => {
         const cc = courseCredit(picked.city, school, major);
         const majorLabel = (MAJORS.find((x) => x.id === major) || {}).label || "your major";
         const subjects = Array.isArray(picked.subjects) ? picked.subjects : [];
@@ -468,104 +549,216 @@ Best,
 
       {dashTab === "logistics" && (() => {
         const cp = countryProfile(picked.country);
+        const ld = languageDifficulty(picked.country);
+        const adj = adjustmentNotes(picked.country);
+        const tr = transitInfo(picked.country);
+        const dl = applicationDeadline(semTab);
+        const vg = visaGuide(picked.country);
+        // Derive a one-word safety chip from the country's safety blurb.
+        const safetyText = (cp.safety || "").toLowerCase();
+        const safety = /among the safest|one of the safest/i.test(cp.safety) ? { level: "Very safe", color: "#16a34a" }
+          : /caution|crime|varies|moderate/i.test(safetyText) ? { level: "Use caution", color: "#d97706" }
+          : { level: "Generally safe", color: "#16a34a" };
+        const checklistKey = `peel:checklist:${picked.city}|${semTab}`;
+        const DEFAULT_CHECKS = {
+          passport: false, visa: false, deadline: false, acceptance: false,
+          courseApproval: false, housing: false, insurance: false, flights: false,
+          emergency: false,
+        };
+        let initialChecks = DEFAULT_CHECKS;
+        try {
+          const raw = localStorage.getItem(checklistKey);
+          if (raw) initialChecks = { ...DEFAULT_CHECKS, ...JSON.parse(raw) };
+        } catch {}
+        const [checks, setChecks] = React.useState(initialChecks);
+        const [openSection, setOpenSection] = React.useState(null);
+        React.useEffect(() => {
+          try { localStorage.setItem(checklistKey, JSON.stringify(checks)); } catch {}
+        }, [checks, checklistKey]);
+        const toggleCheck = (k) => setChecks((c) => ({ ...c, [k]: !c[k] }));
+        const toggleSection = (s) => setOpenSection((o) => (o === s ? null : s));
+        const checklistItems = [
+          ["passport", "Passport valid 6+ months past return date", "Check expiration; renewals take ~6–10 weeks."],
+          ["visa", "Visa or residence permit confirmed", `${visaGuide(picked.country).type}. See the Visa section below for steps.`],
+          ["deadline", `Program application submitted (${dl.window})`, dl.note],
+          ["acceptance", "Acceptance / enrollment letter in hand", "Most consulates require this before scheduling your visa appointment."],
+          ["courseApproval", "Course-credit approval from home department", "Get rulings in writing — see the Courses tab."],
+          ["housing", "Housing confirmed (program or independent)", "Lock this in before booking flights — affects neighborhood + commute."],
+          ["insurance", "Health/travel insurance enrolled", "Check whether your home school's plan covers abroad, or buy a separate policy."],
+          ["flights", "Flights booked (refundable until visa approved)", "Don't pay non-refundable until visa is approved."],
+          ["emergency", "Emergency contacts saved (program, embassy, school)", "Program director, on-call line, nearest US embassy, home study-abroad office."],
+        ];
+        const completed = checklistItems.filter(([k]) => checks[k]).length;
         return (
           <Tilt max={5} className="bob" style={{ borderRadius: 24, marginBottom: 16 }}>
           <div style={{ background: "#ffffff", borderRadius: 24, border: "1px solid #ece7f7",
             boxShadow: "0 30px 56px -28px rgba(60,40,110,.4)", padding: "24px 28px" }}>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: ".12em",
               textTransform: "uppercase", color: "#b0a6c8", marginBottom: 16 }}>Before you go · {picked.country}</div>
-            <div style={{ display: "grid", gap: 18 }}>
-              <div style={{ display: "flex", gap: 13 }}>
-                <div style={{ width: 36, height: 36, borderRadius: 11, flexShrink: 0,
-                  background: "#f0ebfa", display: "grid", placeItems: "center" }}>
-                  <Check style={{ width: 17, height: 17, color: "#7c4dff" }} strokeWidth={2.5} />
-                </div>
+
+            <div style={{ background: "linear-gradient(135deg,#f7f3ff,#faf9fe)",
+              border: "1px solid #ece7f7", borderRadius: 18, padding: "18px 20px", marginBottom: 22 }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between",
+                gap: 10, marginBottom: 14, flexWrap: "wrap" }}>
                 <div>
-                  <div style={{ fontSize: 13.5, fontWeight: 700, color: "#1c1830", marginBottom: 3 }}>Safety — general orientation</div>
-                  <div className="san" style={{ fontSize: 13.5, color: "#564d75", lineHeight: 1.55 }}>{cp.safety}</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: ".12em",
+                    textTransform: "uppercase", color: "#b0a6c8", marginBottom: 4 }}>Pre-departure checklist</div>
+                  <div className="ser" style={{ fontSize: 18, fontWeight: 600, color: "#1c1830" }}>
+                    {completed}/{checklistItems.length} done · {dl.label}
+                  </div>
+                </div>
+                <div style={{ flex: "0 0 160px", height: 8, background: "#ece7f7", borderRadius: 999, overflow: "hidden" }}>
+                  <div style={{ height: "100%", width: `${(completed / checklistItems.length) * 100}%`,
+                    background: "linear-gradient(90deg,#9d7bff,#7c4dff)", transition: "width .35s" }} />
                 </div>
               </div>
-              <div>
-                <div onClick={() => setVisaOpen((o) => !o)} style={{ display: "flex", gap: 13, cursor: "pointer" }}>
-                  <div style={{ width: 36, height: 36, borderRadius: 11, flexShrink: 0,
-                    background: "#f0ebfa", display: "grid", placeItems: "center" }}>
-                    <GraduationCap style={{ width: 17, height: 17, color: "#7c4dff" }} />
+              <div style={{ display: "grid", gap: 2 }}>
+                {checklistItems.map(([k, label, hint], i) => {
+                  const on = checks[k];
+                  return (
+                    <button key={k} onClick={() => toggleCheck(k)} className="pressable"
+                      style={{ display: "flex", gap: 13, padding: "12px 4px", alignItems: "flex-start",
+                        background: "transparent", border: "none", cursor: "pointer", textAlign: "left",
+                        borderBottom: i < checklistItems.length - 1 ? "1px solid #f0ecf9" : "none" }}>
+                      <div style={{ width: 22, height: 22, borderRadius: 6, flexShrink: 0, marginTop: 1,
+                        background: on ? "#7c4dff" : "#fff",
+                        border: on ? "2px solid #7c4dff" : "2px solid #d8d0ee",
+                        display: "grid", placeItems: "center", transition: "background .15s" }}>
+                        {on && <Check style={{ width: 13, height: 13, color: "#fff" }} strokeWidth={3} />}
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: 13.5, fontWeight: 700,
+                          color: on ? "#9a90b8" : "#1c1830",
+                          textDecoration: on ? "line-through" : "none" }}>{label}</div>
+                        <div className="san" style={{ fontSize: 12.5, color: "#9a90b8", marginTop: 2 }}>{hint}</div>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 10, marginBottom: 18 }}>
+              {[
+                { id: "lang", label: "Language", chip: ld.level, color: ld.color, Icon: Languages },
+                { id: "visa", label: "Visa", chip: vg.level, color: vg.color, Icon: GraduationCap },
+                { id: "deadline", label: "Apply by", chip: dl.window, color: "#7c4dff", Icon: CalendarClock },
+                { id: "safety", label: "Safety", chip: safety.level, color: safety.color, Icon: Check },
+              ].map((f) => (
+                <div key={f.id} style={{ background: "#faf9fe", border: "1px solid #ece7f7",
+                  borderRadius: 14, padding: "12px 14px", display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ width: 30, height: 30, borderRadius: 9, flexShrink: 0,
+                    background: f.color + "1a", display: "grid", placeItems: "center" }}>
+                    <f.Icon style={{ width: 15, height: 15, color: f.color }} />
                   </div>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: 13.5, fontWeight: 700, color: "#1c1830", marginBottom: 3,
-                      display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                      Visa & entry
-                      {(() => { const vg = visaGuide(picked.country); return (
-                        <span style={{ fontSize: 11, fontWeight: 700, color: vg.color,
-                          background: vg.color + "1a", borderRadius: 999, padding: "3px 9px" }}>{vg.level}</span>
-                      ); })()}
-                      <span style={{ marginLeft: "auto", fontSize: 12.5, fontWeight: 600, color: "#7c4dff",
-                        display: "inline-flex", alignItems: "center", gap: 4 }}>
-                        {visaOpen ? "Hide steps" : "Step-by-step"}
-                        <ChevronDown style={{ width: 14, height: 14, transform: visaOpen ? "rotate(180deg)" : "none", transition: "transform .25s" }} />
-                      </span>
-                    </div>
-                    <div className="san" style={{ fontSize: 13.5, color: "#564d75", lineHeight: 1.55 }}>{cp.visa}</div>
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: ".1em",
+                      textTransform: "uppercase", color: "#9a90b8" }}>{f.label}</div>
+                    <div className="ser" style={{ fontSize: 14, fontWeight: 600, color: f.color,
+                      whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{f.chip}</div>
                   </div>
                 </div>
-                {visaOpen && (() => {
-                  const vg = visaGuide(picked.country);
-                  return (
-                    <div className="fad" style={{ marginTop: 16, marginLeft: 49 }}>
-                      <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: ".08em",
-                        textTransform: "uppercase", color: "#b0a6c8", marginBottom: 4 }}>
-                        Likely visa for {picked.country}
+              ))}
+            </div>
+
+            <div style={{ display: "grid", gap: 8 }}>
+              {[
+                { id: "visa", Icon: GraduationCap, title: "Visa & entry — step-by-step", summary: cp.visa },
+                { id: "adjust", Icon: Sun, title: "Cultural adjustment — first 2 weeks", summary: adj.split(". ")[0] + "." },
+                { id: "transit", Icon: Train, title: "Getting around", summary: tr.primary },
+              ].map((sec) => {
+                const isOpen = openSection === sec.id;
+                return (
+                  <div key={sec.id} style={{ background: "#fff", border: "1px solid #ece7f7",
+                    borderRadius: 14, overflow: "hidden" }}>
+                    <button onClick={() => toggleSection(sec.id)} className="pressable"
+                      style={{ width: "100%", display: "flex", gap: 12, alignItems: "center",
+                        padding: "13px 16px", background: "transparent", border: "none",
+                        cursor: "pointer", textAlign: "left" }}>
+                      <div style={{ width: 30, height: 30, borderRadius: 9, flexShrink: 0,
+                        background: "#f0ebfa", display: "grid", placeItems: "center" }}>
+                        <sec.Icon style={{ width: 15, height: 15, color: "#7c4dff" }} strokeWidth={2.3} />
                       </div>
-                      <div className="ser" style={{ fontSize: 17, fontWeight: 600, color: "#1c1830", marginBottom: 8 }}>
-                        {vg.type}
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontSize: 13.5, fontWeight: 700, color: "#1c1830" }}>{sec.title}</div>
+                        {!isOpen && (
+                          <div className="san" style={{ fontSize: 12, color: "#9a90b8", marginTop: 2,
+                            overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{sec.summary}</div>
+                        )}
                       </div>
-                      <a href={vg.officialURL} target="_blank" rel="noopener noreferrer"
-                        style={{ display: "inline-flex", alignItems: "center", gap: 6, marginBottom: 14,
-                          fontSize: 13, fontWeight: 600, color: "#7c4dff",
-                          background: "#f0ebfa", borderRadius: 10, padding: "8px 13px",
-                          textDecoration: "none", border: "1px solid #e1d6f7" }}>
-                        {vg.officialKnown
-                          ? `Official ${picked.country} student visa page`
-                          : `Official ${picked.country} travel info (US State Dept)`} ↗
-                      </a>
-                      {vg.note && (
-                        <div style={{ display: "flex", gap: 9, alignItems: "flex-start",
-                          background: vg.color + "12", border: `1px solid ${vg.color}33`,
-                          borderRadius: 14, padding: "13px 15px", marginBottom: 16 }}>
-                          <AlertCircle style={{ width: 15, height: 15, color: vg.color, flexShrink: 0, marginTop: 1 }} />
-                          <div className="san" style={{ fontSize: 13, color: "#564d75", lineHeight: 1.55 }}>
-                            <strong style={{ color: vg.color }}>{picked.country}: {vg.lead}.</strong> {vg.note.flag}
-                          </div>
-                        </div>
-                      )}
-                      {!vg.note && (
-                        <div className="san" style={{ fontSize: 12.5, color: "#9a90b8", marginBottom: 14 }}>
-                          General timing: <strong style={{ color: "#7c4dff" }}>{vg.lead}.</strong>{vg.schengen ? " Schengen long-stay rules apply for terms over 90 days." : ""}
-                        </div>
-                      )}
-                      <div style={{ display: "grid", gap: 2 }}>
-                        {vg.steps.map(([h, d], k) => (
-                          <div key={k} style={{ display: "flex", gap: 13, padding: "13px 4px", alignItems: "flex-start",
-                            borderBottom: k < vg.steps.length - 1 ? "1px solid #f4f1fb" : "none" }}>
-                            <div style={{ width: 24, height: 24, borderRadius: 999, flexShrink: 0,
-                              background: "#f0ebfa", display: "grid", placeItems: "center",
-                              fontSize: 11.5, fontWeight: 800, color: "#7c4dff" }}>{k + 1}</div>
-                            <div style={{ flex: 1 }}>
-                              <div style={{ fontSize: 13.5, fontWeight: 700, color: "#1c1830", marginBottom: 2 }}>{h}</div>
-                              <div className="san" style={{ fontSize: 13, color: "#564d75", lineHeight: 1.55 }}>{d}</div>
+                      <ChevronDown style={{ width: 16, height: 16, color: "#9a90b8",
+                        transform: isOpen ? "rotate(180deg)" : "none", transition: "transform .25s" }} />
+                    </button>
+                    {isOpen && (
+                      <div className="fad" style={{ padding: "4px 16px 18px 58px" }}>
+                        {sec.id === "visa" && (
+                          <>
+                            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: ".08em",
+                              textTransform: "uppercase", color: "#b0a6c8", marginBottom: 4 }}>Likely visa</div>
+                            <div className="ser" style={{ fontSize: 15, fontWeight: 600, color: "#1c1830", marginBottom: 6 }}>
+                              {vg.type}
+                            </div>
+                            <a href={vg.officialURL} target="_blank" rel="noopener noreferrer"
+                              style={{ display: "inline-flex", alignItems: "center", gap: 6, marginBottom: 12,
+                                fontSize: 12.5, fontWeight: 600, color: "#7c4dff",
+                                background: "#f0ebfa", borderRadius: 10, padding: "7px 12px",
+                                textDecoration: "none", border: "1px solid #e1d6f7" }}>
+                              {vg.officialKnown ? `Official ${picked.country} visa page` : `${picked.country} travel info`} ↗
+                            </a>
+                            {vg.note ? (
+                              <div style={{ display: "flex", gap: 9, alignItems: "flex-start",
+                                background: vg.color + "12", border: `1px solid ${vg.color}33`,
+                                borderRadius: 12, padding: "10px 13px", marginBottom: 12 }}>
+                                <AlertCircle style={{ width: 14, height: 14, color: vg.color, flexShrink: 0, marginTop: 1 }} />
+                                <div className="san" style={{ fontSize: 12.5, color: "#564d75", lineHeight: 1.55 }}>
+                                  <strong style={{ color: vg.color }}>{vg.lead}.</strong> {vg.note.flag}
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="san" style={{ fontSize: 12, color: "#9a90b8", marginBottom: 12 }}>
+                                General timing: <strong style={{ color: "#7c4dff" }}>{vg.lead}.</strong>{vg.schengen ? " Schengen long-stay rules apply over 90 days." : ""}
+                              </div>
+                            )}
+                            <div style={{ display: "grid", gap: 0 }}>
+                              {vg.steps.map(([h, d], k) => (
+                                <div key={k} style={{ display: "flex", gap: 12, padding: "10px 0", alignItems: "flex-start",
+                                  borderBottom: k < vg.steps.length - 1 ? "1px solid #f4f1fb" : "none" }}>
+                                  <div style={{ width: 22, height: 22, borderRadius: 999, flexShrink: 0,
+                                    background: "#f0ebfa", display: "grid", placeItems: "center",
+                                    fontSize: 11, fontWeight: 800, color: "#7c4dff" }}>{k + 1}</div>
+                                  <div style={{ flex: 1 }}>
+                                    <div style={{ fontSize: 13, fontWeight: 700, color: "#1c1830", marginBottom: 1 }}>{h}</div>
+                                    <div className="san" style={{ fontSize: 12.5, color: "#564d75", lineHeight: 1.5 }}>{d}</div>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        )}
+                        {sec.id === "adjust" && (
+                          <div className="san" style={{ fontSize: 13, color: "#564d75", lineHeight: 1.6 }}>{adj}</div>
+                        )}
+                        {sec.id === "transit" && (
+                          <div style={{ display: "grid", gap: 6 }}>
+                            <div className="san" style={{ fontSize: 12.5, color: "#564d75", lineHeight: 1.55 }}>
+                              <strong style={{ color: "#7c4dff" }}>Primary modes:</strong> {tr.primary}
+                            </div>
+                            <div className="san" style={{ fontSize: 12.5, color: "#564d75", lineHeight: 1.55 }}>
+                              <strong style={{ color: "#7c4dff" }}>Student pass:</strong> {tr.pass}
+                            </div>
+                            <div className="san" style={{ fontSize: 12.5, color: "#564d75", lineHeight: 1.55 }}>
+                              <strong style={{ color: "#7c4dff" }}>Walking & biking:</strong> {tr.walk}
                             </div>
                           </div>
-                        ))}
+                        )}
+                        {sec.id === "safety" && (
+                          <div className="san" style={{ fontSize: 13, color: "#564d75", lineHeight: 1.6 }}>{cp.safety}</div>
+                        )}
                       </div>
-                      <div style={{ display: "flex", gap: 8, alignItems: "flex-start", marginTop: 14,
-                        fontSize: 11.5, color: "#9a90b8" }}>
-                        <AlertCircle style={{ width: 13, height: 13, color: "#9d6bff", flexShrink: 0, marginTop: 1 }} />
-                        <span>This is the general shape of the process, not legal advice or a fee/form list. Exact requirements depend on your citizenship and consulate and change often — verify on the official {picked.country} consulate site and with your study-abroad office, and start early.</span>
-                      </div>
-                    </div>
-                  );
-                })()}
-              </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
             <div style={{ display: "flex", gap: 8, alignItems: "flex-start", marginTop: 18,
               paddingTop: 16, borderTop: "1px solid #f0ecf9", fontSize: 11.5, color: "#9a90b8" }}>

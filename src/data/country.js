@@ -62,6 +62,92 @@ export function countryProfile(country) {
   };
 }
 
+// ── LANGUAGE DIFFICULTY ────────────────────────────────────────────────────
+// Rough US-State-Dept / FSI bucketing for how hard the local language is for
+// English speakers, plus how much you can get by without it. "Easy" = English
+// is the working language or near-universal. "Moderate" = some local helps
+// but you can manage. "Hard" = significant effort needed for daily life.
+const LANG_DIFFICULTY = {
+  "United Kingdom":"Easy","Ireland":"Easy","Australia":"Easy","New Zealand":"Easy",
+  "Iceland":"Easy","Netherlands":"Easy","Denmark":"Easy","Sweden":"Easy",
+  "Norway":"Easy","Finland":"Easy",
+  "Spain":"Moderate","France":"Moderate","Italy":"Moderate","Portugal":"Moderate","Germany":"Moderate",
+  "Austria":"Moderate","Switzerland":"Moderate","Greece":"Moderate","Hungary":"Moderate",
+  "Czech Republic":"Moderate","Croatia":"Moderate","Argentina":"Moderate","Uruguay":"Moderate",
+  "Chile":"Moderate","Mexico":"Moderate","Peru":"Moderate","Costa Rica":"Moderate","Brazil":"Moderate",
+  "Japan":"Hard","South Korea":"Hard","China":"Hard","Taiwan":"Hard","Vietnam":"Hard",
+  "Thailand":"Hard","Indonesia":"Moderate","Israel":"Moderate","Turkey":"Hard","Russia":"Hard",
+  "Morocco":"Hard","Egypt":"Hard","South Africa":"Easy","Kenya":"Easy",
+};
+export function languageDifficulty(country) {
+  const level = LANG_DIFFICULTY[country] || "Moderate";
+  const color = level === "Easy" ? "#16a34a" : level === "Hard" ? "#dc2626" : "#d97706";
+  const blurb = level === "Easy"
+    ? "English is the working language or near-universal — you'll get by from day one with no prep."
+    : level === "Hard"
+    ? "Local language differs significantly from English (different script, sounds, or grammar). Daily life — signs, menus, transit, small talk — takes effort without basics. A pre-departure crash course makes a huge difference."
+    : "Locals often speak some English in academic and tourist contexts, but everyday life (shops, transit, restaurants outside the center) goes smoother with basic phrases. Plan to learn ~50 survival phrases before you go.";
+  return { level, color, blurb };
+}
+
+// ── CULTURAL ADJUSTMENT — FIRST-2-WEEKS NOTES ──────────────────────────────
+// What to expect socially/practically when you first land. Concrete, not
+// inspirational. Falls back to a generic "ease yourself in" note.
+const ADJUSTMENT = {
+  "Spain": "Days run later — lunch around 2pm, dinner 9–10pm, nightlife from midnight. Plan your sleep around that, not against it. Stores often close 2–5pm (siesta).",
+  "France": "People say bonjour before any interaction — skipping it reads as rude. Service is more formal and slower-paced; that's not bad service, that's the norm. Sundays are quiet.",
+  "Italy": "Cafés are stand-at-the-bar speed; sitting costs more. Cash is still common in small places. August is genuinely empty in cities — locals are at the coast.",
+  "United Kingdom": "Queueing is sacred. Pubs are the default social venue, not bars or clubs. People are polite but reserved at first — small talk warms up over a few weeks.",
+  "Germany": "Punctuality is real — 'on time' means 5 min early. Sunday closures are strict. Crossing on red is frowned on even with no cars. Cash > card in many places.",
+  "Netherlands": "Bike-first city design — assume bike lanes are like roads. Direct communication; what feels blunt to Americans is just clarity here.",
+  "Denmark": "Tap water is safe and locals expect you to drink it. Cycling is the default; learn the hand signals. Bars close late but no one rushes.",
+  "Sweden": "Fika (coffee + pastry break) is a daily social thing — not skippable. Quiet on public transit is the norm.",
+  "Czech Republic": "Beer is often cheaper than water. Trams are precise and on schedule. Stamping your transit ticket on entry is required — fines if not.",
+  "Japan": "Quiet on trains, no phone calls. Tipping is not done and can be awkward. Cash is still widely used outside big chains. Shoes off in many homes and some restaurants.",
+  "South Korea": "Late-night food is everywhere; convenience stores are full ecosystems. Hierarchy/age shapes social rules — let older people pour first.",
+  "Argentina": "Dinner at 10pm is normal, sometimes later. Inflation is real — keep small bills, use blue-dollar exchange when offered. Mate is a social ritual, share the gourd.",
+  "Mexico": "Time runs flexibly socially — class is on time, dinner is not. Tipping ~10–15% is expected. Drink bottled or filtered water.",
+  "Australia": "Sun is fierce — sunscreen daily, even cloudy. Tipping is not expected. Public transport varies wildly by city — pre-load a transit card.",
+};
+export function adjustmentNotes(country) {
+  return ADJUSTMENT[country]
+    || "Give yourself two weeks to settle in — daily routines (meal times, store hours, transit ettiquette) shift more than you'd expect. Ask your program for a local handbook, and follow other students in your cohort online before arrival.";
+}
+
+// ── LOCAL TRANSIT ──────────────────────────────────────────────────────────
+const TRANSIT = {
+  "Spain": { primary: "Metro, bus, urban rail", pass: "Madrid student monthly ~€22; Barcelona T-jove (under-30) ~€80/quarter", walk: "Very walkable city centers; bikes in Barcelona/Valencia good." },
+  "France": { primary: "Metro, RER, bus, tram", pass: "Paris Navigo student rate ~€38/mo (with imagine R for under-26)", walk: "Paris highly walkable; Vélib bike-share city-wide." },
+  "Italy": { primary: "Metro (Rome/Milan), bus, tram", pass: "Rome monthly ~€35; Florence ~€35", walk: "Historic centers are pedestrian-first; cycling rough in older cities." },
+  "United Kingdom": { primary: "Tube, bus, overground (London); bus in smaller cities", pass: "London 18+ Student Oyster ~30% off; ~£100/mo zones 1–2", walk: "London very walkable in zones 1–2; bus is your friend after midnight." },
+  "Germany": { primary: "U-Bahn, S-Bahn, tram, bus", pass: "Deutschlandticket €49/mo covers all regional transit nationwide", walk: "Berlin/Munich very bikeable; cities are dense and walkable." },
+  "Netherlands": { primary: "Bike, tram, train (NS)", pass: "OV-chipkaart; intercity-train discount via student products", walk: "Bike-first cities — get one immediately. Walkable, but bike is faster." },
+  "Denmark": { primary: "Bike, metro, S-train, bus", pass: "Rejsekort + ungdomskort (under-19/student) substantial discount", walk: "Copenhagen is the bike capital — bike everywhere, even in rain." },
+  "Czech Republic": { primary: "Tram, metro, bus", pass: "Prague monthly ~CZK 130 (under-26 student) — among Europe's cheapest", walk: "Prague centre tiny & walkable; trams cover the rest." },
+  "Japan": { primary: "Subway, JR rail, bus", pass: "Tokyo commuter pass via your school can be ~30–50% off", walk: "Hyper-walkable; trains stop ~midnight so plan late nights." },
+  "South Korea": { primary: "Subway, bus", pass: "T-money card; subway transfers free to bus within 30 min", walk: "Seoul subway is fast & cheap; walkable downtown, hilly elsewhere." },
+  "Argentina": { primary: "Subte (subway), colectivo (bus)", pass: "SUBE card; per-ride pennies but inflation-sensitive", walk: "BA walkable in central neighborhoods; long city — use Subte for distance." },
+  "Mexico": { primary: "Metro, Metrobús, ride-share", pass: "CDMX metro fare is symbolic (~5 pesos)", walk: "Walkable in central CDMX colonias; rideshare common at night." },
+  "Australia": { primary: "Train, tram (Melb), bus, ferry (Syd)", pass: "Opal/Myki concession card with student ID = ~half-price", walk: "Sydney CBD walkable; Melbourne tram network excellent." },
+};
+export function transitInfo(country) {
+  return TRANSIT[country] || {
+    primary: "Check what locals actually use — metro, bus, or rideshare varies a lot.",
+    pass: "Ask your program if there's a student transit card or pass.",
+    walk: "Walking and biking conditions depend on the city center vs. suburbs.",
+  };
+}
+
+// ── APPLICATION DEADLINES — TYPICAL WINDOWS ────────────────────────────────
+// Rough deadlines for US students applying through their home study-abroad
+// office. Exact dates vary by school — these are the windows to plan around.
+export function applicationDeadline(semester) {
+  const s = (semester || "fall").toLowerCase();
+  if (s === "fall") return { label: "Fall semester", window: "Late January – mid February", note: "Most US schools' study-abroad offices set fall deadlines in late Jan / early Feb of the same year." };
+  if (s === "summer") return { label: "Summer term", window: "Mid February – early March", note: "Summer programs typically due ~6 months out; some providers extend later but housing fills." };
+  return { label: "Spring semester", window: "Mid September – early October", note: "Spring deadlines usually fall mid-Sept to early Oct of the prior year — half a year ahead." };
+}
+
 // ── COURSE CREDIT — REAL DETERMINATIONS ONLY ───────────────────────────────
 // Course-credit equivalency is school-, major-, AND syllabus-specific, and
 // only a home-institution faculty/registrar ruling is authoritative. This

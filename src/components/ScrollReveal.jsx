@@ -42,7 +42,7 @@ export function ScrollReveal({ title, children }) {
         border: "1px solid #3d335a",
         boxShadow: "0 0 0 #0000004d, 0 9px 20px rgba(0,0,0,.3), 0 37px 37px rgba(60,40,110,.22), 0 84px 50px rgba(60,40,110,.15), 0 149px 60px rgba(60,40,110,.06)",
         transformOrigin: "50% 100%", willChange: "transform" }}>
-        <div style={{ height: "min(78vh,760px)", borderRadius: 22, overflow: "hidden",
+        <div style={{ height: "min(64vh,620px)", borderRadius: 22, overflow: "hidden",
           background: "#ffffff" }}>
           {children}
         </div>
